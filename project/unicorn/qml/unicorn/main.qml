@@ -72,10 +72,11 @@ Rectangle {
 
         property variant pagesList  : [
             "editdeal",
-            "contactlist"
+            "listdeal"
         ];
 
-        property string currentPage : "editdeal";
+        property string currentPage : "listdeal";
+
 
         Repeater {
             model: contentView.pagesList;
