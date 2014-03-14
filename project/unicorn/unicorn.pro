@@ -18,3 +18,6 @@ qtcAddDeployment()
 
 RESOURCES += \
     resources.qrc
+
+OTHER_FILES += \
+    qml/unicorn/contactlist.qml

@@ -5,129 +5,36 @@ import QtQuick.Layouts 1.0
 Rectangle {
     width: 260
     height: 360
+    id: root
 
-    ToolBar{
-        id: toolbar
-        RowLayout{
-            anchors.fill: parent
-            anchors.margins: 3
-            id:toolbarLayout
+    property variant pagesList  : [
+        "editdeal",
+        "contactlist"
+    ];
 
-            Image {
-                anchors.margins: 3
+    // Set this property to another file name to change page
+    property string  currentPage : "editdeal";
 
-                MouseArea{
-                    anchors.fill: parent
-                    onClicked: {
-                        navMenu.popup();
-                    }
+    Repeater {
+        model: pagesList;
+        delegate: Loader {
+            active: false;
+            asynchronous: true;
+            anchors.fill: parent;
+            visible: (currentPage === modelData);
+            source: "%1.qml".arg(modelData)
+            onVisibleChanged:      { loadIfNotLoaded(); }
+            Component.onCompleted: { loadIfNotLoaded(); }
+
+            function loadIfNotLoaded () {
+                // to load the file at first show
+                if (visible && !active) {
+                    active = true;
                 }
-
-                anchors.verticalCenter: parent.verticalCenter
-                id: menuIcon
-                source: "qrc:/icons/glyphicons_158_show_lines.png"
-
-            }
-
-            Menu{
-                id: navMenu
-                MenuItem{
-                    text: "Сделки"
-                }
-                MenuItem{
-                    text: "Контакты"
-                }
-                MenuItem{
-                    text: "Органайзер"
-                }
-            }
-            Text {
-                id: pageTitle
-                font.pointSize: 14
-                text: "Сделки"
-            }
-            Rectangle{
-                Layout.fillWidth: true
-            }
-
-            Image {
-                anchors.margins: 3
-
-                MouseArea{
-                    anchors.fill: parent
-                    onClicked: {
-                        navMenu.popup();
-                    }
-                }
-
-                anchors.verticalCenter: parent.verticalCenter
-                id: addDeal
-
-                source: "qrc:/icons/glyphicons_432_plus.png"
-
             }
         }
     }
 
 
-    Rectangle{
-        width: parent.width
-        height: parent.height - toolbar.height
-        anchors.topMargin: 0
-        anchors.top: toolbar.bottom
-
-        ColumnLayout{
-            spacing: 4
-            anchors.margins: 40
-            anchors.fill: parent
-
-            TextField {
-
-                id: dealTitle
-                anchors.horizontalCenter: parent.horizontalCenter
-                Layout.fillWidth: true
-
-                placeholderText: "Название"
-            }
-
-            TextField {
-
-                id: dealMoney
-                anchors.horizontalCenter: parent.horizontalCenter
-                Layout.fillWidth: true
-                width: parent.width
-
-                placeholderText: "Сумма"
-            }
-
-            ComboBox{
-                id: dealState
-                anchors.horizontalCenter: parent.horizontalCenter
-                Layout.fillWidth: true
-                width: parent.width
-
-            }
-
-            Button {
-                anchors.horizontalCenter: parent.horizontalCenter
-                Layout.fillWidth: true
-
-                text: "Участники"
-            }
-            Button {
-                anchors.horizontalCenter: parent.horizontalCenter
-                Layout.fillWidth: true
-
-                text: "События"
-            }
-            Button {
-                anchors.horizontalCenter: parent.horizontalCenter
-                Layout.fillWidth: true
-
-                text: "Сохранить"
-
-            }
-        }
-    }
 }
 
