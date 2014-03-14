@@ -15,12 +15,19 @@
 *.pro.user
 *.pro.user.*
 *.user*
+*.xml
+*.java
+*.apk
 moc_*.cpp
 qrc_*.cpp
 ui_*.h
 Makefile*
 *-build-*
 
+#android build
+*android*
+*Android*
+*Desktop*
 # QtCreator
 
 *.autosave
