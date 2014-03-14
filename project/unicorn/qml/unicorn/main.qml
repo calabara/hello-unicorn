@@ -9,7 +9,9 @@ Rectangle {
 
     property variant pagesList  : [
         "editdeal",
-        "contactlist"
+        "listdeal",
+        "editevent",
+        "listevent"
     ];
 
     // Set this property to another file name to change page

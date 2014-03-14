@@ -26,11 +26,12 @@ Rectangle {
 
             }
 
+
             Text {
                 id: pageTitle
                 font.pointSize: 14
+                text: "Сделки"
 
-                text: ""
             }
             Rectangle{
                 Layout.fillWidth: true
@@ -66,53 +67,6 @@ Rectangle {
             anchors.margins: 40
             anchors.fill: parent
 
-            TextField {
-
-                id: dealTitle
-                anchors.horizontalCenter: parent.horizontalCenter
-                Layout.fillWidth: true
-
-                placeholderText: "Название"
-            }
-
-            TextField {
-
-                id: dealMoney
-                anchors.horizontalCenter: parent.horizontalCenter
-                Layout.fillWidth: true
-                width: parent.width
-
-                placeholderText: "Сумма"
-            }
-
-            ComboBox{
-                id: dealState
-                anchors.horizontalCenter: parent.horizontalCenter
-                Layout.fillWidth: true
-                width: parent.width
-
-            }
-
-            Button {
-                anchors.horizontalCenter: parent.horizontalCenter
-                Layout.fillWidth: true
-
-                text: "Участники"
-
-            }
-            Button {
-                anchors.horizontalCenter: parent.horizontalCenter
-                Layout.fillWidth: true
-
-                text: "События"
-            }
-            Button {
-                anchors.horizontalCenter: parent.horizontalCenter
-                Layout.fillWidth: true
-
-                text: "Сохранить"
-
-            }
-        }
+                 }
     }
 }
