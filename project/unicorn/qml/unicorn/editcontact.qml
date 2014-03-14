@@ -5,6 +5,7 @@ import QtQuick.Layouts 1.0
 Rectangle {
     anchors.fill: parent
 
+
     Rectangle{
         anchors.fill: parent
         anchors.topMargin: 0

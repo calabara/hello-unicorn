@@ -7,13 +7,6 @@ Rectangle {
     width: 260
     height: 360
 
-    property variant pagesList  : [
-        "editdeal",
-        "listdeal",
-        "editevent",
-        "listevent"
-    ];
-
     property bool menuShow: false
 
     Rectangle {
@@ -29,7 +22,7 @@ Rectangle {
             model: contentView.pagesList
             delegate:
                 Item {
-                height: 80
+                height: 40
                 width: parent.width
                 Text {
                     anchors {
@@ -37,7 +30,7 @@ Rectangle {
                         leftMargin: 12
                         verticalCenter: parent.verticalCenter
                     }
-                    color: "white"; font.pixelSize: 32; text: "%1".arg(modelData)
+                    color: "white"; font.pixelSize: 14; text: "%1".arg(modelData)
                 }
 
                 Rectangle {
@@ -65,49 +58,117 @@ Rectangle {
     }
 
 
+
     // Set this property to another file name to change page
     Rectangle {
         anchors.fill: parent
-        id: contentView
 
-        property variant pagesList  : [
-            "editdeal",
-            "listdeal"
-        ];
+        ToolBar{
+            id: toolbar
+            width: parent.width
 
-        property string currentPage : "listdeal";
+            RowLayout{
+                anchors.fill: parent
+                anchors.margins: 3
+                id:toolbarLayout
 
+                Image {
+                    anchors.margins: 3
 
-        Repeater {
-            model: contentView.pagesList;
-            delegate: Loader {
-                active: false;
-                asynchronous: true;
-                anchors.fill: parent;
-                visible: (contentView.currentPage === modelData);
-                source: "%1.qml".arg(modelData)
-                onVisibleChanged:      { loadIfNotLoaded(); }
-                Component.onCompleted: { loadIfNotLoaded(); }
-
-                function loadIfNotLoaded () {
-                    // to load the file at first show
-                    if (visible && !active) {
-                        active = true;
+                    MouseArea{
+                        anchors.fill: parent
+                        onClicked: {
+                            root.onMenu()
+                        }
                     }
+
+                    anchors.verticalCenter: parent.verticalCenter
+                    id: menuIcon
+                    source: "qrc:/icons/glyphicons_158_show_lines.png"
+
+                }
+
+
+                Text {
+                    id: pageTitle
+                    font.pointSize: 14
+                    text: "Сделки"
+
+                }
+                Rectangle{
+                    Layout.fillWidth: true
+                }
+
+                Image {
+                    anchors.margins: 3
+
+                    MouseArea{
+                        anchors.fill: parent
+                        onClicked: {
+                        }
+                    }
+
+                    anchors.verticalCenter: parent.verticalCenter
+                    id: addDeal
+
+                    source: "qrc:/icons/glyphicons_432_plus.png"
+
                 }
             }
         }
 
-        MouseArea {
-            anchors.fill: parent
-            enabled: root.menuShow
-            onClicked: root.onMenu();
+        Rectangle {
+            anchors.top: toolbar.bottom
+            width: parent.width
+            id: contentView
+
+            property variant pagesList  : [
+                "editdeal",
+                "listdeal",
+                "editevent",
+                "listevent",
+                "editcontact",
+                "listcontact",
+
+            ];
+
+            property string currentPage : "listdeal";
+
+
+
+            Repeater {
+                model: contentView.pagesList;
+                delegate: Loader {
+                    active: false;
+                    asynchronous: true;
+                    anchors.fill: parent;
+                    visible: (contentView.currentPage === modelData);
+                    source: "%1.qml".arg(modelData)
+                    onVisibleChanged:      { loadIfNotLoaded(); }
+                    Component.onCompleted: { loadIfNotLoaded(); }
+
+                    function loadIfNotLoaded () {
+                        // to load the file at first show
+                        if (visible && !active) {
+                            active = true;
+                        }
+                    }
+                }
+            }
+
+
         }
 
         transform: Translate {
             id: gameTranslate
             x: 0
             Behavior on x { NumberAnimation { duration: 400; easing.type: Easing.OutQuad } }
+        }
+
+        MouseArea {
+            anchors.fill: parent
+            enabled: root.menuShow
+            onClicked: root.onMenu();
         }
     }
 }

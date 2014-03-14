@@ -7,7 +7,6 @@ Rectangle {
 
     Rectangle{
         anchors.fill: parent
-        anchors.topMargin: 0
 
         ColumnLayout{
             spacing: 4
