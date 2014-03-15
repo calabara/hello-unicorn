@@ -8,6 +8,19 @@ Rectangle {
     height: 360
 
     property bool menuShow: false
+    function onMenu() {
+        gameTranslate.x = root.menuShow ? 0 : root.width * 0.9
+        root.menuShow = !root.menuShow;
+    }
+
+    ListModel  {
+        id: pageList
+
+        ListElement { filename: "listdeal"; title: "Сделки" }
+        ListElement { filename: "listevent"; title: "События" }
+        ListElement { filename: "listcontact"; title: "Органайзер" }
+
+    }
 
     Rectangle {
         id: menuView
@@ -19,49 +32,49 @@ Rectangle {
 
         ListView {
             anchors { fill: parent; margins: 22 }
-            model: contentView.pagesList
-            delegate:
-                Item {
-                height: 40
-                width: parent.width
-                Text {
-                    anchors {
-                        left: parent.left
-                        leftMargin: 12
-                        verticalCenter: parent.verticalCenter
-                    }
-                    color: "white"; font.pixelSize: 14; text: "%1".arg(modelData)
-                }
+            model: pageList
 
+            delegate:
+                Component {
                 Rectangle {
-                    height: 2; width: parent.width * 0.7;
-                    color: "gray";
-                    anchors {
-                        horizontalCenter: parent.horizontalCenter;
-                        bottom: parent.bottom
+                    height: 40
+                    width: parent.width
+                    Text {
+                        anchors {
+                            left: parent.left
+                            leftMargin: 12
+                            verticalCenter: parent.verticalCenter
+                        }
+                        color: "white"; font.pixelSize: 14;
+
+                        text: title
                     }
-                }
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: {
-                        contentView.currentPage = modelData;
-                        onMenu();
+
+                    Rectangle {
+                        height: 2; width: parent.width * 0.7;
+                        color: "gray";
+                        anchors {
+                            horizontalCenter: parent.horizontalCenter;
+                            bottom: parent.bottom
+                        }
+                    }
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            contentView.currentPage = filename;
+                            onMenu();
+                        }
                     }
                 }
             }
         }
     }
 
-    function onMenu() {
-        gameTranslate.x = root.menuShow ? 0 : root.width * 0.9
-        root.menuShow = !root.menuShow;
-    }
 
 
-
-    // Set this property to another file name to change page
     Rectangle {
         anchors.fill: parent
+        id: pageLayout
 
         ToolBar{
             id: toolbar
@@ -90,7 +103,7 @@ Rectangle {
 
 
                 Text {
-                    id: pageTitle
+                    id: itle
                     font.pointSize: 14
                     text: "Сделки"
 
@@ -120,34 +133,25 @@ Rectangle {
         Rectangle {
             anchors.top: toolbar.bottom
             width: parent.width
+            height: parent.height - toolbar.height
+
             id: contentView
-
-            property variant pagesList  : [
-                "editdeal",
-                "listdeal",
-                "editevent",
-                "listevent",
-                "editcontact",
-                "listcontact",
-
-            ];
 
             property string currentPage : "listdeal";
 
-
-
             Repeater {
-                model: contentView.pagesList;
+                model: pageList;
                 delegate: Loader {
                     active: false;
                     asynchronous: true;
                     anchors.fill: parent;
-                    visible: (contentView.currentPage === modelData);
-                    source: "%1.qml".arg(modelData)
+                    visible: (contentView.currentPage === filename);
+                    source: "%1.qml".arg(filename)
                     onVisibleChanged:      { loadIfNotLoaded(); }
                     Component.onCompleted: { loadIfNotLoaded(); }
 
                     function loadIfNotLoaded () {
+
                         // to load the file at first show
                         if (visible && !active) {
                             active = true;
