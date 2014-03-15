@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/">
+        <file>icons/glyphicons_006_user_add.png</file>
+        <file>icons/glyphicons_030_pencil.png</file>
+        <file>icons/glyphicons_158_show_lines.png</file>
+        <file>icons/glyphicons_190_circle_plus.png</file>
+        <file>icons/glyphicons_191_circle_minus.png</file>
+        <file>icons/glyphicons_192_circle_remove.png</file>
+        <file>icons/glyphicons_210_left_arrow.png</file>
+        <file>icons/glyphicons_223_chevron-right.png</file>
+        <file>icons/glyphicons_224_chevron-left.png</file>
+        <file>icons/glyphicons_432_plus.png</file>
+    </qresource>
+</RCC>
