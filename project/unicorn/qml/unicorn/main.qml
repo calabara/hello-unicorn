@@ -39,6 +39,7 @@ Rectangle {
                 Rectangle {
                     height: 40
                     width: parent.width
+                    color: "transparent"
                     Text {
                         anchors {
                             left: parent.left
