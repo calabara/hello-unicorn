@@ -80,6 +80,7 @@ Rectangle {
         ToolBar{
             id: toolbar
             width: parent.width
+            height: parent.height / 10
 
             RowLayout{
                 anchors.fill: parent
@@ -88,7 +89,7 @@ Rectangle {
 
                 Image {
                     anchors.margins: 3
-
+                    height: toolbar.height
                     MouseArea{
                         anchors.fill: parent
                         onClicked: {
@@ -115,6 +116,7 @@ Rectangle {
 
                 Image {
                     anchors.margins: 3
+                    height: toolbar.height
 
                     MouseArea{
                         anchors.fill: parent
