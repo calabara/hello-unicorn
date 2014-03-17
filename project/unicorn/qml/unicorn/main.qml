@@ -105,7 +105,7 @@ Rectangle {
 
 
                 Text {
-                    id: itle
+                    id: title
                     font.pointSize: 14
                     text: "Сделки"
 
