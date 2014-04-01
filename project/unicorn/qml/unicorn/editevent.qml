@@ -5,61 +5,70 @@ import QtQuick.Layouts 1.0
 Rectangle {
     anchors.fill: parent
 
-    Rectangle{
-        anchors.fill: parent
+    MyToolBar {
+        id: toolbar
+        title: "Edit event"
+    }
 
-        ColumnLayout{
-            spacing: 4
-            anchors.margins: 40
+    PageContent {
+        id: pageContent
+
+        Rectangle{
             anchors.fill: parent
 
-            TextField {
+            ColumnLayout{
+                spacing: 4
+                anchors.margins: 40
+                anchors.fill: parent
 
-                id: dealTitle
-                anchors.horizontalCenter: parent.horizontalCenter
-                Layout.fillWidth: true
+                TextField {
 
-                placeholderText: "Название"
-            }
+                    id: dealTitle
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    Layout.fillWidth: true
 
-            TextField {
+                    placeholderText: "Название"
+                }
 
-                id: dealMoney
-                anchors.horizontalCenter: parent.horizontalCenter
-                Layout.fillWidth: true
-                width: parent.width
+                TextField {
+                    id: dealMoney
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    Layout.fillWidth: true
+                    width: parent.width
 
-                placeholderText: "Сумма"
-            }
+                    placeholderText: "Сумма"
+                }
 
-            ComboBox{
-                id: dealState
-                anchors.horizontalCenter: parent.horizontalCenter
-                Layout.fillWidth: true
-                width: parent.width
+                ComboBox{
+                    id: dealState
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    Layout.fillWidth: true
+                    width: parent.width
 
-            }
+                }
 
-            Button {
-                anchors.horizontalCenter: parent.horizontalCenter
-                Layout.fillWidth: true
+                Button {
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    Layout.fillWidth: true
 
-                text: "Участники"
+                    text: "Участники"
 
-            }
-            Button {
-                anchors.horizontalCenter: parent.horizontalCenter
-                Layout.fillWidth: true
+                }
+                Button {
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    Layout.fillWidth: true
 
-                text: "События"
-            }
-            Button {
-                anchors.horizontalCenter: parent.horizontalCenter
-                Layout.fillWidth: true
+                    text: "События"
+                }
+                Button {
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    Layout.fillWidth: true
 
-                text: "Сохранить"
+                    text: "Сохранить"
 
+                }
             }
         }
+
     }
 }

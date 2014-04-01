@@ -16,8 +16,11 @@ SOURCES += main.cpp
 include(qtquick2applicationviewer/qtquick2applicationviewer.pri)
 qtcAddDeployment()
 
+CONFIG+=qml_debug
+
 RESOURCES += \
     resources.qrc
 
-OTHER_FILES += \
-    qml/unicorn/contactlist.qml
+#OTHER_FILES += \
+
+OTHER_FILES +=

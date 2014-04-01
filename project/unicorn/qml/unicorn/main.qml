@@ -18,7 +18,7 @@ Rectangle {
 
         ListElement { filename: "listdeal"; title: "Сделки" }
         ListElement { filename: "listevent"; title: "События" }
-        ListElement { filename: "listcontact"; title: "Органайзер" }
+        ListElement { filename: "TodoList"; title: "Органайзер" }
 
     }
 
@@ -71,74 +71,16 @@ Rectangle {
         }
     }
 
-
-
     Rectangle {
         anchors.fill: parent
         id: pageLayout
 
-        ToolBar{
-            id: toolbar
-            width: parent.width
-            height: parent.height / 10
-
-            RowLayout{
-                anchors.fill: parent
-                anchors.margins: 3
-                id:toolbarLayout
-
-                Image {
-                    anchors.margins: 3
-                    height: toolbar.height
-                    MouseArea{
-                        anchors.fill: parent
-                        onClicked: {
-                            root.onMenu()
-                        }
-                    }
-
-                    anchors.verticalCenter: parent.verticalCenter
-                    id: menuIcon
-                    source: "qrc:/icons/glyphicons_158_show_lines.png"
-
-                }
-
-
-                Text {
-                    id: title
-                    font.pointSize: 14
-                    text: "Сделки"
-
-                }
-                Rectangle{
-                    Layout.fillWidth: true
-                }
-
-                Image {
-                    anchors.margins: 3
-                    height: toolbar.height
-
-                    MouseArea{
-                        anchors.fill: parent
-                        onClicked: {
-                        }
-                    }
-
-                    anchors.verticalCenter: parent.verticalCenter
-                    id: addDeal
-
-                    source: "qrc:/icons/glyphicons_432_plus.png"
-
-                }
-            }
-        }
-
         Rectangle {
-            anchors.top: toolbar.bottom
-            width: parent.width
-            height: parent.height - toolbar.height
-
             id: contentView
+            anchors.fill: parent
+            width: parent.width
+            height: parent.height
+//            height: parent.height - toolbar.height
 
             property string currentPage : "listdeal";
 
@@ -154,7 +96,6 @@ Rectangle {
                     Component.onCompleted: { loadIfNotLoaded(); }
 
                     function loadIfNotLoaded () {
-
                         // to load the file at first show
                         if (visible && !active) {
                             active = true;
