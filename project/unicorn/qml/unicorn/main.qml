@@ -78,7 +78,7 @@ Rectangle {
             height: parent.height
 //            height: parent.height - toolbar.height
 
-            property string currentPage : "editdeal";
+            property string currentPage : "listdeal";
 
             Repeater {
                 model: pageList;
