@@ -22,7 +22,7 @@ Rectangle {
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                     contentView.currentPage = "listclient";
+                     contentView.currentPage = "listcontact";
                 }
             }
         }
