@@ -32,6 +32,7 @@ ToolBar {
             id: titleText
             font.bold: true
             font.pointSize: 14
+            renderType: Text.NativeRendering
         }
 
         Rectangle {

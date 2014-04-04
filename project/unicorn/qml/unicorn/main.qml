@@ -9,7 +9,7 @@ Rectangle {
 
     property bool menuShow: false
     function onMenu() {
-        gameTranslate.x = root.menuShow ? 0 : root.width * 0.9
+        gameTranslate.x = root.menuShow ? 0 : root.width * 0.7
         root.menuShow = !root.menuShow;
     }
 
@@ -30,7 +30,6 @@ Rectangle {
             anchors.fill: parent
             width: parent.width
             height: parent.height
-//            height: parent.height - toolbar.height
 
             property string currentPage : "listdeal";
 
@@ -53,8 +52,12 @@ Rectangle {
                     }
                 }
             }
+        }
 
-
+        MouseArea {
+            anchors.fill: parent
+            enabled: root.menuShow
+            onClicked: root.onMenu()
         }
 
         transform: Translate {

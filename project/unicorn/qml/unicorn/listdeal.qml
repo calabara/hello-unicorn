@@ -89,7 +89,6 @@ Rectangle {
                 radius: 2
                 color: compareDate(dateTrade) ? "#f2092c" : "#a9787f";
 
-
                 border {
                     color: "black"
                     width: 1
