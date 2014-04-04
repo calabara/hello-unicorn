@@ -9,7 +9,7 @@ Rectangle {
 
     property bool menuShow: false
     function onMenu() {
-        gameTranslate.x = root.menuShow ? 0 : root.width * 0.7
+        gameTranslate.x = root.menuShow ? 0 : root.width * 0.8
         root.menuShow = !root.menuShow;
     }
 
@@ -25,33 +25,8 @@ Rectangle {
         anchors.fill: parent
         id: pageLayout
 
-        Rectangle {
+        ContentView {
             id: contentView
-            anchors.fill: parent
-            width: parent.width
-            height: parent.height
-
-            property string currentPage : "listdeal";
-
-            Repeater {
-                model: pageList;
-                delegate: Loader {
-                    active: false;
-                    asynchronous: true;
-                    anchors.fill: parent;
-                    visible: (contentView.currentPage === filename);
-                    source: "%1.qml".arg(filename)
-                    onVisibleChanged:      { loadIfNotLoaded(); }
-                    Component.onCompleted: { loadIfNotLoaded(); }
-
-                    function loadIfNotLoaded () {
-                        // to load the file at first show
-                        if (visible && !active) {
-                            active = true;
-                        }
-                    }
-                }
-            }
         }
 
         MouseArea {
