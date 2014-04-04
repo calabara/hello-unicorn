@@ -10,4 +10,5 @@ ListModel  {
     ListElement { filename: "TodoList"; title: "Органайзер"; inMenu: true; }
     ListElement { filename: "editdeal"; title: "Редактировать сделку"; inMenu: false; }
     ListElement { filename: "adddeal"; title: "Добавить сделку"; inMenu: false; }
+    ListElement { filename: "addcontact"; title: "Добавить контакт"; inMenu: false; }
 }
