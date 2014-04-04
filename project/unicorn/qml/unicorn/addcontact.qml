@@ -53,11 +53,27 @@ Rectangle {
 
             TextField {
 
-                id: contactFio
+                id: contactSurname
                 anchors.horizontalCenter: parent.horizontalCenter
                 Layout.fillWidth: true
 
-                placeholderText: "ФИО"
+                placeholderText: "Фамилия"
+            }
+            TextField {
+
+                id: contactName
+                anchors.horizontalCenter: parent.horizontalCenter
+                Layout.fillWidth: true
+
+                placeholderText: "Имя"
+            }
+            TextField {
+
+                id: contactSecondname
+                anchors.horizontalCenter: parent.horizontalCenter
+                Layout.fillWidth: true
+
+                placeholderText: "Отчество"
             }
 
             TextField {
@@ -67,7 +83,14 @@ Rectangle {
                 Layout.fillWidth: true
                 width: parent.width
 
-                placeholderText: "Телефон"
+                placeholderText: "+7993944959"
+            }
+            Button {
+                anchors.horizontalCenter: parent.horizontalCenter
+                Layout.fillWidth: true
+
+                text: "Сохранить"
+
             }
 
         }

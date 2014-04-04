@@ -22,7 +22,7 @@ Rectangle {
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                     contentView.currentPage = "listdeal";
+                     contentView.currentPage = "TodoList";
                 }
             }
         }
@@ -53,51 +53,65 @@ Rectangle {
 
             TextField {
 
-                id: dealTitle
+                id: eventTitle
                 anchors.horizontalCenter: parent.horizontalCenter
                 Layout.fillWidth: true
 
                 placeholderText: "Название"
             }
 
-            TextField {
 
-                id: dealMoney
-                anchors.horizontalCenter: parent.horizontalCenter
-                Layout.fillWidth: true
-                width: parent.width
-
-                placeholderText: "Сумма"
-            }
             ListModel{
-                id: stateModel
-                ListElement { text: "в процессе"; }
+                id: typeModel
+                ListElement { text: "встреча"; }
 
 
             }
             ComboBox{
-                id: dealState
+                id: eventType
 
-                model: stateModel
+                model: typeModel
                 anchors.horizontalCenter: parent.horizontalCenter
                 Layout.fillWidth: true
                 width: parent.width
 
             }
 
+            Button {
+                anchors.horizontalCenter: parent.horizontalCenter
+                Layout.fillWidth: true
+
+                text: "Дата"
+
+            }
+            Button {
+                anchors.horizontalCenter: parent.horizontalCenter
+                Layout.fillWidth: true
+
+                text: "Место"
+            }
             Button {
                 anchors.horizontalCenter: parent.horizontalCenter
                 Layout.fillWidth: true
 
                 text: "Участники"
+            }
+            ListModel{
+                id: eventDealModel
+                ListElement { text: "продажа квартиры 24"; }
+
 
             }
-            Button {
+            ComboBox{
+                id: eventDeal
+
+                model: eventDealModel
                 anchors.horizontalCenter: parent.horizontalCenter
                 Layout.fillWidth: true
+                width: parent.width
 
-                text: "События"
             }
+
             Button {
                 anchors.horizontalCenter: parent.horizontalCenter
                 Layout.fillWidth: true
