@@ -11,4 +11,5 @@ ListModel  {
     ListElement { filename: "editdeal"; title: "Редактировать сделку"; inMenu: false; }
     ListElement { filename: "adddeal"; title: "Добавить сделку"; inMenu: false; }
     ListElement { filename: "addcontact"; title: "Добавить контакт"; inMenu: false; }
+    ListElement { filename: "addevent"; title: "Добавить событие"; inMenu: false; }
 }
