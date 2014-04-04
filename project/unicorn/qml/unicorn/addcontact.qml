@@ -26,6 +26,20 @@ Rectangle {
                 }
             }
         }
+        Image {
+            id: saveClientBtn
+            anchors.right: addClientBtn.left
+            anchors.rightMargin: 3
+            anchors.verticalCenter: parent.verticalCenter
+            source: "qrc:/icons/glyphicons_446_floppy_save.png"
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+
+                }
+            }
+        }
     }
 
     PageContent{
