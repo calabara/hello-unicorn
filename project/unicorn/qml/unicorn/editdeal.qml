@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import QtQuick.Controls 1.0
 import QtQuick.Layouts 1.0
+import "."
 
 Rectangle {
     anchors.fill: parent
@@ -9,14 +10,14 @@ Rectangle {
 
     MyToolBar {
         id: toolbar
-        title: "Добавить сделку"
+        title: "Редактировать сделку"
 
         Image {
             id: addDealBtn
             anchors.right: parent.right
             anchors.rightMargin: 3
             anchors.verticalCenter: parent.verticalCenter
-            source: "qrc:/icons/glyphicons_190_circle_plus.png"
+            source: "qrc:/icons/glyphicons_224_chevron-left.png"
 
             MouseArea {
                 anchors.fill: parent
@@ -27,7 +28,7 @@ Rectangle {
         }
     }
 
-    Rectangle{
+    PageContent{
         anchors.fill: parent
         anchors.topMargin: 0
 
