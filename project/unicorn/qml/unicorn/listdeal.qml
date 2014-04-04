@@ -41,7 +41,7 @@ Rectangle {
             summ: "500 000 р"
             dateTrade: "5.05.12"
             percent: "10"
-            flatAdress: "Космонавтов 5/10"
+            flatAdress: "успех"
             status: "Успешно"
         }
 
@@ -50,7 +50,7 @@ Rectangle {
             summ: "300 000 р"
             dateTrade: "10.05.12"
             percent: "10"
-            flatAdress: "Космонавтов 5/10"
+            flatAdress: "в процессе"
             status: "В процессе"
         }
 
@@ -59,7 +59,7 @@ Rectangle {
             summ: "500 000 р"
             dateTrade: "5.05.12"
             percent: "10"
-            flatAdress: "Космонавтов 5/10"
+            flatAdress: "неудача"
             status: "Неудача"
         }
 
@@ -68,7 +68,7 @@ Rectangle {
             summ: "500 000 р"
             dateTrade: "5.05.12"
             percent: "10"
-            flatAdress: "Космонавтов 5/10"
+            flatAdress: "в процессе"
             status: "Отложена"
         }
     }
@@ -93,7 +93,12 @@ Rectangle {
                     color: "black"
                     width: 1
                 }
-
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                         contentView.currentPage = "viewdeal";
+                    }
+                }
                 Text {
                     id: nameAchorText
                     text: nameAchors
@@ -144,19 +149,7 @@ Rectangle {
                         pixelSize: nameAchorText.font.pixelSize * 1.5
                     }
 
-                    Text {
-                        anchors {
-                            top: parent.bottom
-                            right: parent.right
-                            topMargin: 2
-                        }
 
-                        text: percent + " %"
-
-                        font {
-                            pixelSize: parent.font.pixelSize / 1.6
-                        }
-                    }
                 }
             }
         }

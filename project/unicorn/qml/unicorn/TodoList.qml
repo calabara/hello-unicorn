@@ -27,38 +27,38 @@ Rectangle {
     ListModel {
         id: tradesModel
         ListElement {
-            nameAchors: "Иванов И.И."
+            nameAchors: "Встреча с нотариусом"
             summ: "500 000 р"
             dateTrade: "5.05.12, 12:15"
             percent: "10"
-            flatAdress: "Космонавтов 5/10"
+            flatAdress: "встреча"
             status: "Успешно"
         }
 
         ListElement {
-            nameAchors: "Васильков И.И."
+            nameAchors: "Ужин с родителями"
             summ: "300 000 р"
             dateTrade: "10.05.12"
             percent: "10"
-            flatAdress: "Космонавтов 5/10"
+            flatAdress: "встреча"
             status: "В процессе"
         }
 
         ListElement {
-            nameAchors: "Иванов И.И."
+            nameAchors: "Купание в бассеине"
             summ: "500 000 р"
             dateTrade: "5.05.12"
             percent: "10"
-            flatAdress: "Космонавтов 5/10"
+            flatAdress: "звонок"
             status: "Неудача"
         }
 
         ListElement {
-            nameAchors: "Иванов И.И."
+            nameAchors: "Дворцовый переворот"
             summ: "500 000 р"
             dateTrade: "5.05.12"
             percent: "10"
-            flatAdress: "Космонавтов 5/10"
+            flatAdress: "звонок"
             status: "Отложена"
         }
     }
@@ -81,6 +81,13 @@ Rectangle {
                 border {
                     color: "black"
                     width: 1
+                }
+
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                         contentView.currentPage = "viewevent";
+                    }
                 }
 
                 Text {

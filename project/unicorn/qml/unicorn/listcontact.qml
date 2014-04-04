@@ -80,6 +80,13 @@ Rectangle {
                     width: 1
                 }
 
+
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                         contentView.currentPage = "viewcontact";
+                    }
+                }
                 Text {
                     id: nameText
                     text: name
