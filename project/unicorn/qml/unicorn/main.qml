@@ -33,7 +33,6 @@ Rectangle {
         ListView {
             anchors { fill: parent; margins: 22 }
             model: pageList
-
             delegate:
                 Component {
                 Rectangle {
@@ -65,6 +64,15 @@ Rectangle {
                             contentView.currentPage = filename;
                             onMenu();
                         }
+                    }
+                }
+            }
+            SwipeArea {
+                anchors.fill: parent
+                propagateComposedEvents: true
+                onSwipe: {
+                    if (direction == "left"){
+                        onMenu();
                     }
                 }
             }
@@ -111,12 +119,6 @@ Rectangle {
             id: gameTranslate
             x: 0
             Behavior on x { NumberAnimation { duration: 400; easing.type: Easing.OutQuad } }
-        }
-
-        MouseArea {
-            anchors.fill: parent
-            enabled: root.menuShow
-            onClicked: root.onMenu();
         }
     }
 }
