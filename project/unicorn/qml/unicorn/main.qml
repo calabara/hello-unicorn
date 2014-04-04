@@ -13,13 +13,8 @@ Rectangle {
         root.menuShow = !root.menuShow;
     }
 
-    ListModel  {
+    PageList {
         id: pageList
-
-        ListElement { filename: "listdeal"; title: "Сделки" }
-        ListElement { filename: "listevent"; title: "События" }
-        ListElement { filename: "TodoList"; title: "Органайзер" }
-
     }
 
     Rectangle {
@@ -38,6 +33,7 @@ Rectangle {
                 Component {
                 Rectangle {
                     height: 40
+                    visible: inMenu
                     width: parent.width
                     color: "transparent"
                     Text {
@@ -82,7 +78,7 @@ Rectangle {
             height: parent.height
 //            height: parent.height - toolbar.height
 
-            property string currentPage : "listdeal";
+            property string currentPage : "editdeal";
 
             Repeater {
                 model: pageList;

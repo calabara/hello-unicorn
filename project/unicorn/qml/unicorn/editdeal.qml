@@ -4,6 +4,28 @@ import QtQuick.Layouts 1.0
 
 Rectangle {
     anchors.fill: parent
+    anchors.topMargin: 0
+    color: "gray"
+
+    MyToolBar {
+        id: toolbar
+        title: "Добавить сделку"
+
+        Image {
+            id: addDealBtn
+            anchors.right: parent.right
+            anchors.rightMargin: 3
+            anchors.verticalCenter: parent.verticalCenter
+            source: "qrc:/icons/glyphicons_190_circle_plus.png"
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                     contentView.currentPage = "editdeal";
+                }
+            }
+        }
+    }
 
     Rectangle{
         anchors.fill: parent
