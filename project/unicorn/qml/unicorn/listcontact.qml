@@ -1,10 +1,110 @@
 import QtQuick 2.0
+import QtQuick.Controls 1.0
+import QtQuick.Layouts 1.0
+import "."
 
 Rectangle {
-    width: 100
-    height: 62
-    Text {
-        id: name
-        text: qsTr("hello")
+    id: listTrades
+    anchors.fill: parent
+    anchors.topMargin: 0
+    color: "gray"
+
+    MyToolBar {
+        id: toolbar
+        title: "Контакты"
+
+        Image {
+            id: addContactBtn
+            anchors.right: parent.right
+            anchors.rightMargin: 3
+            anchors.verticalCenter: parent.verticalCenter
+            source: "qrc:/icons/glyphicons_190_circle_plus.png"
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                     contentView.currentPage = "addcontact";
+                }
+            }
+        }
+    }
+
+    function compareDate(date) {
+        // TODO: implements this. color selection logic
+        return true;
+    }
+
+    ListModel {
+        id: contactsModel
+        ListElement {
+            name: "Иванов И.И."
+            phone: "+79234567812"
+        }
+        ListElement {
+            name: "Иванов И.И."
+            phone: "+79234567812"
+        }
+        ListElement {
+            name: "Иванов И.И."
+            phone: "+79234567812"
+        }
+        ListElement {
+            name: "Иванов И.И."
+            phone: "+79234567812"
+        }
+        ListElement {
+            name: "Иванов И.И."
+            phone: "+79234567812"
+        }
+
+    }
+
+    PageContent {
+        id: pageContent
+
+        // TODO: line up normal colors
+        ListView {
+            id: viewcontacts
+            model: contactsModel
+            anchors.fill: parent
+            spacing: 4
+
+            delegate: Rectangle {
+                width: viewcontacts.width
+                height: nameText.height + phone.height ;
+                radius: 2
+
+
+                border {
+                    color: "black"
+                    width: 1
+                }
+
+                Text {
+                    id: nameText
+                    text: name
+
+                    anchors {
+                        left: parent.left
+                        top: parent.top
+                        topMargin: 6
+                        leftMargin: 2
+                    }
+
+                    font {
+                        bold: true
+                    }
+                }
+
+                Text {
+                    id: phone
+                    text: phone
+                    anchors.top: nameText.bottom
+                    anchors.leftMargin: nameText.anchors.leftMargin
+                    anchors.left: nameText.left
+                }
+
+            }
+        }
     }
 }
