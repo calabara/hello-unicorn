@@ -71,7 +71,7 @@ Rectangle {
 
             delegate: Rectangle {
                 width: viewcontacts.width
-                height: nameText.height + phone.height ;
+                height: nameText.height + phoneText.height + 20 ;
                 radius: 2
 
 
@@ -97,7 +97,7 @@ Rectangle {
                 }
 
                 Text {
-                    id: phone
+                    id: phoneText
                     text: phone
                     anchors.top: nameText.bottom
                     anchors.leftMargin: nameText.anchors.leftMargin
