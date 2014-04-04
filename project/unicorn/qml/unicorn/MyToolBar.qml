@@ -7,6 +7,8 @@ ToolBar {
     width: parent.width
     height: parent.height / 10
 
+    property bool isMenuButtonVisible: true
+
     property alias title: titleText.text
 
     RowLayout {
@@ -20,6 +22,7 @@ ToolBar {
             anchors.margins: 3
             iconSource:  "qrc:/icons/glyphicons_158_show_lines.png"
             scale: 1.7
+            visible: isMenuButtonVisible
             onClicked: {
                 root.onMenu();
             }
