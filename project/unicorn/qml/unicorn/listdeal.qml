@@ -13,14 +13,18 @@ Rectangle {
         id: toolbar
         title: "Сделки"
 
-        Button {
+        Image {
             id: addDealBtn
             anchors.right: parent.right
             anchors.rightMargin: 3
             anchors.verticalCenter: parent.verticalCenter
-            text: "Add Deal!"
-            onClicked: {
-                console.log("add deal!");
+            source: "qrc:/icons/glyphicons_190_circle_plus.png"
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                     contentView.currentPage = "adddeal";
+                }
             }
         }
     }

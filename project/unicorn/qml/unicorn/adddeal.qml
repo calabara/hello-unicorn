@@ -10,7 +10,7 @@ Rectangle {
 
     MyToolBar {
         id: toolbar
-        title: "Редактировать сделку"
+        title: "Добавить сделку"
 
         Image {
             id: addDealBtn
@@ -22,7 +22,7 @@ Rectangle {
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                     contentView.currentPage = "editdeal";
+                     contentView.currentPage = "listdeal";
                 }
             }
         }
@@ -55,9 +55,16 @@ Rectangle {
 
                 placeholderText: "Сумма"
             }
+            ListModel{
+                id: stateModel
+                ListElement { text: "в процессе"; }
 
+
+            }
             ComboBox{
                 id: dealState
+
+                model: stateModel
                 anchors.horizontalCenter: parent.horizontalCenter
                 Layout.fillWidth: true
                 width: parent.width
