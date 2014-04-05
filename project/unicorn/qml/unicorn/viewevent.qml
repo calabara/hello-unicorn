@@ -43,68 +43,63 @@ Rectangle {
     }
 
     PageContent{
-        anchors.fill: parent
-        anchors.topMargin: 0
 
-        ColumnLayout{
-            spacing: 4
-            anchors.margins: 40
-            anchors.fill: parent
+        Substrate {
+            ColumnLayout{
+                spacing: 2
+                anchors.margins: 40
+                anchors.fill: parent
+                Text {
+                    id: eventTitle
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    Layout.fillWidth: true
+                    renderType: Text.NativeRendering
+                    text: "Встреча на Эльбе"
+                }
 
 
-            Text {
+                Text{
+                    id: eventType
 
-                id: eventTitle
-                anchors.horizontalCenter: parent.horizontalCenter
-                Layout.fillWidth: true
 
-                text: "Встреча на Эльбе"
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    Layout.fillWidth: true
+                    renderType: Text.NativeRendering
+                    width: parent.width
+                    text: "Тип: встреча";
+
+                }
+
+                Text {
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    Layout.fillWidth: true
+                    renderType: Text.NativeRendering
+                    text: "22.05.1807"
+                }
+                Text {
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    Layout.fillWidth: true
+                    renderType: Text.NativeRendering
+
+                    text: "Место: Эльба"
+                }
+
+                Text{
+                    id: eventDeal
+                    renderType: Text.NativeRendering
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    Layout.fillWidth: true
+                    width: parent.width
+                    text: "Событие: продажа квартиры 24";
+
+                }
+                Button {
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    Layout.fillWidth: true
+
+                    text: "Участники"
+                }
             }
-
-
-            Text{
-                id: eventType
-
-
-                anchors.horizontalCenter: parent.horizontalCenter
-                Layout.fillWidth: true
-                width: parent.width
-                text: "Тип: встреча";
-
-            }
-
-            Text {
-                anchors.horizontalCenter: parent.horizontalCenter
-                Layout.fillWidth: true
-
-                text: "22.05.1807"
-
-            }
-            Text {
-                anchors.horizontalCenter: parent.horizontalCenter
-                Layout.fillWidth: true
-
-                text: "Место: Эльба"
-            }
-
-            Text{
-                id: eventDeal
-
-                anchors.horizontalCenter: parent.horizontalCenter
-                Layout.fillWidth: true
-                width: parent.width
-                text: "Событие: продажа квартиры 24";
-
-            }
-            Button {
-                anchors.horizontalCenter: parent.horizontalCenter
-                Layout.fillWidth: true
-
-                text: "Участники"
-            }
-
-
-
         }
     }
 }

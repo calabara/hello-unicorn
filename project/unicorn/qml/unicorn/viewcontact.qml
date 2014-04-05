@@ -43,50 +43,50 @@ Rectangle {
     }
 
     PageContent{
-        anchors.fill: parent
-        anchors.topMargin: 0
 
-        ColumnLayout{
-            spacing: 4
-            anchors.margins: 40
-            anchors.fill: parent
+        Substrate {
+            ColumnLayout{
+                spacing: 4
+                anchors.margins: 40
+                anchors.fill: parent
 
-            Text {
+                Text {
 
-                id: contactSurname
-                anchors.horizontalCenter: parent.horizontalCenter
-                Layout.fillWidth: true
+                    id: contactSurname
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    Layout.fillWidth: true
 
-                text: "Васильев"
+                    text: "Васильев"
+                }
+                Text {
+
+                    id: contactName
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    Layout.fillWidth: true
+
+                    text: "Иван"
+                }
+                Text {
+
+                    id: contactSecondname
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    Layout.fillWidth: true
+
+                    text: "Иванович"
+                }
+
+                Text {
+
+                    id: contactPhone
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    Layout.fillWidth: true
+                    width: parent.width
+
+                    text: "+7993944959"
+                }
+
+
             }
-            Text {
-
-                id: contactName
-                anchors.horizontalCenter: parent.horizontalCenter
-                Layout.fillWidth: true
-
-                text: "Иван"
-            }
-            Text {
-
-                id: contactSecondname
-                anchors.horizontalCenter: parent.horizontalCenter
-                Layout.fillWidth: true
-
-                text: "Иванович"
-            }
-
-            Text {
-
-                id: contactPhone
-                anchors.horizontalCenter: parent.horizontalCenter
-                Layout.fillWidth: true
-                width: parent.width
-
-                text: "+7993944959"
-            }
-
-
         }
     }
 }

@@ -11,7 +11,7 @@ Rectangle {
     MyToolBar {
         id: toolbar
         title: "Квартира на ленинском"
-
+        isMenuButtonVisible: false
         Image {
             id: addDealBtn
             anchors.right: parent.right
@@ -43,56 +43,56 @@ Rectangle {
     }
 
     PageContent{
-        anchors.fill: parent
-        anchors.topMargin: 0
+        Substrate {
+            ColumnLayout{
+                spacing: 4
+                anchors.margins: 40
+                anchors.fill: parent
 
-        ColumnLayout{
-            spacing: 4
-            anchors.margins: 40
-            anchors.fill: parent
+                Text {
 
-            Text {
+                    id: dealTitle
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    Layout.fillWidth: true
 
-                id: dealTitle
-                anchors.horizontalCenter: parent.horizontalCenter
-                Layout.fillWidth: true
+                    text: "Квартира на ленинском"
+                }
 
-                text: "Квартира на ленинском"
-            }
+                Text {
 
-            Text {
+                    id: dealMoney
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    Layout.fillWidth: true
+                    width: parent.width
 
-                id: dealMoney
-                anchors.horizontalCenter: parent.horizontalCenter
-                Layout.fillWidth: true
-                width: parent.width
+                    text: "300 000р."
+                }
 
-                text: "300 000р."
-            }
-
-            Text{
-                id: dealState
+                Text{
+                    id: dealState
 
 
-                anchors.horizontalCenter: parent.horizontalCenter
-                Layout.fillWidth: true
-                width: parent.width
-                text: "Статус: в процессе";
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    Layout.fillWidth: true
+                    width: parent.width
+                    text: "Статус: в процессе";
 
-            }
+                }
 
-            Button {
-                anchors.horizontalCenter: parent.horizontalCenter
-                Layout.fillWidth: true
+                Button {
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    Layout.fillWidth: true
 
-                text: "Участники"
+                    text: "Участники"
 
-            }
-            Button {
-                anchors.horizontalCenter: parent.horizontalCenter
-                Layout.fillWidth: true
+                }
+                Button {
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    Layout.fillWidth: true
 
-                text: "События"
+                    text: "События"
+                }
+
             }
 
         }
