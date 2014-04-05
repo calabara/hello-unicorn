@@ -12,6 +12,7 @@ Rectangle {
         id: toolbar
         title: "Квартира на ленинском"
         isMenuButtonVisible: false
+
         Image {
             id: addDealBtn
             anchors.left: parent.left
@@ -28,6 +29,7 @@ Rectangle {
                 }
             }
         }
+
         Image {
             id: saveDealBtn
             anchors.right: parent.right

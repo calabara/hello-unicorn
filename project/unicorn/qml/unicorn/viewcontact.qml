@@ -90,6 +90,18 @@ Rectangle {
                     text: "+7993944959"
                 }
 
+                Rectangle {
+                    color: "white"
+                    Layout.fillWidth: true
+                    height: 200
+                    border.width: 1
+                    border.color: "black"
+                    Text {
+                        anchors.margins: 10
+                        anchors.fill: parent
+                        text: "Дом. телефон: 832978.\n Какой-то текст. Звонить после обеда."
+                    }
+                }
 
             }
         }

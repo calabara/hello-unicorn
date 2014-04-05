@@ -3,6 +3,7 @@ import QtQuick 2.0
 // Список дел
 Rectangle {
     anchors.fill: parent
+    color: "gray"
     MyToolBar {
         id: toolbar
         title: "Органайзер"

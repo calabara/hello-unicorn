@@ -1,17 +1,14 @@
 import QtQuick 2.0
-import QtQuick.Controls 1.0
-import QtQuick.Layouts 1.0
-import "."
 
 Rectangle {
-    id: listTrades
+    id: listConnections
     anchors.fill: parent
     anchors.topMargin: 0
     color: "gray"
 
     MyToolBar {
         id: toolbar
-        title: "Клиенты"
+        title: "Деловые связи"
 
         Image {
             id: addContactBtn
@@ -32,34 +29,33 @@ Rectangle {
         }
     }
 
-    function compareDate(date) {
-        // TODO: implements this. color selection logic
-        return true;
-    }
-
     ListModel {
         id: contactsModel
         ListElement {
             name: "Иванов И.И."
             phone: "+79234567812"
+            type: "Нотариус"
         }
         ListElement {
             name: "Иванов И.И."
             phone: "+79234567812"
+            type: "Связист"
         }
         ListElement {
             name: "Иванов И.И."
             phone: "+79234567812"
+            type: "Минер"
         }
         ListElement {
             name: "Иванов И.И."
             phone: "+79234567812"
+            type: "Хозяин ларька"
         }
         ListElement {
             name: "Иванов И.И."
             phone: "+79234567812"
+            type: "Администратор"
         }
-
     }
 
     PageContent {
@@ -74,15 +70,12 @@ Rectangle {
 
             delegate: Rectangle {
                 width: viewcontacts.width
-                height: nameText.height + phoneText.height + 20 ;
+                height: nameText.height + phoneText.height + 30;
                 radius: 2
-
-
                 border {
                     color: "black"
                     width: 1
                 }
-
 
                 MouseArea {
                     anchors.fill: parent
@@ -90,6 +83,7 @@ Rectangle {
                          contentView.currentPage = "viewcontact";
                     }
                 }
+
                 Text {
                     id: nameText
                     text: name
@@ -103,15 +97,29 @@ Rectangle {
 
                     font {
                         bold: true
+                        pointSize: 14
                     }
+
+                    renderType: Text.NativeRendering
+                }
+
+                Text {
+                    id: typeText
+                    text: type
+                    anchors.top: nameText.bottom
+                    anchors.leftMargin: nameText.anchors.leftMargin
+                    anchors.left: nameText.left
+                    font.bold: true
+                    renderType: Text.NativeRendering
                 }
 
                 Text {
                     id: phoneText
                     text: phone
-                    anchors.top: nameText.bottom
-                    anchors.leftMargin: nameText.anchors.leftMargin
-                    anchors.left: nameText.left
+                    anchors.top: typeText.bottom
+                    anchors.leftMargin: typeText.anchors.leftMargin
+                    anchors.left: typeText.left
+                    renderType: Text.NativeRendering
                 }
 
             }

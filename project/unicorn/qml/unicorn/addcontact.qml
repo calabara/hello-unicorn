@@ -86,6 +86,14 @@ Rectangle {
 
                 placeholderText: "+7993944959"
             }
+
+            TextArea {
+                id: otherInfo
+                Layout.fillWidth: true
+                height: 100
+                text: "Дополнительная информация"
+            }
+
             Button {
                 anchors.horizontalCenter: parent.horizontalCenter
                 Layout.fillWidth: true

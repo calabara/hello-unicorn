@@ -94,12 +94,12 @@ Rectangle {
                 text: "Участники"
             }
 
-            Button {
-                anchors.horizontalCenter: parent.horizontalCenter
-                Layout.fillWidth: true
+//            Button {
+//                anchors.horizontalCenter: parent.horizontalCenter
+//                Layout.fillWidth: true
 
-                text: "События"
-            }
+//                text: "События"
+//            }
             Button {
                 anchors.horizontalCenter: parent.horizontalCenter
                 Layout.fillWidth: true
