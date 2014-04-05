@@ -11,13 +11,16 @@ Rectangle {
     MyToolBar {
         id: toolbar
         title: "Встреча на Эльбе"
+        isMenuButtonVisible: false
 
         Image {
             id: addDealBtn
-            anchors.right: parent.right
+            anchors.left: parent.left
             anchors.rightMargin: 3
             anchors.verticalCenter: parent.verticalCenter
-            source: "qrc:/icons/glyphicons_224_chevron-left.png"
+            source: "qrc:/icons/back.png"
+            height: parent.height
+            width: parent.width / 10
 
             MouseArea {
                 anchors.fill: parent
@@ -28,7 +31,7 @@ Rectangle {
         }
         Image {
             id: saveDealBtn
-            anchors.right: addDealBtn.left
+            anchors.right: parent.right
             anchors.rightMargin: 3
             anchors.verticalCenter: parent.verticalCenter
             source: "qrc:/icons/glyphicons_030_pencil.png"

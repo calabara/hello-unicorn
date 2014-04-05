@@ -10,14 +10,17 @@ Rectangle {
 
     MyToolBar {
         id: toolbar
-        title: "Добавить сделку"
+        title: "Добавить событие"
+        isMenuButtonVisible: false
 
         Image {
             id: addDealBtn
-            anchors.right: parent.right
+            anchors.left: parent.left
             anchors.rightMargin: 3
             anchors.verticalCenter: parent.verticalCenter
-            source: "qrc:/icons/glyphicons_224_chevron-left.png"
+            source: "qrc:/icons/back.png"
+            height: parent.height
+            width: parent.width / 10
 
             MouseArea {
                 anchors.fill: parent
@@ -26,9 +29,10 @@ Rectangle {
                 }
             }
         }
+
         Image {
             id: saveDealBtn
-            anchors.right: addDealBtn.left
+            anchors.right: parent.right
             anchors.rightMargin: 3
             anchors.verticalCenter: parent.verticalCenter
             source: "qrc:/icons/glyphicons_446_floppy_save.png"
@@ -36,15 +40,12 @@ Rectangle {
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-
                 }
             }
         }
     }
 
     PageContent{
-        anchors.fill: parent
-        anchors.topMargin: 0
 
         ColumnLayout{
             spacing: 4
@@ -64,9 +65,8 @@ Rectangle {
             ListModel{
                 id: typeModel
                 ListElement { text: "встреча"; }
-
-
             }
+
             ComboBox{
                 id: eventType
 

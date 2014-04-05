@@ -11,13 +11,16 @@ Rectangle {
     MyToolBar {
         id: toolbar
         title: "Васильев И.И."
+        isMenuButtonVisible: false
 
         Image {
             id: addClientBtn
-            anchors.right: parent.right
+            anchors.left: parent.left
             anchors.rightMargin: 3
             anchors.verticalCenter: parent.verticalCenter
-            source: "qrc:/icons/glyphicons_224_chevron-left.png"
+            height: parent.height
+            width: parent.width / 10
+            source: "qrc:/icons/back.png"
 
             MouseArea {
                 anchors.fill: parent
@@ -26,9 +29,10 @@ Rectangle {
                 }
             }
         }
+
         Image {
             id: saveClientBtn
-            anchors.right: addClientBtn.left
+            anchors.right: parent.right
             anchors.rightMargin: 3
             anchors.verticalCenter: parent.verticalCenter
             source: "qrc:/icons/glyphicons_030_pencil.png"

@@ -28,61 +28,17 @@ ToolBar {
             }
         }
 
-        Text {
-            id: titleText
-            font.bold: true
-            font.pointSize: 14
-            renderType: Text.NativeRendering
-        }
 
         Rectangle {
             Layout.fillWidth: true
         }
-
-//        Image {
-//            anchors.margins: 3
-//            height: toolbar.height
-//            MouseArea {
-//                anchors.fill: parent
-//                onClicked: {
-//                    root.onMenu()
-//                }
-//            }
-            
-//            anchors.verticalCenter: parent.verticalCenter
-//            id: menuIcon
-//            source: "qrc:/icons/glyphicons_158_show_lines.png"
-//        }
-        
-//        Loader {
-//            id: toolbarLoader
-//        }
-        
-//        Text {
-//            id: title
-//            font.pointSize: 14
-//            text: "Сделки"
-            
-//        }
-        
-//        Rectangle {
-//            Layout.fillWidth: true
-//        }
-        
-//        Image {
-//            id: addDeal
-//            anchors.margins: 3
-//            height: toolbar.height
-            
-//            MouseArea{
-//                anchors.fill: parent
-//                onClicked: {
-//                }
-//            }
-            
-//            anchors.verticalCenter: parent.verticalCenter
-//            source: "qrc:/icons/glyphicons_432_plus.png"
-//        }
     }
 
+    Text {
+        id: titleText
+        font.bold: true
+        anchors.centerIn: parent
+        font.pointSize: 14
+        renderType: Text.NativeRendering
+    }
 }
