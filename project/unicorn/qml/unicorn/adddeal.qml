@@ -69,21 +69,21 @@ Rectangle {
 
                 placeholderText: "Сумма"
             }
-            ListModel{
-                id: stateModel
-                ListElement { text: "в процессе"; }
 
+//            ListModel{
+//                id: stateModel
+//                ListElement { text: "в процессе"; }
+//            }
 
-            }
-            ComboBox{
-                id: dealState
+//            ComboBox{
+//                id: dealState
 
-                model: stateModel
-                anchors.horizontalCenter: parent.horizontalCenter
-                Layout.fillWidth: true
-                width: parent.width
+//                model: stateModel
+//                anchors.horizontalCenter: parent.horizontalCenter
+//                Layout.fillWidth: true
+//                width: parent.width
 
-            }
+//            }
 
             Button {
                 anchors.horizontalCenter: parent.horizontalCenter
