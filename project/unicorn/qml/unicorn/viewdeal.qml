@@ -89,8 +89,11 @@ Rectangle {
                     Layout.fillWidth: true
 
                     text: "Участники"
-
+                    onClicked: {
+                        contentView.currentPage = "ListActors";
+                    }
                 }
+
                 Button {
                     anchors.horizontalCenter: parent.horizontalCenter
                     Layout.fillWidth: true

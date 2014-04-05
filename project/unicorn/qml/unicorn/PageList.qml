@@ -15,6 +15,9 @@ ListModel  {
     ListElement { filename: "addevent"; title: "Добавить событие"; inMenu: false; }
     ListElement { filename: "Connections"; title: "Деловые связи"; inMenu: true; }
 
+    ListElement { filename: "ListActors"; title: "Участники"; inMenu: true; }
+    ListElement { filename: "AddActor"; title: "Выбор участника"; inMenu: false; }
+
     ListElement { filename: "viewevent"; title: "Добавить событие"; inMenu: false; }
     ListElement { filename: "viewcontact"; title: "Добавить событие"; inMenu: false; }
     ListElement { filename: "viewdeal"; title: "Добавить событие"; inMenu: false; }

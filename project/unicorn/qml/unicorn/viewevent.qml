@@ -103,6 +103,9 @@ Rectangle {
                     Layout.fillWidth: true
 
                     text: "Участники"
+                    onClicked: {
+                        contentView.currentPage = "ListActors";
+                    }
                 }
             }
         }
