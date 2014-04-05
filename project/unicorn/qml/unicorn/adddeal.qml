@@ -61,37 +61,39 @@ Rectangle {
             }
 
             TextField {
+                id: dealmaxMoney
+                anchors.horizontalCenter: parent.horizontalCenter
+                Layout.fillWidth: true
+                width: parent.width
 
+                placeholderText: "Желательная сумма"
+            }
+
+            TextField {
                 id: dealMoney
                 anchors.horizontalCenter: parent.horizontalCenter
                 Layout.fillWidth: true
                 width: parent.width
 
-                placeholderText: "Сумма"
+                placeholderText: "Средняя сумма"
             }
 
-//            ListModel{
-//                id: stateModel
-//                ListElement { text: "в процессе"; }
-//            }
+            TextField {
+                id: dealminMoney
+                anchors.horizontalCenter: parent.horizontalCenter
+                Layout.fillWidth: true
+                width: parent.width
 
-//            ComboBox{
-//                id: dealState
-
-//                model: stateModel
-//                anchors.horizontalCenter: parent.horizontalCenter
-//                Layout.fillWidth: true
-//                width: parent.width
-
-//            }
+                placeholderText: "Минимальная сумма"
+            }
 
             Button {
                 anchors.horizontalCenter: parent.horizontalCenter
                 Layout.fillWidth: true
 
                 text: "Участники"
-
             }
+
             Button {
                 anchors.horizontalCenter: parent.horizontalCenter
                 Layout.fillWidth: true
