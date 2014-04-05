@@ -11,5 +11,6 @@
         <file>icons/glyphicons_224_chevron-left.png</file>
         <file>icons/glyphicons_432_plus.png</file>
         <file>icons/glyphicons_446_floppy_save.png</file>
+        <file>icons/back.png</file>
     </qresource>
 </RCC>
