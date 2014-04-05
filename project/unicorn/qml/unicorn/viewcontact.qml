@@ -19,7 +19,7 @@ Rectangle {
             anchors.rightMargin: 3
             anchors.verticalCenter: parent.verticalCenter
             height: parent.height
-            width: parent.width / 10
+            width: Math.max(parent.width / 10, height)
             source: "qrc:/icons/back.png"
 
             MouseArea {
@@ -36,7 +36,8 @@ Rectangle {
             anchors.rightMargin: 3
             anchors.verticalCenter: parent.verticalCenter
             source: "qrc:/icons/glyphicons_030_pencil.png"
-
+            height: parent.height * 0.7
+            width: Math.max(parent.width / 10, height)
             MouseArea {
                 anchors.fill: parent
                 onClicked: {

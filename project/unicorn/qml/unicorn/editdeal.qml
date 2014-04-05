@@ -29,9 +29,6 @@ Rectangle {
     }
 
     PageContent{
-        anchors.fill: parent
-        anchors.topMargin: 0
-
         ColumnLayout{
             spacing: 4
             anchors.margins: 40

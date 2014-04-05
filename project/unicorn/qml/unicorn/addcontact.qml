@@ -11,13 +11,16 @@ Rectangle {
     MyToolBar {
         id: toolbar
         title: "Добавить клиента"
+        isMenuButtonVisible: false
 
         Image {
             id: addClientBtn
-            anchors.right: parent.right
+            anchors.left: parent.left
             anchors.rightMargin: 3
             anchors.verticalCenter: parent.verticalCenter
-            source: "qrc:/icons/glyphicons_224_chevron-left.png"
+            height: parent.height
+            width: Math.max(parent.width / 10, height)
+            source: "qrc:/icons/back.png"
 
             MouseArea {
                 anchors.fill: parent
@@ -28,11 +31,12 @@ Rectangle {
         }
         Image {
             id: saveClientBtn
-            anchors.right: addClientBtn.left
+            anchors.right: parent.right
             anchors.rightMargin: 3
             anchors.verticalCenter: parent.verticalCenter
             source: "qrc:/icons/glyphicons_446_floppy_save.png"
-
+            height: parent.height * 0.7
+            width: Math.max(parent.width / 10, height)
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
@@ -43,9 +47,6 @@ Rectangle {
     }
 
     PageContent{
-        anchors.fill: parent
-        anchors.topMargin: 0
-
         ColumnLayout{
             spacing: 4
             anchors.margins: 40
