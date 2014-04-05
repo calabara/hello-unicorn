@@ -70,7 +70,7 @@ Rectangle {
 
             delegate: Rectangle {
                 width: viewcontacts.width
-                height: nameText.height + phoneText.height + 30;
+                height: nameText.height + phoneText.height + 60;
                 radius: 2
                 border {
                     color: "black"

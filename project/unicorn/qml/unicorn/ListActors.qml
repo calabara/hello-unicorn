@@ -64,7 +64,7 @@ Rectangle {
 
             delegate: Rectangle {
                 width: viewcontacts.width
-                height: 50
+                height: nameText.height + roleText.height + 50;
                 radius: 2
 
                 border {
