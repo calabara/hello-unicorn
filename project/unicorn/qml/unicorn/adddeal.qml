@@ -66,16 +66,7 @@ Rectangle {
                 Layout.fillWidth: true
                 width: parent.width
 
-                placeholderText: "Желательная сумма"
-            }
-
-            TextField {
-                id: dealMoney
-                anchors.horizontalCenter: parent.horizontalCenter
-                Layout.fillWidth: true
-                width: parent.width
-
-                placeholderText: "Средняя сумма"
+                placeholderText: "Максимальная сумма"
             }
 
             TextField {

@@ -4,10 +4,8 @@ Rectangle {
     width: 600
     height: 400
 
-    SpinBox {
+    TimePicker{
         anchors.centerIn: parent
-        maximum: 100
-        minimum: 0
     }
 
 }

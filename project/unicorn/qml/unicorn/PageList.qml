@@ -3,7 +3,7 @@ import QtQuick.Controls 1.0
 import QtQuick.Layouts 1.0
 
 ListModel  {
-    ListElement { filename: "listdeal"; title: "Сделки"; inMenu: true; }
+
     ListElement { filename: "listcontact"; title: "Клиенты"; inMenu: true; }
     ListElement { filename: "TodoList"; title: "Органайзер"; inMenu: true; }
     ListElement { filename: "listdeal"; title: "Актуальные сделки"; inMenu: true; }
@@ -16,6 +16,8 @@ ListModel  {
     ListElement { filename: "Connections"; title: "Деловые связи"; inMenu: true; }
 
     ListElement { filename: "ListActors"; title: "Участники"; inMenu: true; }
+    ListElement { filename: "listdeal"; title: "Сделки"; inMenu: true; }
+    ListElement { filename: "test"; title: "test"; inMenu: true; }
     ListElement { filename: "AddActor"; title: "Выбор участника"; inMenu: false; }
 
     ListElement { filename: "viewevent"; title: "Добавить событие"; inMenu: false; }

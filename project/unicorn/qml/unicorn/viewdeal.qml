@@ -41,7 +41,7 @@ Rectangle {
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                    contentView.currentPage = "adddeal";
+                    contentView.currentPage = "editdeal";
                 }
             }
         }
