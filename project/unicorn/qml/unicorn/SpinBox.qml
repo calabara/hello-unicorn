@@ -28,8 +28,8 @@ Item {
         anchors.topMargin: 2
         anchors.bottomMargin: 2
         opacity: .7
-        width: root.width - 8
-        height: root.height / 3 - 8
+        width: outputValue.width
+        height: outputValue.height
 
         Text {
             id: outputValue
