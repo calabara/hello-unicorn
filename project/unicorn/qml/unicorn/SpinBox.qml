@@ -5,18 +5,23 @@ Item {
     property int maximum: 30
     property int minimum: 0
     property alias bckColor: rect.color
-    width: outputValue.width  + lower.width * 2 + 10
-    height: outputValue.height + upper.height * 2 + 10
+
+    signal changed
+
+    width: outputValue.paintedWidth + 30
+    height: outputValue.height + upper.height * 2
 
     function upValue() {
         if (value < maximum) {
             value += 1;
+            changed();
         }
     }
 
     function downValue() {
         if (value > minimum) {
             value -= 1;
+            changed();
         }
     }
 
@@ -96,7 +101,7 @@ Item {
 
     Image {
         id: upper
-        width: outputValue.width / 1.3
+        width: 40
         height: outputValue.height / 2
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottom: rect.top
@@ -110,7 +115,7 @@ Item {
 
     Image {
         id: lower
-        width: outputValue.width / 1.3
+        width: 40
         height: outputValue.height / 2
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: rect.bottom

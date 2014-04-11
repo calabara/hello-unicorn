@@ -7,7 +7,7 @@ Rectangle {
     width: parent.width
     height: parent.height
     
-    property string currentPage : "listdeal";
+    property string currentPage : "addevent";
     
     Repeater {
         model: pageList;

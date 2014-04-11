@@ -78,13 +78,12 @@ Rectangle {
 
             }
 
-            Button {
-                anchors.horizontalCenter: parent.horizontalCenter
-                Layout.fillWidth: true
-
-                text: "Дата"
-
+            TimePicker{
+                id: time
             }
+            DatePicker{
+            }
+
             Button {
                 anchors.horizontalCenter: parent.horizontalCenter
                 Layout.fillWidth: true
