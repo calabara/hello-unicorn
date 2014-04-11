@@ -44,13 +44,30 @@ Rectangle {
             }
 
             TextField {
+                id: dealmaxMoney
+                anchors.horizontalCenter: parent.horizontalCenter
+                Layout.fillWidth: true
+                width: parent.width
+
+                placeholderText: "Максимальная сумма"
+            }
+            TextField {
 
                 id: dealMoney
                 anchors.horizontalCenter: parent.horizontalCenter
                 Layout.fillWidth: true
                 width: parent.width
 
-                placeholderText: "Сумма"
+                placeholderText: "Договорились на сумме"
+            }
+
+            TextField {
+                id: dealminMoney
+                anchors.horizontalCenter: parent.horizontalCenter
+                Layout.fillWidth: true
+                width: parent.width
+
+                placeholderText: "Минимальная сумма"
             }
 
             ComboBox{
