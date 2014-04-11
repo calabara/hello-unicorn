@@ -8,8 +8,8 @@ Item {
 
     signal changed
 
-    width: outputValue.paintedWidth + 30
-    height: outputValue.height + upper.height * 2
+    width: rect.width
+    height: rect.height + upper.height * 2 + 50
 
     function upValue() {
         if (value < maximum) {
