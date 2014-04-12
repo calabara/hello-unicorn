@@ -80,8 +80,11 @@ Rectangle {
 
             TimePicker{
                 id: time
+                anchors.horizontalCenter: parent.horizontalCenter
             }
+
             DatePicker{
+                anchors.horizontalCenter: parent.horizontalCenter
             }
 
             Button {
@@ -96,12 +99,12 @@ Rectangle {
 
                 text: "Участники"
             }
+
             ListModel{
                 id: eventDealModel
                 ListElement { text: "продажа квартиры 24"; }
-
-
             }
+
             ComboBox{
                 id: eventDeal
 

@@ -16,6 +16,7 @@ Item {
         day = Math.min(day, daysInMonth);
         dateD.maximum = daysInMonth;
     }
+
     Component.onCompleted: {
         var date = new Date();
 
@@ -33,6 +34,12 @@ Item {
             minimum: 1
         }
 
+        Text {
+            renderType: Text.NativeRendering
+            text: "."
+            font.pointSize: 30
+        }
+
         SpinBox{
             id: dateM
             maximum: 12
@@ -41,6 +48,13 @@ Item {
             onChanged: checkDaysInMonth()
 
         }
+
+        Text {
+            renderType: Text.NativeRendering
+            text: "."
+            font.pointSize: 30
+        }
+
         SpinBox{
             id: dateY
             maximum: 2099

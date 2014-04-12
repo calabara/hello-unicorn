@@ -8,7 +8,7 @@ Item {
 
     signal changed
 
-    width: rect.width
+    width: rect.width + 20
     height: rect.height + upper.height * 2 + 50
 
     function upValue() {
@@ -32,8 +32,8 @@ Item {
         anchors.centerIn: parent
         anchors.topMargin: 2
         anchors.bottomMargin: 2
-        opacity: .7
-        width: outputValue.width
+        opacity: .6
+        width: outputValue.paintedWidth
         height: outputValue.height
 
         Text {
@@ -107,9 +107,14 @@ Item {
         anchors.bottom: rect.top
         anchors.bottomMargin: 25
         source: "qrc:/icons/triangle.png"
-        MouseArea {
-            anchors.fill: parent
-            onClicked: upValue();
+        Rectangle {
+            width: rect.width
+            height: parent.height + 10
+            opacity: 0
+            MouseArea {
+                anchors.fill: parent
+                onClicked: upValue();
+            }
         }
     }
 
@@ -122,9 +127,17 @@ Item {
         anchors.topMargin: 25
         source: "qrc:/icons/triangle.png"
         rotation: 180
-        MouseArea {
-            anchors.fill: parent
-            onClicked: downValue();
+
+        Rectangle {
+            anchors.centerIn: parent
+            width: rect.width
+            height: parent.height + 10
+            opacity: 0
+            MouseArea {
+                anchors.fill: parent
+                onClicked: downValue();
+            }
         }
     }
+
 }

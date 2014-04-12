@@ -14,13 +14,17 @@ Item {
 
         SpinBox{
             id: timeH
-            anchors.left: parent.left
             maximum: 23
-
         }
+
+        Text {
+            renderType: Text.NativeRendering
+            text: ":"
+            font.pointSize: 30
+        }
+
         SpinBox{
             id: timeM
-            anchors.left: timeH.right
             maximum: 59
         }
     }
