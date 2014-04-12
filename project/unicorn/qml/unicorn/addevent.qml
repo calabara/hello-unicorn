@@ -8,6 +8,11 @@ Rectangle {
     anchors.topMargin: 0
     color: "gray"
 
+    function changeButtonTitle(){
+        console.log('haha');
+        selectDealButton.text = this.text;
+    }
+
     MyToolBar {
         id: toolbar
         title: "Добавить событие"
@@ -80,11 +85,11 @@ Rectangle {
 
             TimePicker{
                 id: time
-                anchors.horizontalCenter: parent.horizontalCenter
+//                anchors.horizontalCenter: root.horizontalCenter
             }
 
             DatePicker{
-                anchors.horizontalCenter: parent.horizontalCenter
+//                anchors.horizontalCenter: root.horizontalCenter
             }
 
             Button {
@@ -102,16 +107,40 @@ Rectangle {
 
             ListModel{
                 id: eventDealModel
-                ListElement { text: "продажа квартиры 24"; }
+                ListElement { text: " квартиры 24"; }
+                ListElement { text: " квартиры 24"; }
+
             }
 
-            ComboBox{
-                id: eventDeal
+            Menu {
+                id: dealsMenu
+                MenuItem {
 
-                model: eventDealModel
+                    text: "продажа квартиры 24"
+                    onTriggered:  changeButtonTitle();
+                }
+                MenuItem {
+
+                    text: "Сделка 2"
+                    onTriggered:  changeButtonTitle();
+                }
+                MenuItem {
+
+                    text: "стадион в сочи"
+                    onTriggered:  changeButtonTitle();
+                }
+
+            }
+
+            Button {
+                id: selectDealButton
                 anchors.horizontalCenter: parent.horizontalCenter
                 Layout.fillWidth: true
-                width: parent.width
+
+                text: "Сделка"
+                onClicked: {
+                    dealsMenu.popup();
+                }
 
             }
 
