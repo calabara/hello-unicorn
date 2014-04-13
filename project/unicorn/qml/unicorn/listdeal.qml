@@ -172,7 +172,13 @@ Rectangle {
 
                 Text {
                     id: summTradeText
-                    text: summ
+                    text: if (status == "Успешно" || status == "В процессе") {
+                             summ;
+                          } else {
+                              "    -     ";
+                          }
+
+//                    visible: status == "Успешно" || status == "В процессе"
                     anchors {
                         right: parent.right
                         rightMargin: 8

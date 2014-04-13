@@ -8,9 +8,9 @@ Rectangle {
     anchors.topMargin: 0
     color: "gray"
 
-    function changeButtonTitle(){
+    function changeButtonTitle(parentButton){
         console.log('haha');
-        selectDealButton.text = this.text;
+        parentButton.text = this.text;
     }
 
     MyToolBar {
@@ -73,26 +73,53 @@ Rectangle {
                 ListElement { text: "встреча"; }
             }
 
-            ComboBox{
-                id: eventType
+            Menu {
+                id: eventTypeMenu
+                MenuItem {
 
-                model: typeModel
+                    text: "встреча"
+                    onTriggered:  changeButtonTitle(selectEventTypeButton);
+                }
+                MenuItem {
+
+                    text: "просмотр недвижимости"
+                    onTriggered:  changeButtonTitle(selectEventTypeButton);
+                }
+                MenuItem {
+
+                    text: "переговоры"
+                    onTriggered:  changeButtonTitle(selectEventTypeButton);
+                }
+                MenuItem {
+
+                    text: "неформальная обстановка"
+                    onTriggered:  changeButtonTitle(selectEventTypeButton);
+                }
+
+
+
+
+            }
+             Button {
+                id: selectEventTypeButton
                 anchors.horizontalCenter: parent.horizontalCenter
                 Layout.fillWidth: true
-                width: parent.width
+
+                text: "тип события"
+                onClicked: {
+                    eventTypeMenu.popup();
+                }
 
             }
 
             TimePicker{
                 id: time
-//                anchors.horizontalCenter: root.horizontalCenter
             }
 
             DatePicker{
-//                anchors.horizontalCenter: root.horizontalCenter
             }
 
-            Button {
+            TextArea{
                 anchors.horizontalCenter: parent.horizontalCenter
                 Layout.fillWidth: true
 
@@ -103,6 +130,7 @@ Rectangle {
                 Layout.fillWidth: true
 
                 text: "Участники"
+
             }
 
             ListModel{
@@ -117,17 +145,17 @@ Rectangle {
                 MenuItem {
 
                     text: "продажа квартиры 24"
-                    onTriggered:  changeButtonTitle();
+                    onTriggered:  changeButtonTitle(selectDealButton);
                 }
                 MenuItem {
 
                     text: "Сделка 2"
-                    onTriggered:  changeButtonTitle();
+                    onTriggered:  changeButtonTitle(selectDealButton);
                 }
                 MenuItem {
 
                     text: "стадион в сочи"
-                    onTriggered:  changeButtonTitle();
+                    onTriggered:  changeButtonTitle(selectDealButton);
                 }
 
             }
