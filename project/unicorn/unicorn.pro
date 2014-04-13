@@ -7,7 +7,8 @@ DEPLOYMENTFOLDERS = folder_01
 QML_IMPORT_PATH =
 
 # The .cpp file which was generated for your project. Feel free to hack it.
-SOURCES += main.cpp
+SOURCES += main.cpp \
+    backend/dbase_connector.cpp
 
 # Installation path
 # target.path =
@@ -21,6 +22,8 @@ CONFIG+=qml_debug
 RESOURCES += \
     resources.qrc
 
-#OTHER_FILES += \
 
 OTHER_FILES +=
+
+HEADERS += \
+    backend/dbase_connector.h
