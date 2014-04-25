@@ -31,3 +31,5 @@ Makefile*
 # QtCreator
 
 *.autosave
+# for YouCompleteMe plugin
+*.ycm*
