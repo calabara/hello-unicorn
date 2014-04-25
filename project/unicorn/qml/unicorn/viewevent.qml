@@ -25,7 +25,7 @@ Rectangle {
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                     contentView.currentPage = "TodoList";
+                     contentView.goBack();
                 }
             }
         }

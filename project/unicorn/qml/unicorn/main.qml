@@ -8,6 +8,8 @@ Rectangle {
     height: 360
 
     property bool menuShow: false
+
+
     function onMenu() {
         gameTranslate.x = root.menuShow ? 0 : root.width * 0.8
         root.menuShow = !root.menuShow;
