@@ -1,6 +1,8 @@
 #include <QtGui/QGuiApplication>
 #include "qtquick2applicationviewer.h"
 
+#include "backend/dbase_connector.h"
+
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
@@ -9,5 +11,12 @@ int main(int argc, char *argv[])
     viewer.setMainQmlFile(QStringLiteral("qml/unicorn/main.qml"));
     viewer.showExpanded();
 
-    return app.exec();
+
+    DBaseConnector::Instance()->initConnection();
+
+    int retCode = app.exec();
+
+    DBaseConnector::DestroyInstance();
+
+    return retCode;
 }
