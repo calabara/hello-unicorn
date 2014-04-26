@@ -1,7 +1,7 @@
 #ifndef DBASE_CONNECTOR_H
 #define DBASE_CONNECTOR_H
 
-#include <QtSql>
+#include <QtSql/QtSql>
 
 class DBaseConnector {
 public:

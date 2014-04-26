@@ -1,14 +1,18 @@
 #include "orgcontroller.h"
 
+#include "models/orgsqlmodel.h"
+
 OrgController::OrgController(QQmlContext * context) :
-    mContext(context) 
-{
+    mContext(context) {
+    DBaseConnector::Instance()->initConnection();
 }
 
-QString OrgController::getAllDeals() {
-    return "getAll";
+OrgController::~OrgController() {
+    DBaseConnector::Instance()->closeConnection();
 }
 
-QString OrgController::getAllDeals(QString str) {
-    return "get " + str;
+bool OrgController::getAllDeals() {
+
+    return true;
 }
+

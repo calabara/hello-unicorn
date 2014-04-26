@@ -17,10 +17,6 @@ int main(int argc, char *argv[])
     context->setContextProperty("OrgController", &controller);
 
     viewer.showExpanded();
-    DBaseConnector::Instance()->initConnection();
 
-    int retCode = app.exec();
-
-    DBaseConnector::DestroyInstance();
-    return retCode;
+    return app.exec();
 }

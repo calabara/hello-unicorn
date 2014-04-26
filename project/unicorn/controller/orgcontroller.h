@@ -1,16 +1,18 @@
 #include <QtCore/QObject>
 #include <QtQml/QQmlContext>
+#include "backend/dbase_connector.h"
 
 
 class OrgController : public QObject {
     Q_OBJECT
 public:
     OrgController(QQmlContext * context);
+    ~OrgController();
 
+    // actions of controller
     Q_INVOKABLE
-    QString getAllDeals();
-    Q_INVOKABLE
-    QString getAllDeals(QString str);
+    bool getAllDeals();
 private:
     QQmlContext * mContext;
+
 };
