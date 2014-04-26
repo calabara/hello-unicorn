@@ -1,6 +1,6 @@
 #include <QtCore/QObject>
 #include <QtQml/QQmlContext>
-#include "backend/dbase_connector.h"
+#include "utils/dbase_connector.h"
 
 
 class OrgController : public QObject {

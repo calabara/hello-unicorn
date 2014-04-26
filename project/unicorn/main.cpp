@@ -1,8 +1,6 @@
 #include <QtGui/QGuiApplication>
 #include "qtquick2applicationviewer/qtquick2applicationviewer.h"
 
-#include "backend/dbase_connector.h"
-#include <QList>
 #include "controller/orgcontroller.h"
 
 int main(int argc, char *argv[])
