@@ -94,13 +94,18 @@ Rectangle {
         }
     }
 
+    Component.onCompleted: {
+        var r = OrgController.getAllDeals();
+        console.log(r);
+    }
+
     PageContent {
         id: pageContent
 
         // TODO: line up normal colors
         ListView {
             id: viewtrades
-            model: tradesModel
+            model: dealModel
             anchors.fill: parent
             spacing: 4
 
@@ -109,7 +114,6 @@ Rectangle {
                 height: nameAchorText.height + adressText.height +
                         dateTradeText.height + summTradeText.height + typeText.height
                 radius: 2
-                color: getColor(status);
 
                 border {
                     color: "black"
@@ -140,7 +144,7 @@ Rectangle {
 
                 Text {
                     id: nameAchorText
-                    text: nameAchors
+                    text: ""
                     anchors.top: adressText.bottom
                     anchors.leftMargin: 5
                     anchors.left: parent.left
@@ -165,18 +169,19 @@ Rectangle {
                     anchors.bottomMargin: 2
                     anchors.leftMargin: 6
                     anchors.left: parent.left
-                    text: type
+                    text: state_key
                     renderType: Text.NativeRendering
                     font.bold: true
                 }
 
                 Text {
                     id: summTradeText
-                    text: if (status == "Успешно" || status == "В процессе") {
-                             summ;
-                          } else {
-                              "    -     ";
-                          }
+                    //text: if (status == "Успешно" || status == "В процессе") {
+                    //         summ;
+                    //      } else {
+                    //          "    -     ";
+                    //      }
+                    text: price
 
 //                    visible: status == "Успешно" || status == "В процессе"
                     anchors {
@@ -194,14 +199,14 @@ Rectangle {
                         anchors.horizontalCenter: parent.horizontalCenter
                         anchors.bottom: parent.top
                         anchors.bottomMargin: 2
-                        text: maxSumm
+                        text: max_price
                     }
 
                     Text {
                         anchors.horizontalCenter: parent.horizontalCenter
                         anchors.top: parent.bottom
                         anchors.topMargin: 2
-                        text: minSumm
+                        text: min_price
                     }
 
                     renderType: Text.NativeRendering
