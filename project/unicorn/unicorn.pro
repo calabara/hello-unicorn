@@ -2,6 +2,7 @@
 folder_01.source = qml/unicorn
 folder_01.target = qml
 DEPLOYMENTFOLDERS = folder_01
+QMAKE_CXXFLAGS += -std=c++11
 
 # Additional import path used to resolve QML modules in Creator's code model
 QML_IMPORT_PATH =
