@@ -24,7 +24,7 @@ Rectangle {
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                     contentView.currentPage = "listdeal";
+                     contentView.goBack();
                 }
             }
         }
