@@ -94,9 +94,15 @@ Rectangle {
         }
     }
 
-    Component.onCompleted: {
-        var r = OrgController.getAllDeals();
-        console.log(r);
+    onVisibleChanged: {
+        // if we show this view reload model from Database
+        if (visible) {
+            var success = OrgController.getAllDeals();
+            if (!success) {
+                // TODO: show error to user
+                console.log("error load model");
+            }
+        }
     }
 
     PageContent {
