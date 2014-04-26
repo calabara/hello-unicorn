@@ -26,12 +26,12 @@ DBaseConnector::Status DBaseConnector::getStatus(){
 
 void DBaseConnector::initConnection(){
 
-    db = QSqlDatabase::addDatabase("QSQLITE");
+    mDb = QSqlDatabase::addDatabase("QSQLITE");
 
-    db.setDatabaseName("data_base/data_base.db");
-    db.open();
+    mDb.setDatabaseName("data_base/data_base.db");
+    mDb.open();
 
-    if( !db.isOpen() ){
+    if( !mDb.isOpen() ){
         status = StatusFail;
         return;
     }

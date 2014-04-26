@@ -9,7 +9,9 @@ QML_IMPORT_PATH =
 
 # The .cpp file which was generated for your project. Feel free to hack it.
 SOURCES += main.cpp \
-    backend/dbase_connector.cpp
+    utils/dbase_connector.cpp \
+    controller/orgcontroller.cpp \
+    models/orgsqlmodel.cpp
 
 # Installation path
 # target.path =
@@ -27,4 +29,6 @@ RESOURCES += \
 OTHER_FILES +=
 
 HEADERS += \
-    backend/dbase_connector.h
+    utils/dbase_connector.h \
+    controller/orgcontroller.h \
+    models/orgsqlmodel.h

@@ -16,7 +16,7 @@ private:
 
     Status status;
 
-    QSqlDatabase db;
+    QSqlDatabase mDb;
 
 private:
     DBaseConnector(){
@@ -33,11 +33,15 @@ public:
     void initConnection();
 
     void closeConnection(){
-        if( db.isOpen() ) db.close();
+        if( mDb.isOpen() ) mDb.close();
     }
 
     ~DBaseConnector(){
         closeConnection();
+    }
+
+    QSqlDatabase & db() {
+        return mDb;
     }
 
 };

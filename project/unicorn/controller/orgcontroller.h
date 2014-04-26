@@ -3,6 +3,8 @@
 #include "utils/dbase_connector.h"
 
 
+#include "models/orgsqlmodel.h"
+
 class OrgController : public QObject {
     Q_OBJECT
 public:
@@ -15,4 +17,5 @@ public:
 private:
     QQmlContext * mContext;
 
+    OrgSqlModel * model;
 };
