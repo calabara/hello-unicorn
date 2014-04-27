@@ -43,57 +43,6 @@ Rectangle {
             return "white";
     }
 
-    ListModel {
-        id: tradesModel
-        ListElement {
-            nameAchors: "Иванов И.И."
-            minSumm: "300 000 р"
-            summ: "500 000 р"
-            maxSumm: "700 000 р"
-            flatAdress: "г. Барнаул, ул. Ленина, дом4, кв. 5"
-            dateTrade: "5.05.12"
-            percent: "10"
-            status: "Успешно"
-            type: "Продажа"
-        }
-
-        ListElement {
-            nameAchors: "Васильков И.И."
-            minSumm: "300 000 р"
-            summ: "500 000 р"
-            maxSumm: "700 000 р"
-            flatAdress: "г. Барнаул, ул. Ленина, дом4, кв. 5"
-            dateTrade: "10.05.12"
-            percent: "10"
-            status: "В процессе"
-            type: "Продажа"
-        }
-
-        ListElement {
-            nameAchors: "Иванов И.И."
-            minSumm: "300 000 р"
-            summ: "500 000 р"
-            maxSumm: "700 000 р"
-            flatAdress: "г. Барнаул, ул. Ленина, дом4, кв. 5"
-            dateTrade: "5.05.12"
-            percent: "10"
-            status: "Неудача"
-            type: "Аренда"
-        }
-
-        ListElement {
-            nameAchors: "Иванов И.И."
-            minSumm: "300 000 р"
-            summ: "500 000 р"
-            maxSumm: "700 000 р"
-            flatAdress: "г. Барнаул, ул. Ленина, дом4, кв. 5"
-            dateTrade: "5.05.12"
-            percent: "10"
-            status: "Отложена"
-            type: "Аренда"
-        }
-    }
-
     onVisibleChanged: {
         // if we show this view reload model from Database
         if (visible) {
@@ -102,6 +51,18 @@ Rectangle {
                 // TODO: show error to user
                 console.log("error load model");
             }
+            viewtrades.model = dealModel;
+        }
+    }
+
+    Component.onCompleted:{
+        if (visible) {
+            var success = OrgController.getAllDeals();
+            if (!success) {
+                // TODO: show error to user
+                console.log("error load model");
+            }
+            viewtrades.model = dealModel;
         }
     }
 

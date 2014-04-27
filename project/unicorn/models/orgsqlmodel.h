@@ -1,3 +1,5 @@
+#ifndef ORGSQLMODEL_H
+#define ORGSQLMODEL_H
 #include <QtSql/QSqlQueryModel>
 
 
@@ -10,5 +12,5 @@ public:
     virtual QVariant data(const QModelIndex & index, int role) const override;
 private:
 
-    // QVariant data(const QModelIndex &index, int role) const;
 };
+#endif

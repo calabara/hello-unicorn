@@ -25,15 +25,14 @@ QVariant OrgSqlModel::data(const QModelIndex & index, int role) const {
 
 QHash<int, QByteArray> OrgSqlModel::roleNames() const {
     QHash<int, QByteArray> r;
-    qDebug() << "-------------rolesNames:";
-    int index = 0;
+    int index = 1;
     for( int i = 0; i < rowCount(); i++) {
         for (int j = 0 ; j < record(i).count(); j++) {
-            r[Qt::UserRole + index + 1] = record(i).fieldName(j).toUtf8();
-            qDebug() << record(i).fieldName(j);
+            r[Qt::UserRole + index ] = record(i).fieldName(j).toUtf8();
             index += 1;
         }
+        break;
     }
-    qDebug() << " -------------------- " ;
     return r;
 }
+
