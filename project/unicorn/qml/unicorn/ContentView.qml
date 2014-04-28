@@ -17,7 +17,7 @@ Rectangle {
 
         var p = {};
 
-        for (prop in contentView.params) {
+        for (var prop in contentView.params) {
             p[prop] = contentView.params[prop];
         }
 
