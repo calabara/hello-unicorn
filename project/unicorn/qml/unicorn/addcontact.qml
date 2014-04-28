@@ -18,8 +18,8 @@ Rectangle {
         }
 
         SaveButton {
-            function click() {
-                console.log("real saving...");
+            onClick: {
+                console.log('AAAAAA');
             }
         }
     }

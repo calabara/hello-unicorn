@@ -8,10 +8,8 @@ Item {
 
     height: parent.height * 0.7
     width: Math.max(parent.width / 10, height)
+    signal click
 
-    function click() {
-        console.log("clicked");
-    }
 
     property string iconSource: ""
 
