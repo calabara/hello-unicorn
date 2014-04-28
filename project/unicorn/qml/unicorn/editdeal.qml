@@ -10,20 +10,14 @@ Rectangle {
 
     MyToolBar {
         id: toolbar
-        title: "Редактировать сделку"
+        title: "Редактировать "
+        BackButton {
+            id: back
+        }
 
-        Image {
-            id: addDealBtn
-            anchors.right: parent.right
-            anchors.rightMargin: 3
-            anchors.verticalCenter: parent.verticalCenter
-            source: "qrc:/icons/glyphicons_224_chevron-left.png"
-
-            MouseArea {
-                anchors.fill: parent
-                onClicked: {
-                     contentView.goBack();
-                }
+        SaveButton {
+            onClick: {
+                console.log('AAAAAA');
             }
         }
     }

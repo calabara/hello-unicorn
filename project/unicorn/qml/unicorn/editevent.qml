@@ -8,6 +8,16 @@ Rectangle {
     MyToolBar {
         id: toolbar
         title: "Edit event"
+        BackButton {
+            id: back
+        }
+
+        SaveButton {
+            onClick: {
+                console.log('AAAAAA');
+            }
+        }
+
     }
 
     PageContent {

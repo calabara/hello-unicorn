@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import QtQuick.Controls 1.0
 import QtQuick.Layouts 1.0
+import "."
 
 ToolBar {
     anchors.top: parent.top

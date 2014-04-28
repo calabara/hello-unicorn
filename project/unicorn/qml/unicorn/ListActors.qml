@@ -1,4 +1,7 @@
 import QtQuick 2.0
+import QtQuick.Controls 1.0
+import QtQuick.Layouts 1.0
+import "."
 
 Rectangle {
     id: listTrades
@@ -9,24 +12,16 @@ Rectangle {
     MyToolBar {
         id: toolbar
         title: "Участиники"
+        isMenuButtonVisible: false
 
-        Image {
-            id: addContactBtn
-            anchors.right: parent.right
-            anchors.rightMargin: 3
-            anchors.verticalCenter: parent.verticalCenter
-            source: "qrc:/icons/glyphicons_190_circle_plus.png"
-
-            height: parent.height *0.7
-            width: Math.max(parent.width / 10, height)
-
-            MouseArea {
-                anchors.fill: parent
-                onClicked: {
-                     contentView.currentPage = "AddActor";
-                }
+        BackButton {
+        }
+        AddButton {
+            onClick: {
+                contentView.currentPage = "AddActor";
             }
         }
+
     }
 
     function compareDate(date) {
