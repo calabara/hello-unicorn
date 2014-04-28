@@ -2,6 +2,7 @@
 #include "qtquick2applicationviewer/qtquick2applicationviewer.h"
 
 #include "controller/orgcontroller.h"
+#include "utils/dbutils.h"
 
 int main(int argc, char *argv[])
 {
@@ -13,6 +14,8 @@ int main(int argc, char *argv[])
     auto context = viewer.rootContext();
     OrgController controller(context);
     context->setContextProperty("OrgController", &controller);
+    DbUtils utils;
+    context->setContextProperty("DbUtils", &utils);
 
     viewer.showExpanded();
 

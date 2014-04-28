@@ -13,7 +13,9 @@ QML_IMPORT_PATH =
 SOURCES += main.cpp \
     utils/dbase_connector.cpp \
     controller/orgcontroller.cpp \
-    models/orgsqlmodel.cpp
+    models/orgsqlmodel.cpp \
+    models/dealobject.cpp \ 
+    utils/dbutils.cpp
 
 # Installation path
 # target.path =
@@ -33,4 +35,6 @@ OTHER_FILES +=
 HEADERS += \
     utils/dbase_connector.h \
     controller/orgcontroller.h \
-    models/orgsqlmodel.h
+    models/orgsqlmodel.h \
+    models/dealobject.h \
+    utils/dbutils.h
