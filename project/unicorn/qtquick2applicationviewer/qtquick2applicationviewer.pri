@@ -5,7 +5,7 @@
 # It is recommended not to modify this file, since newer versions of Qt Creator
 # may offer an updated version of it.
 
-QT += qml quick sql
+QT += qml quick
 
 SOURCES += $$PWD/qtquick2applicationviewer.cpp
 HEADERS += $$PWD/qtquick2applicationviewer.h
