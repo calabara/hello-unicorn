@@ -15,6 +15,9 @@ OrgController::OrgController(QQmlContext * context) :
 
     curDeal = new DealObject();
     mContext->setContextProperty("curDeal", curDeal);
+
+    contactModel = new OrgSqlModel();
+    mContext->setContextProperty("contactModel", contactModel);
     // oneDealModel = new OrgSqlModel();
     // mContext->setContextProperty("oneDeal", oneDealModel);
 }
@@ -25,6 +28,7 @@ OrgController::~OrgController() {
     delete dealModel;
     delete rolesModel;
     delete dealMembersModel;
+    delete contactModel;
     delete curDeal;
 }
 
@@ -119,5 +123,10 @@ void OrgController::getDeal(int id_deal) {
     curDeal->setPrice(q.value("price").toInt());
     curDeal->setId_deal(id_deal);
     curDeal->setState_key(q.value("state_key").toInt());
+}
+
+bool OrgController::getAllContacts() {
+    contactModel->setQuery("select * from contact");
+    return !contactModel->lastError().isValid();
 }
 

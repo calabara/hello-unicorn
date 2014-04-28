@@ -21,35 +21,14 @@ Rectangle {
 
     }
 
-    function compareDate(date) {
-        // TODO: implements this. color selection logic
-        return true;
+    function loadModel() {
+        if (visible) {
+            OrgController.getAllContacts();
+        }
     }
 
-    ListModel {
-        id: contactsModel
-        ListElement {
-            name: "Иванов И.И."
-            phone: "+79234567812"
-        }
-        ListElement {
-            name: "Иванов И.И."
-            phone: "+79234567812"
-        }
-        ListElement {
-            name: "Иванов И.И."
-            phone: "+79234567812"
-        }
-        ListElement {
-            name: "Иванов И.И."
-            phone: "+79234567812"
-        }
-        ListElement {
-            name: "Иванов И.И."
-            phone: "+79234567812"
-        }
-
-    }
+    Component.onCompleted: loadModel();
+    onVisibleChanged: loadModel();
 
     PageContent {
         id: pageContent
@@ -57,15 +36,14 @@ Rectangle {
         // TODO: line up normal colors
         ListView {
             id: viewcontacts
-            model: contactsModel
+            model: contactModel
             anchors.fill: parent
             spacing: 4
 
             delegate: Rectangle {
                 width: viewcontacts.width
-                height: nameText.height + phoneText.height + 20 ;
+                height: nameText.height + phoneText.height + 30;
                 radius: 2
-
 
                 border {
                     color: "black"
@@ -76,16 +54,14 @@ Rectangle {
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
-
-                        contentView.setViewParam('viewcontact', 5);
+                        contentView.setViewParam('viewcontact', id);
                         console.log("p: " + contentView.getViewParam('viewcontact'))
                         contentView.currentPage = "viewcontact";
-
                     }
                 }
                 Text {
                     id: nameText
-                    text: name
+                    text: name + " " + surname
 
                     anchors {
                         left: parent.left
@@ -101,12 +77,19 @@ Rectangle {
 
                 Text {
                     id: phoneText
-                    text: phone
+                    text: phone_number
                     anchors.top: nameText.bottom
                     anchors.leftMargin: nameText.anchors.leftMargin
                     anchors.left: nameText.left
                 }
 
+                Text {
+                    id: typeText
+                    text: DbUtils.typeAsString(type_id)
+                    anchors.top: phoneText.bottom
+                    anchors.leftMargin: phoneText.anchors.leftMargin
+                    anchors.left: nameText.left
+                }
             }
         }
     }

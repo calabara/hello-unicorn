@@ -10,7 +10,10 @@ public:
     virtual ~DbUtils() {}
 
     Q_INVOKABLE
-    QString statusAsString(int id_state);
+    QString statusAsString(int id_state) const;
+
+    Q_INVOKABLE
+    QString typeAsString(int id_type) const;
 };
 
 #endif
