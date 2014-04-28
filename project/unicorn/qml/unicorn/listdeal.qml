@@ -72,7 +72,8 @@ Rectangle {
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
-                         contentView.currentPage = "viewdeal";
+                        contentView.setViewParam("id_deal", id);
+                        contentView.currentPage = "viewdeal";
                     }
                 }
 
@@ -118,7 +119,7 @@ Rectangle {
                     anchors.bottomMargin: 2
                     anchors.leftMargin: 6
                     anchors.left: parent.left
-                    text: state_key
+                    text: DbUtils.statusAsString(state_key);
                     renderType: Text.NativeRendering
                     font.bold: true
                 }
@@ -130,7 +131,7 @@ Rectangle {
                     //      } else {
                     //          "    -     ";
                     //      }
-                    text: price
+                    text: price != -1 ? price : ""
 
 //                    visible: status == "Успешно" || status == "В процессе"
                     anchors {

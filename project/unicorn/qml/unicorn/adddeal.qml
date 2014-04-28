@@ -101,7 +101,7 @@ Rectangle {
                    }
                 }
 
-                placeholderText: "Максимальная сумма"
+                placeholderText: "Желаемая сумма"
             }
 
             TextField {
@@ -126,19 +126,6 @@ Rectangle {
                 placeholderText: "Минимальная сумма"
             }
 
-            Button {
-                anchors.horizontalCenter: parent.horizontalCenter
-                Layout.fillWidth: true
-
-                text: "Участники"
-            }
-
-//            Button {
-//                anchors.horizontalCenter: parent.horizontalCenter
-//                Layout.fillWidth: true
-
-//                text: "События"
-//            }
             Button {
                 anchors.horizontalCenter: parent.horizontalCenter
                 Layout.fillWidth: true

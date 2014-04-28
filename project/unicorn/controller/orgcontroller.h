@@ -4,9 +4,11 @@
 
 
 #include "models/orgsqlmodel.h"
+#include "models/dealobject.h"
 
 class OrgController : public QObject {
     Q_OBJECT
+
 public:
     OrgController(QQmlContext * context);
     ~OrgController();
@@ -21,8 +23,23 @@ public:
     Q_INVOKABLE
     bool addDeal(int min_price, int price, int max_price, int state_key, QString flatAdress, QDate dateTrade) const;
 
+    Q_INVOKABLE
+    bool getAllMembers(int id_deal);
+
+    Q_INVOKABLE
+    bool addMemberToDeal(int id_deal, int id_contact, int id_role) const;
+
+    Q_INVOKABLE
+    bool getAllRoles() const;
+
+    Q_INVOKABLE
+    void getDeal(int id_deal);
+
 private:
     QQmlContext * mContext;
 
-    OrgSqlModel * model;
+    OrgSqlModel * dealModel = nullptr;
+    OrgSqlModel * dealMembersModel = nullptr;
+    OrgSqlModel * rolesModel = nullptr;
+    DealObject * curDeal = nullptr;
 };

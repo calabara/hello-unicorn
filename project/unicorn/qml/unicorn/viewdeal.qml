@@ -19,52 +19,72 @@ Rectangle {
 
         EditButton{
             onClick: {
-                contentView.show('editcontact', 322);
+                var id_deal = contentView.getViewParam("id_deal");
+                contentView.show('editcontact', id_deal);
             }
         }
     }
 
+    function loadDeal() {
+        if (visible) {
+            var id_deal = contentView.getViewParam("id_deal");
+            OrgController.getDeal(id_deal);
+        }
+    }
+
+    Component.onCompleted: {
+        loadDeal();
+    }
+
+    onVisibleChanged: {
+        loadDeal();
+    }
+
     PageContent{
         Substrate {
-            ColumnLayout{
+            // TODO: set color from state
+            ColumnLayout {
                 spacing: 4
                 anchors.margins: 40
                 anchors.fill: parent
 
                 Text {
-
                     id: dealTitle
                     anchors.horizontalCenter: parent.horizontalCenter
                     Layout.fillWidth: true
 
-                    text: "Квартира на ленинском"
+                    text: curDeal.flatAdress
                 }
 
                 Text {
-
                     id: dealMoney
                     anchors.horizontalCenter: parent.horizontalCenter
                     Layout.fillWidth: true
                     width: parent.width
+                    font.bold: true
 
-                    text: "300 000р."
+                    text: (curDeal.price != -1) ? curDeal.price : ""
                 }
 
-                Text{
-                    id: dealState
-
-
+                Text {
+                    id: dealMaxMoney
                     anchors.horizontalCenter: parent.horizontalCenter
                     Layout.fillWidth: true
                     width: parent.width
-                    text: "Статус: в процессе";
+                    text: "Желаемая сумма: " + curDeal.max_price
+                }
 
+                Text {
+                    id: dealState
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    Layout.fillWidth: true
+                    width: parent.width
+                    text: DbUtils.statusAsString(curDeal.state_key);
                 }
 
                 Button {
                     anchors.horizontalCenter: parent.horizontalCenter
                     Layout.fillWidth: true
-
                     text: "Участники"
                     onClicked: {
                         contentView.currentPage = "ListActors";
@@ -74,10 +94,8 @@ Rectangle {
                 Button {
                     anchors.horizontalCenter: parent.horizontalCenter
                     Layout.fillWidth: true
-
                     text: "События"
                 }
-
             }
 
         }
