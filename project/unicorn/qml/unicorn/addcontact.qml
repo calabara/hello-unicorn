@@ -13,22 +13,10 @@ Rectangle {
         title: "Добавить клиента"
         isMenuButtonVisible: false
 
-        Image {
-            id: addClientBtn
-            anchors.left: parent.left
-            anchors.rightMargin: 3
-            anchors.verticalCenter: parent.verticalCenter
-            height: parent.height
-            width: Math.max(parent.width / 10, height)
-            source: "qrc:/icons/back.png"
-
-            MouseArea {
-                anchors.fill: parent
-                onClicked: {
-                     contentView.goBack();
-                }
-            }
+        BackButton {
+            id: back
         }
+
         Image {
             id: saveClientBtn
             anchors.right: parent.right
