@@ -12,7 +12,11 @@ Rectangle {
     property variant pageStack: []
     property variant params: { }
 
+    function show(view, param) {        
+        contentView.setViewParam(view, param);
+        contentView.currentPage = view;
 
+    }
     function setViewParam(paramId, value) {
 
         var p = {};

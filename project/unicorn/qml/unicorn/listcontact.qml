@@ -15,7 +15,7 @@ Rectangle {
 
         AddButton {
             onClick: {
-                contentView.currentPage = "addcontact";
+                contentView.show('addcontact');
             }
         }
 

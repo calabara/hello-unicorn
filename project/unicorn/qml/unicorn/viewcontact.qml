@@ -19,6 +19,7 @@ Rectangle {
 
         EditButton{
             onClick: {
+                contentView.show('editcontact');
                 contentView.setViewParam('editcontact', 32);
                 contentView.currentPage = 'editcontact';
             }

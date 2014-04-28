@@ -12,7 +12,7 @@ Rectangle {
 
         AddButton {
             onClick: {
-                contentView.currentPage = "addevent";
+                contentView.show('addevent');
             }
         }
     }
