@@ -13,40 +13,17 @@ Rectangle {
         title: "Васильев И.И."
         isMenuButtonVisible: false
 
-        Image {
-            id: addClientBtn
-            anchors.left: parent.left
-            anchors.rightMargin: 3
-            anchors.verticalCenter: parent.verticalCenter
-            height: parent.height
-            width: Math.max(parent.width / 10, height)
-            source: "qrc:/icons/back.png"
+        BackButton{
 
-            MouseArea {
-                anchors.fill: parent
-                onClicked: {
-                     contentView.goBack();
-                }
-            }
         }
 
-        Image {
-            id: saveClientBtn
-            anchors.right: parent.right
-            anchors.rightMargin: 3
-            anchors.verticalCenter: parent.verticalCenter
-            source: "qrc:/icons/glyphicons_030_pencil.png"
-            height: parent.height * 0.7
-            width: Math.max(parent.width / 10, height)
-            MouseArea {
-                anchors.fill: parent
-                onClicked: {
-                    contentView.currentPage = "addcontact";
-                }
+        EditButton{
+            onClick: {
+                contentView.setViewParam('editcontact', 32);
+                contentView.currentPage = 'editcontact';
             }
         }
     }
-
     PageContent{
 
         Substrate {

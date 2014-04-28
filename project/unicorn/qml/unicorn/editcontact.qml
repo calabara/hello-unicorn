@@ -1,14 +1,30 @@
 import QtQuick 2.0
 import QtQuick.Controls 1.0
 import QtQuick.Layouts 1.0
+import "."
 
 Rectangle {
     anchors.fill: parent
+    anchors.topMargin: 0
+    color: "gray"
 
+    MyToolBar {
+        id: toolbar
+        title: "Редактировать"
+        isMenuButtonVisible: false
 
-    Rectangle{
-        anchors.fill: parent
-        anchors.topMargin: 0
+        BackButton {
+            id: back
+        }
+
+        SaveButton {
+            onClick: {
+                console.log('AAAAAA');
+            }
+        }
+    }
+
+    PageContent{
 
         ColumnLayout{
             spacing: 4
@@ -20,8 +36,8 @@ Rectangle {
                 id: dealTitle
                 anchors.horizontalCenter: parent.horizontalCenter
                 Layout.fillWidth: true
-
-                placeholderText: "Название"
+                text: "jaja"  + contentView.getViewParam('editcontact');
+                placeholderText: "Адрес"
             }
 
             TextField {
