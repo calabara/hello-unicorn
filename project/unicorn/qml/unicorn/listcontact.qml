@@ -13,10 +13,6 @@ Rectangle {
         id: toolbar
         title: "Клиенты"
 
-        BackButton {
-            id: back
-        }
-
         AddButton {
             onClick: {
                 contentView.currentPage = "addcontact";
