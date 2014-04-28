@@ -10,6 +10,23 @@ Rectangle {
     
     property string currentPage : "TodoList"
     property variant pageStack: []
+    property variant params: { }
+
+
+    function setViewParam(paramId, value) {
+
+        var p = {};
+
+        for (prop in contentView.params) {
+            p[prop] = contentView.params[prop];
+        }
+
+        p[paramId] = value;
+        contentView.params = p;
+    }
+    function getViewParam(paramId) {
+        return contentView.params[paramId];
+    }
 
     function goBack() {
 

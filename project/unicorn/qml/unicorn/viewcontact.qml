@@ -61,7 +61,7 @@ Rectangle {
                     anchors.horizontalCenter: parent.horizontalCenter
                     Layout.fillWidth: true
 
-                    text: "Васильев"
+                    text: "Васильев, id:" + contentView.getViewParam('viewcontact');
                 }
                 Text {
 

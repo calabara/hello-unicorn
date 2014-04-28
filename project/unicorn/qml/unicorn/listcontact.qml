@@ -87,7 +87,11 @@ Rectangle {
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
-                         contentView.currentPage = "viewcontact";
+
+                        contentView.setViewParam('viewcontact', 5);
+                        console.log("p: " + contentView.getViewParam('viewcontact'))
+                        contentView.currentPage = "viewcontact";
+
                     }
                 }
                 Text {
