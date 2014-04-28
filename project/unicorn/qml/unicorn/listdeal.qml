@@ -43,7 +43,7 @@ Rectangle {
             return "white";
     }
 
-    onVisibleChanged: {
+    function loadModel() {
         // if we show this view reload model from Database
         if (visible) {
             var success = OrgController.getAllDeals();
@@ -55,16 +55,8 @@ Rectangle {
         }
     }
 
-    Component.onCompleted:{
-        if (visible) {
-            var success = OrgController.getAllDeals();
-            if (!success) {
-                // TODO: show error to user
-                console.log("error load model");
-            }
-            viewtrades.model = dealModel;
-        }
-    }
+    onVisibleChanged: loadmodel()
+    Component.onCompleted: loadModel()
 
     PageContent {
         id: pageContent
