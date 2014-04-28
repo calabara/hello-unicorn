@@ -14,35 +14,12 @@ Rectangle {
         title: "Добавить сделку"
         isMenuButtonVisible: false
 
-        Image {
-            id: addDealBtn
-            anchors.left: parent.left
-            anchors.rightMargin: 3
-            anchors.verticalCenter: parent.verticalCenter
-            source: "qrc:/icons/back.png"
-            height: parent.height
-            width: Math.max(parent.width / 10, height)
-            MouseArea {
-                anchors.fill: parent
-                onClicked: {
-                     contentView.goBack();
-                }
-            }
+        BackButton{
+
         }
-        Image {
-            id: saveDealBtn
-            anchors.right: parent.right
-            anchors.rightMargin: 3
-            anchors.verticalCenter: parent.verticalCenter
-            source: "qrc:/icons/glyphicons_446_floppy_save.png"
-            height: parent.height * 0.7
-            width: Math.max(parent.width / 10, height)
-            MouseArea {
-                anchors.fill: parent
-                onClicked: {
-                    saveDeal();
-                }
-            }
+
+        SaveButton{
+
         }
     }
 
