@@ -9,10 +9,9 @@ class ContactObject : public QObject
 
     QString m_name;
     QString m_surname;
-    QString m_phone_nunmber;
+    QString m_phone_number;
     int m_type_id;
     QString m_additional_info;
-
     int m_id_contact = -1;
 
 public:
@@ -21,8 +20,7 @@ public:
     Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
     Q_PROPERTY(QString surname READ surname WRITE setSurname NOTIFY surnameChanged)
     Q_PROPERTY(int id_contact READ id_contact WRITE setId_contact NOTIFY id_contactChanged)
-//    Q_PROPERTY(int id_contact READ id_contact WRITE setId NOTIFY idChanged)
-    Q_PROPERTY(QString phone_nunmber READ phone_nunmber WRITE setPhone_nunmber NOTIFY phone_nunmberChanged)
+    Q_PROPERTY(QString phone_number READ phone_number WRITE setPhone_number NOTIFY phone_numberChanged)
     Q_PROPERTY(int type_id READ type_id WRITE setType_id NOTIFY type_idChanged)
     Q_PROPERTY(QString additional_info READ additional_info WRITE setAdditional_info NOTIFY additional_infoChanged)
 
@@ -36,9 +34,9 @@ public:
         return m_surname;
     }
 
-    QString phone_nunmber() const
+    QString phone_number() const
     {
-        return m_phone_nunmber;
+        return m_phone_number;
     }
 
     int type_id() const
@@ -62,7 +60,7 @@ signals:
 
     void surnameChanged(QString arg);
 
-    void phone_nunmberChanged(QString arg);
+    void phone_numberChanged(QString arg);
 
     void type_idChanged(int arg);
 
@@ -86,11 +84,11 @@ public slots:
         }
     }
 
-    void setPhone_nunmber(QString arg)
+    void setPhone_number(QString arg)
     {
-        if (m_phone_nunmber != arg) {
-            m_phone_nunmber = arg;
-            emit phone_nunmberChanged(arg);
+        if (m_phone_number != arg) {
+            m_phone_number = arg;
+            emit phone_numberChanged(arg);
         }
     }
     void setType_id(int arg)
@@ -116,7 +114,12 @@ public slots:
         }
     }
 
+    /// if id == -1 create else update exist 
+    /// @return true if success write to DB
     bool save();
+
+    /// Empty all field in this object
+    void empty();
 };
 
 #endif // CONTACTOBJECT_H

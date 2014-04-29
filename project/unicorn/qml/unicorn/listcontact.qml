@@ -15,7 +15,7 @@ Rectangle {
 
         AddButton {
             onClick: {
-                contentView.show('addcontact');
+                contentView.show('addcontact', -1);
             }
         }
 
@@ -54,9 +54,10 @@ Rectangle {
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
-                        contentView.setViewParam('viewcontact', id);
-                        console.log("p: " + contentView.getViewParam('viewcontact'))
-                        contentView.currentPage = "viewcontact";
+                        /* contentView.setViewParam('addcontact', id); */
+                        /* console.log("p: " + contentView.getViewParam('viewcontact')) */
+                        /* contentView.currentPage = "viewcontact"; */
+                        contentView.show("viewcontact", id);
                     }
                 }
                 Text {

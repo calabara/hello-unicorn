@@ -27,7 +27,7 @@ bool ContactObject::save() {
     q.addBindValue(name());
     q.addBindValue(surname());
     q.addBindValue(additional_info());
-    q.addBindValue(phone_nunmber());
+    q.addBindValue(phone_number());
     q.addBindValue(type_id());
 
     q.exec();
@@ -37,4 +37,13 @@ bool ContactObject::save() {
     }
 
     return true;
+}
+
+void ContactObject::empty() {
+    this->setName("");
+    this->setSurname("");
+    this->setAdditional_info("");
+    this->setPhone_number("");
+    this->setType_id(1);
+    this->setId_contact(-1);
 }

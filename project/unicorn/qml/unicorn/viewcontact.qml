@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import QtQuick.Controls 1.0
 import QtQuick.Layouts 1.0
+import contact 1.0
 import "."
 
 Rectangle {
@@ -10,7 +11,7 @@ Rectangle {
 
     MyToolBar {
         id: toolbar
-        title: "Васильев И.И."
+        title: contact.name + " " + contact.surname
         isMenuButtonVisible: false
 
         BackButton{
@@ -19,10 +20,31 @@ Rectangle {
 
         EditButton{
             onClick: {
-                contentView.show('editcontact');
+                contentView.show('addcontact', contact.id_contact);
             }
         }
     }
+
+    Contact {
+        id: contact
+    }
+
+    function loadContact() {
+        if (visible){
+            var id_con = contentView.getViewParam("viewcontact");
+            DbUtils.readContact(id_con, contact);
+            console.log(id_con);
+        }
+    }
+
+    Component.onCompleted: {
+        loadContact();
+    }
+
+    onVisibleChanged: {
+        loadContact();
+    }
+
     PageContent{
 
         Substrate {
@@ -37,7 +59,7 @@ Rectangle {
                     anchors.horizontalCenter: parent.horizontalCenter
                     Layout.fillWidth: true
 
-                    text: "Васильев, id:" + contentView.getViewParam('viewcontact');
+                    text: contact.name
                 }
                 Text {
 
@@ -45,15 +67,7 @@ Rectangle {
                     anchors.horizontalCenter: parent.horizontalCenter
                     Layout.fillWidth: true
 
-                    text: "Иван"
-                }
-                Text {
-
-                    id: contactSecondname
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    Layout.fillWidth: true
-
-                    text: "Иванович"
+                    text: contact.surname
                 }
 
                 Text {
@@ -63,7 +77,7 @@ Rectangle {
                     Layout.fillWidth: true
                     width: parent.width
 
-                    text: "+7993944959"
+                    text: contact.phone_number
                 }
 
                 Rectangle {
@@ -75,7 +89,7 @@ Rectangle {
                     Text {
                         anchors.margins: 10
                         anchors.fill: parent
-                        text: "Дом. телефон: 832978.\n Какой-то текст. Звонить после обеда."
+                        text: contact.additional_info
                     }
                 }
 

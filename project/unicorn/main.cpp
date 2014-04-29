@@ -1,8 +1,8 @@
 #include <QtGui/QGuiApplication>
 #include <QtQml/QtQml>
 #include <QtQml/QQmlComponent>
-#include "qtquick2applicationviewer/qtquick2applicationviewer.h"
 
+#include "qtquick2applicationviewer/qtquick2applicationviewer.h"
 #include "controller/orgcontroller.h"
 #include "utils/dbutils.h"
 #include "models/contactobject.h"
