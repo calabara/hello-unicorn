@@ -45,7 +45,7 @@ Rectangle {
         }
     }
 
-    onVisibleChanged: loadmodel()
+    onVisibleChanged: loadModel()
     Component.onCompleted: loadModel()
 
     PageContent {
