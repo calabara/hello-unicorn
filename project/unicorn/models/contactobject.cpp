@@ -12,7 +12,7 @@ ContactObject::ContactObject(QObject *parent) :
 
 bool ContactObject::save() {
     QSqlQuery q;
-    if (id() == -1) {
+    if (id_contact() == -1) {
         // INSERT INTO "main"."contact" ("name","surname","additional_info","phone_number","type_id") 
         // VALUES (?1,?2,?3,?4,?5)
         q.prepare("insert into contact (name, surname, additional_info, phone_number, type_id) \
@@ -21,7 +21,7 @@ bool ContactObject::save() {
         // UPDATE "main"."contact" SET "name" = ?1, "surname" = ?2, 
         // "additional_info" = ?3, "phone_number" = ?4, "type_id" = ?5 WHERE  "id" = 1
         q.prepare(QString("update contact set name = ?, surname = ?, \
-            additional_info = ?, phone_number = ?, type_id = ? where id = %1").arg(id()));
+            additional_info = ?, phone_number = ?, type_id = ? where id = %1").arg(id_contact()));
     }
 
     q.addBindValue(name());
