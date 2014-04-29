@@ -15,7 +15,8 @@ SOURCES += main.cpp \
     controller/orgcontroller.cpp \
     models/orgsqlmodel.cpp \
     models/dealobject.cpp \ 
-    utils/dbutils.cpp
+    utils/dbutils.cpp \
+    models/contactobject.cpp
 
 # Installation path
 # target.path =
@@ -37,4 +38,5 @@ HEADERS += \
     controller/orgcontroller.h \
     models/orgsqlmodel.h \
     models/dealobject.h \
-    utils/dbutils.h
+    utils/dbutils.h \
+    models/contactobject.h
