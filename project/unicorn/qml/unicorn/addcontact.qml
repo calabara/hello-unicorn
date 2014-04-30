@@ -12,7 +12,7 @@ Rectangle {
 
     MyToolBar {
         id: toolbar
-        title: "Добавить клиента"
+        title: contact.surname
         isMenuButtonVisible: false
 
         BackButton {
@@ -95,11 +95,11 @@ Rectangle {
             }
 
             TextField {
-
                 id: contactPhone
                 anchors.horizontalCenter: parent.horizontalCenter
                 Layout.fillWidth: true
                 width: parent.width
+                validator: IntValidator {bottom: 10; top: 9000000;}
                 text: ""
 
                 placeholderText: "+7993944959"
