@@ -125,8 +125,8 @@ void OrgController::getDeal(int id_deal) {
     curDeal->setState_key(q.value("state_key").toInt());
 }
 
-bool OrgController::getAllContacts() {
-    contactModel->setQuery("select * from contact");
+bool OrgController::getAllContacts(int id_type) {
+    contactModel->setQuery(QString("select * from contact where type_id = %1").arg(id_type));;
     return !contactModel->lastError().isValid();
 }
 

@@ -1,62 +1,34 @@
 import QtQuick 2.0
+import QtQuick.Controls 1.0
+import QtQuick.Layouts 1.0
+import "."
 
 Rectangle {
-    id: listConnections
+    id: listTrades
     anchors.fill: parent
     anchors.topMargin: 0
     color: "gray"
 
     MyToolBar {
         id: toolbar
-        title: "Деловые связи"
+        title: "Связи деловые"
 
-        Image {
-            id: addContactBtn
-            anchors.right: parent.right
-            anchors.rightMargin: 3
-            anchors.verticalCenter: parent.verticalCenter
-            source: "qrc:/icons/glyphicons_190_circle_plus.png"
-
-            height: parent.height *0.7
-            width: Math.max(parent.width / 10, height)
-
-            MouseArea {
-                anchors.fill: parent
-                onClicked: {
-                     contentView.currentPage = "addcontact";
-                }
+        AddButton {
+            onClick: {
+                contentView.show('addcontact', -1);
             }
         }
     }
 
-    ListModel {
-        id: contactsModel
-        ListElement {
-            name: "Иванов И.И."
-            phone: "+79234567812"
-            type: "Нотариус"
-        }
-        ListElement {
-            name: "Иванов И.И."
-            phone: "+79234567812"
-            type: "Связист"
-        }
-        ListElement {
-            name: "Иванов И.И."
-            phone: "+79234567812"
-            type: "Минер"
-        }
-        ListElement {
-            name: "Иванов И.И."
-            phone: "+79234567812"
-            type: "Хозяин ларька"
-        }
-        ListElement {
-            name: "Иванов И.И."
-            phone: "+79234567812"
-            type: "Администратор"
+    function loadModel() {
+        if (visible) {
+            OrgController.getAllContacts(1);
+            contentView.setViewParam("contact_type", 1);
         }
     }
+
+    Component.onCompleted: loadModel();
+    onVisibleChanged: loadModel();
 
     PageContent {
         id: pageContent
@@ -64,14 +36,15 @@ Rectangle {
         // TODO: line up normal colors
         ListView {
             id: viewcontacts
-            model: contactsModel
+            model: contactModel
             anchors.fill: parent
             spacing: 4
 
             delegate: Rectangle {
                 width: viewcontacts.width
-                height: nameText.height + phoneText.height + 60;
+                height: nameText.height + phoneText.height + 30;
                 radius: 2
+
                 border {
                     color: "black"
                     width: 1
@@ -80,13 +53,15 @@ Rectangle {
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
-                         contentView.currentPage = "viewcontact";
+                        /* contentView.setViewParam('addcontact', id); */
+                        /* console.log("p: " + contentView.getViewParam('viewcontact')) */
+                        /* contentView.currentPage = "viewcontact"; */
+                        contentView.show("viewcontact", id);
                     }
                 }
-
                 Text {
                     id: nameText
-                    text: name
+                    text: name + " " + surname
 
                     anchors {
                         left: parent.left
@@ -97,31 +72,16 @@ Rectangle {
 
                     font {
                         bold: true
-                        pointSize: 14
                     }
-
-                    renderType: Text.NativeRendering
-                }
-
-                Text {
-                    id: typeText
-                    text: type
-                    anchors.top: nameText.bottom
-                    anchors.leftMargin: nameText.anchors.leftMargin
-                    anchors.left: nameText.left
-                    font.bold: true
-                    renderType: Text.NativeRendering
                 }
 
                 Text {
                     id: phoneText
-                    text: phone
-                    anchors.top: typeText.bottom
-                    anchors.leftMargin: typeText.anchors.leftMargin
-                    anchors.left: typeText.left
-                    renderType: Text.NativeRendering
+                    text: phone_number
+                    anchors.top: nameText.bottom
+                    anchors.leftMargin: nameText.anchors.leftMargin
+                    anchors.left: nameText.left
                 }
-
             }
         }
     }

@@ -37,11 +37,13 @@ Rectangle {
     function loadContact() {
         if (visible) {
             var id_c = contentView.getViewParam("addcontact");
+            var type_id = contentView.getViewParam("contact_type");
             if (id_c == -1) {
                 contact.empty();
             } else {
                 DbUtils.readContact(id_c, contact);
             }
+            contact.type_id = type_id;
             setContact();
             console.log(id_c);
         }
@@ -99,7 +101,7 @@ Rectangle {
                 anchors.horizontalCenter: parent.horizontalCenter
                 Layout.fillWidth: true
                 width: parent.width
-                validator: IntValidator {bottom: 10; top: 9000000;}
+                // validator: RegExpValidator { regExp:[0-9]+ ; }
                 text: ""
 
                 placeholderText: "+7993944959"

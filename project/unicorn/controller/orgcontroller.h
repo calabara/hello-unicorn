@@ -31,7 +31,7 @@ public:
 
     // contacts
     Q_INVOKABLE
-    bool getAllContacts();
+    bool getAllContacts(int id_type);
 private:
     QQmlContext * mContext;
 

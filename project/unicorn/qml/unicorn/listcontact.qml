@@ -18,12 +18,12 @@ Rectangle {
                 contentView.show('addcontact', -1);
             }
         }
-
     }
 
     function loadModel() {
         if (visible) {
-            OrgController.getAllContacts();
+            OrgController.getAllContacts(2);
+            contentView.setViewParam("contact_type", 2);
         }
     }
 
@@ -49,7 +49,6 @@ Rectangle {
                     color: "black"
                     width: 1
                 }
-
 
                 MouseArea {
                     anchors.fill: parent
@@ -84,13 +83,6 @@ Rectangle {
                     anchors.left: nameText.left
                 }
 
-                Text {
-                    id: typeText
-                    text: DbUtils.typeAsString(type_id)
-                    anchors.top: phoneText.bottom
-                    anchors.leftMargin: phoneText.anchors.leftMargin
-                    anchors.left: nameText.left
-                }
             }
         }
     }
