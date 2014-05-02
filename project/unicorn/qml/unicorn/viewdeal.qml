@@ -87,7 +87,7 @@ Rectangle {
                     Layout.fillWidth: true
                     text: "Участники"
                     onClicked: {
-                        contentView.show(ListActors);
+                        contentView.show("ListActors");
                     }
                 }
 
