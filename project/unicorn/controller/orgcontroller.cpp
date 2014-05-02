@@ -1,5 +1,7 @@
 #include "orgcontroller.h"
 
+#include "utils/dbutils.h"
+
 OrgController::OrgController(QQmlContext * context) :
     mContext(context){
     DBaseConnector::Instance()->initConnection();
@@ -114,6 +116,7 @@ bool OrgController::getAllRoles() const {
     return true;
 }
 
+// TODO: rewrite this shit
 void OrgController::getDeal(int id_deal) {
     (void)id_deal;
     QSqlQuery q;
@@ -125,7 +128,9 @@ void OrgController::getDeal(int id_deal) {
     curDeal->setFlatAdress(q.value("flatAdress").toString());
     curDeal->setMax_price(q.value("max_price").toInt());
     curDeal->setMin_price(q.value("min_price").toInt());
-    curDeal->setDateTrade(q.value("dateTrade").toDate());
+    QDateTime date = QDateTime::fromString(q.value("dateTrade").toString(), DbUtils::dateFormat());
+    curDeal->setDateTrade(date);
+
     curDeal->setPrice(q.value("price").toInt());
     curDeal->setId_deal(id_deal);
     curDeal->setState_key(q.value("state_key").toInt());
@@ -153,7 +158,6 @@ bool OrgController::getEvents(int id_deal) {
         QString query = patternQuery.arg("");
         eventsModel->setQuery(query);
     }
-
     return !eventsModel->lastError().isValid();
 }
 

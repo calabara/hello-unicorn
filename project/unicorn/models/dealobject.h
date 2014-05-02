@@ -2,7 +2,7 @@
 #define DEALOBJECT_H
 
 #include <QtCore/QObject>
-#include <QtCore/QDate>
+#include <QtCore/QDateTime>
 
 
 class DealObject : public QObject {
@@ -11,7 +11,7 @@ class DealObject : public QObject {
     QString m_flatAdress;
     int m_min_price;
     int m_max_price;
-    QDate m_dateTrade;
+    QDateTime m_dateTrade;
     int m_id_deal = -1;
 
     int m_price;
@@ -23,7 +23,7 @@ public:
     Q_PROPERTY(int min_price READ min_price WRITE setMin_price NOTIFY min_priceChanged)
     Q_PROPERTY(int max_price READ min_price WRITE setMax_price NOTIFY min_priceChanged)
     Q_PROPERTY(int price READ price WRITE setPrice NOTIFY priceChanged)
-    Q_PROPERTY(QDate dateTrade READ dateTrade WRITE setDateTrade NOTIFY dateTradeChanged)
+    Q_PROPERTY(QDateTime dateTrade READ dateTrade WRITE setDateTrade NOTIFY dateTradeChanged)
     Q_PROPERTY(int id_deal READ id_deal WRITE setId_deal NOTIFY id_dealChanged)
     Q_PROPERTY(int state_key READ state_key WRITE setState_key NOTIFY state_keyChanged)
 
@@ -42,7 +42,7 @@ public:
         return m_max_price;
     }
 
-    QDate dateTrade() const
+    QDateTime dateTrade() const
     {
         return m_dateTrade;
     }
@@ -82,7 +82,7 @@ public slots:
         }
     }
 
-    void setDateTrade(QDate arg)
+    void setDateTrade(QDateTime arg)
     {
         if (m_dateTrade != arg) {
             m_dateTrade = arg;
@@ -122,7 +122,7 @@ public slots:
 signals:
     void flatAdressChanged(QString arg);
     void min_priceChanged(int arg);
-    void dateTradeChanged(QDate arg);
+    void dateTradeChanged(QDateTime arg);
     void id_dealChanged(int arg);
     void priceChanged(int arg);
 
