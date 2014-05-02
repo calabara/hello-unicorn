@@ -8,15 +8,23 @@ Rectangle {
     width: parent.width
     height: parent.height
     
-    property string currentPage : "TodoList"
+    property string currentPage : null
     property variant pageStack: []
     property variant params: { }
 
+    Component.onCompleted: {
+        contentView.show("TodoList");
+    }
+
     function show(view, param) {        
+        if (typeof param === 'undefined') {
+            param = -1;
+            console.log(param);
+        }
         contentView.setViewParam(view, param);
         contentView.currentPage = view;
-
     }
+
     function setViewParam(paramId, value) {
 
         var p = {};
@@ -28,6 +36,7 @@ Rectangle {
         p[paramId] = value;
         contentView.params = p;
     }
+
     function getViewParam(paramId) {
         return contentView.params[paramId];
     }
