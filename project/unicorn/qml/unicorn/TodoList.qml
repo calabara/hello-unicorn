@@ -63,7 +63,7 @@ Rectangle {
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
-                        contentView.setCurrentPage("viewevent", id);
+                        contentView.show("viewevent", id);
                         /* contentView.currentPage = "viewevent"; */
                     }
                 }
