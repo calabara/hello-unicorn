@@ -16,7 +16,8 @@ SOURCES += main.cpp \
     models/orgsqlmodel.cpp \
     models/dealobject.cpp \ 
     utils/dbutils.cpp \
-    models/contactobject.cpp
+    models/contactobject.cpp \
+    models/eventobject.cpp
 
 # Installation path
 # target.path =
@@ -39,4 +40,5 @@ HEADERS += \
     models/orgsqlmodel.h \
     models/dealobject.h \
     utils/dbutils.h \
-    models/contactobject.h
+    models/contactobject.h \
+    models/eventobject.h
