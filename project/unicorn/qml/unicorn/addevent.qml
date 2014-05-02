@@ -8,6 +8,7 @@ Rectangle {
     anchors.topMargin: 0
     color: "gray"
 
+    // wtf ??
     function changeButtonTitle(parentButton){
         console.log('haha');
         parentButton.text = this.text;
@@ -24,27 +25,31 @@ Rectangle {
 
         SaveButton {
             onClick: {
-                console.log('AAAAAA');
+                save();
             }
         }
     }
 
-    PageContent{
+    function save() {
+        console.log("save event");
+    }
 
+    // type of event for save from menu
+    property int idType: -1
+
+    PageContent{
         ColumnLayout{
             spacing: 4
             anchors.margins: 40
             anchors.fill: parent
 
             TextField {
-
                 id: eventTitle
                 anchors.horizontalCenter: parent.horizontalCenter
                 Layout.fillWidth: true
 
                 placeholderText: "Название"
             }
-
 
             ListModel{
                 id: typeModel
@@ -53,41 +58,40 @@ Rectangle {
 
             Menu {
                 id: eventTypeMenu
+                /* Repater { */
+                /*     model: modelTypes */
+                /* } */
                 MenuItem {
-
                     text: "встреча"
                     onTriggered:  changeButtonTitle(selectEventTypeButton);
                 }
+
                 MenuItem {
 
                     text: "просмотр недвижимости"
                     onTriggered:  changeButtonTitle(selectEventTypeButton);
                 }
+
                 MenuItem {
 
                     text: "переговоры"
                     onTriggered:  changeButtonTitle(selectEventTypeButton);
                 }
-                MenuItem {
 
+                MenuItem {
                     text: "неформальная обстановка"
                     onTriggered:  changeButtonTitle(selectEventTypeButton);
                 }
-
-
-
-
             }
+
              Button {
                 id: selectEventTypeButton
                 anchors.horizontalCenter: parent.horizontalCenter
                 Layout.fillWidth: true
 
-                text: "тип события"
                 onClicked: {
                     eventTypeMenu.popup();
                 }
-
             }
 
             TimePicker{
@@ -95,6 +99,7 @@ Rectangle {
             }
 
             DatePicker{
+                id: dateInput
             }
 
             TextArea{
@@ -103,59 +108,22 @@ Rectangle {
 
                 text: "Место"
             }
+
             Button {
                 anchors.horizontalCenter: parent.horizontalCenter
                 Layout.fillWidth: true
 
                 text: "Участники"
-
-            }
-
-            ListModel{
-                id: eventDealModel
-                ListElement { text: " квартиры 24"; }
-                ListElement { text: " квартиры 24"; }
-
-            }
-
-            Menu {
-                id: dealsMenu
-                MenuItem {
-
-                    text: "продажа квартиры 24"
-                    onTriggered:  changeButtonTitle(selectDealButton);
-                }
-                MenuItem {
-
-                    text: "Сделка 2"
-                    onTriggered:  changeButtonTitle(selectDealButton);
-                }
-                MenuItem {
-
-                    text: "стадион в сочи"
-                    onTriggered:  changeButtonTitle(selectDealButton);
-                }
-
-            }
-
-            Button {
-                id: selectDealButton
-                anchors.horizontalCenter: parent.horizontalCenter
-                Layout.fillWidth: true
-
-                text: "Сделка"
                 onClicked: {
-                    dealsMenu.popup();
+                    // TODO: list actors rewrite
                 }
-
             }
 
             Button {
                 anchors.horizontalCenter: parent.horizontalCenter
                 Layout.fillWidth: true
-
                 text: "Сохранить"
-
+                onClicked: save();
             }
         }
     }

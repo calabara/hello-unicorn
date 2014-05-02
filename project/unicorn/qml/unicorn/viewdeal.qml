@@ -67,6 +67,17 @@ Rectangle {
                 }
 
                 Text {
+                    id: dateTrade
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    Layout.fillWidth: true
+                    width: parent.width
+                    font.bold: true
+
+                    text: curDeal.dateTrade.toString();
+                }
+
+
+                Text {
                     id: dealMaxMoney
                     anchors.horizontalCenter: parent.horizontalCenter
                     Layout.fillWidth: true

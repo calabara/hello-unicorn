@@ -35,7 +35,13 @@ Rectangle {
     }
 
     function getColor(id_type) {
-        return "white";
+        switch (id_type) {
+            case 1: return "#bf3030";
+            case 2: return "#87f03c";
+            case 3: return "#7c71d8";
+            case 4: return "#e9fa71";
+            case 5: return "#04819e";
+        }
     }
 
     PageContent {

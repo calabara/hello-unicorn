@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import QtQuick.Controls 1.0
 import QtQuick.Layouts 1.0
+import event 1.0
 
 Rectangle {
     anchors.fill: parent
@@ -14,10 +15,13 @@ Rectangle {
 
         SaveButton {
             onClick: {
-                console.log('AAAAAA');
             }
         }
 
+    }
+
+    Event {
+        id: currentEvent
     }
 
     PageContent {
@@ -62,20 +66,13 @@ Rectangle {
                     Layout.fillWidth: true
 
                     text: "Участники"
-
                 }
-                Button {
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    Layout.fillWidth: true
 
-                    text: "События"
-                }
                 Button {
                     anchors.horizontalCenter: parent.horizontalCenter
                     Layout.fillWidth: true
 
                     text: "Сохранить"
-
                 }
             }
         }
