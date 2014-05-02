@@ -32,6 +32,13 @@ public:
     // contacts
     Q_INVOKABLE
     bool getAllContacts(int id_type);
+
+    // events
+    Q_INVOKABLE
+    bool getAllEvents();
+    Q_INVOKABLE
+    bool getEvents(int id_deal);
+
 private:
     QQmlContext * mContext;
 
@@ -39,5 +46,6 @@ private:
     OrgSqlModel * dealMembersModel = nullptr;
     OrgSqlModel * rolesModel = nullptr;
     OrgSqlModel * contactModel = nullptr;
+    OrgSqlModel * eventsModel = nullptr;
     DealObject * curDeal = nullptr;
 };

@@ -15,46 +15,27 @@ Rectangle {
                 contentView.show('addevent');
             }
         }
+
     }
 
-
-    ListModel {
-        id: tradesModel
-        ListElement {
-            nameAchors: "Встреча с нотариусом"
-            summ: "500 000 р"
-            dateTrade: "5.05.12, 12:15"
-            percent: "10"
-            flatAdress: "встреча"
-            status: "Успешно"
+    function loadModel() {
+        if (visible) {
+            var id_deal = contentView.getViewParam("TodoList");
+            OrgController.getEvents(id_deal);
+            console.log(id_deal);
         }
+    }
 
-        ListElement {
-            nameAchors: "Ужин с родителями"
-            summ: "300 000 р"
-            dateTrade: "10.05.12"
-            percent: "10"
-            flatAdress: "встреча"
-            status: "В процессе"
-        }
+    onVisibleChanged: {
+        loadModel();
+    }
 
-        ListElement {
-            nameAchors: "Купание в бассеине"
-            summ: "500 000 р"
-            dateTrade: "5.05.12"
-            percent: "10"
-            flatAdress: "звонок"
-            status: "Неудача"
-        }
+    Component.onCompleted: {
+        loadModel();
+    }
 
-        ListElement {
-            nameAchors: "Дворцовый переворот"
-            summ: "500 000 р"
-            dateTrade: "5.05.12"
-            percent: "10"
-            flatAdress: "звонок"
-            status: "Отложена"
-        }
+    function getColor(id_type) {
+        return "white";
     }
 
     PageContent {
@@ -63,36 +44,38 @@ Rectangle {
         // TODO: line up normal colors
         ListView {
             id: viewtrades
-            model: tradesModel
+            model: eventsModel
             anchors.fill: parent
             spacing: 4
 
             delegate: Rectangle {
                 width: viewtrades.width
-                height: nameAchorText.height + adress.height + 20
+                height: titleText.height + dateText.height +
+                        placeText.height +  20
                 radius: 2
+                color: getColor(type_id);
 
                 border {
                     color: "black"
-                    width: 1
+                    width: 2
                 }
 
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
-                         contentView.currentPage = "viewevent";
+                        contentView.setCurrentPage("viewevent", id);
+                        /* contentView.currentPage = "viewevent"; */
                     }
                 }
 
                 Text {
-                    id: nameAchorText
-                    text: nameAchors
+                    id: titleText
+                    text: eventTitle
 
                     anchors {
                         left: parent.left
                         top: parent.top
-                        topMargin: 6
-                        leftMargin: 2
+                        margins: 5
                     }
 
                     font {
@@ -101,29 +84,27 @@ Rectangle {
                 }
 
                 Text {
-                    id: adress
-                    text: flatAdress
-                    anchors.top: nameAchorText.bottom
-                    anchors.leftMargin: nameAchorText.anchors.leftMargin
-                    anchors.left: nameAchorText.left
+                    id: placeText
+                    text: place
+                    anchors.top: titleText.bottom
+                    anchors.leftMargin: titleText.anchors.leftMargin
+                    anchors.left:  titleText.left
+                    anchors.margins: 5
                 }
 
                 Text {
-                    id: dateTradeText
-                    text: dateTrade
+                    id: dateText
+                    text: date
 
                     anchors {
                         top: parent.top
-                        bottomMargin: 7
+                        /* bottomMargin: 7 */
                         right: parent.right
-                        leftMargin: 6
+                        /* leftMargin: 6 */
+                        margins: 5
                     }
                 }
-
-              }
+            }
         }
     }
-
-
-    // TODO: impelements this
 }

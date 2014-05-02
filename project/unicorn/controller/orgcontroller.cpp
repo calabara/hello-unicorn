@@ -18,7 +18,12 @@ OrgController::OrgController(QQmlContext * context) :
 
     contactModel = new OrgSqlModel();
     mContext->setContextProperty("contactModel", contactModel);
+    
+    eventsModel = new OrgSqlModel();
+    mContext->setContextProperty("eventsModel", eventsModel);
+    
     // oneDealModel = new OrgSqlModel();
+    //
     // mContext->setContextProperty("oneDeal", oneDealModel);
 }
 
@@ -30,6 +35,7 @@ OrgController::~OrgController() {
     delete dealMembersModel;
     delete contactModel;
     delete curDeal;
+    delete eventsModel;
 }
 
 bool OrgController::getAllDeals() {
@@ -128,5 +134,26 @@ void OrgController::getDeal(int id_deal) {
 bool OrgController::getAllContacts(int id_type) {
     contactModel->setQuery(QString("select * from contact where type_id = %1").arg(id_type));;
     return !contactModel->lastError().isValid();
+}
+
+bool OrgController::getAllEvents() {
+    eventsModel->setQuery("select e.id, e.date, e.place, e.deal_id, et.title \
+            from event e, event_type et where e.type_id = et.id");
+
+    return !eventsModel->lastError().isValid();
+}
+
+bool OrgController::getEvents(int id_deal) {
+    const QString patternQuery = "select e.id, e.title as eventTitle, e.date, e.place, e.deal_id, e.type_id, et.title etitle\
+    from event e, event_type et where %1 e.type_id = et.id";
+    if (id_deal != -1) {
+        QString query = patternQuery.arg(QString("e.id = %1 and").arg(id_deal));
+        eventsModel->setQuery(query);
+    } else {
+        QString query = patternQuery.arg("");
+        eventsModel->setQuery(query);
+    }
+
+    return !eventsModel->lastError().isValid();
 }
 

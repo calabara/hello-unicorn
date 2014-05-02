@@ -87,7 +87,7 @@ Rectangle {
                     Layout.fillWidth: true
                     text: "Участники"
                     onClicked: {
-                        contentView.currentPage = "ListActors";
+                        contentView.show(ListActors);
                     }
                 }
 
@@ -95,6 +95,10 @@ Rectangle {
                     anchors.horizontalCenter: parent.horizontalCenter
                     Layout.fillWidth: true
                     text: "События"
+                    onClicked: {
+                        var id_deal = contentView.getViewParam("id_deal");
+                        contentView.show("TodoList", id_deal);
+                    }
                 }
             }
 
