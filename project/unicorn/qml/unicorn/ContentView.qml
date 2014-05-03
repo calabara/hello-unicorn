@@ -42,19 +42,16 @@ Rectangle {
     }
 
     function goBack() {
-
         var stack = contentView.pageStack;
         stack.pop();
         var page = stack.pop();
 
         if (page !== undefined) {
-            contentView.currentPage = page;
+            contentView.show(page);
         }
 
         stack.push(page);
         contentView.pageStack = stack;
-
-        // console.log(contentView.pageStack, contentView.currentPage);
     }
 
     Keys.onReleased: {

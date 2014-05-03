@@ -15,7 +15,6 @@ Rectangle {
         isMenuButtonVisible: false
 
         BackButton{
-
         }
 
         SaveButton {
@@ -32,6 +31,7 @@ Rectangle {
         }
         return true;
     }
+
     function validate() {
         return validateField(dealAdress) &&
                 validateField(dealmaxMoney) &&

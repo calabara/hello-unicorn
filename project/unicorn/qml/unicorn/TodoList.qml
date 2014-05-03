@@ -9,6 +9,9 @@ Rectangle {
         id: toolbar
         title: "Органайзер"
 
+        BackButton {
+            id: backbutton
+        }
 
         AddButton {
             onClick: {
@@ -20,8 +23,14 @@ Rectangle {
     function loadModel() {
         if (visible) {
             var id_deal = contentView.getViewParam("TodoList");
+            if (id_deal == -1) {
+                toolbar.isMenuButtonVisible = true;
+                backbutton.visible = false;
+            } else {
+                toolbar.isMenuButtonVisible = false;
+                backbutton.visible = true;
+            }
             OrgController.getEvents(id_deal);
-            console.log(id_deal);
         }
     }
 

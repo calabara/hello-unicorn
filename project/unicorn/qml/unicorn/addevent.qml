@@ -9,11 +9,6 @@ Rectangle {
     anchors.topMargin: 0
     color: "gray"
 
-    // wtf ??
-    function changeButtonTitle(parentButton){
-        parentButton.text = this.text;
-    }
-
     MyToolBar {
         id: toolbar
         title: "Добавить событие"
@@ -38,8 +33,18 @@ Rectangle {
 
     function save() {
         // TODO: validate
+
+        // build dateTime
+        currentEvent.dateEvent = new Date(
+            dateInput.year,
+            dateInput.month,
+            dateInput.day,
+            timeInput.hour,
+            timeInput.minute
+        );
         currentEvent.save();
-        contentView.show("viewevent", currentEvent.idEvent);
+
+        contentView.goBack();
     }
 
     function loadEvent() {
@@ -115,6 +120,7 @@ Rectangle {
         return "Адрес";
     }
 
+
     PageContent{
         ColumnLayout{
             spacing: 4
@@ -178,6 +184,7 @@ Rectangle {
                 text: "Сохранить"
                 onClicked: save();
             }
+
         }
     }
 }

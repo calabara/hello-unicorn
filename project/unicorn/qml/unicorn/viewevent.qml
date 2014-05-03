@@ -55,6 +55,14 @@ Rectangle {
         }
     }
 
+    function deleteEvent() {
+        if (currentEvent.idEvent != -1) {
+            DbUtils.execQuery("delete from event where id=" 
+                    + currentEvent.idEvent);
+            contentView.goBack();
+        }
+    }
+
     PageContent{
         Substrate {
             color: getColor();
@@ -114,6 +122,14 @@ Rectangle {
                     onClicked: {
                         contentView.show("ListActors");
                     }
+                }
+
+                Button {
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    Layout.fillWidth: true
+                    text: "Удалить"
+                    visible: currentEvent.idEvent != -1
+                    onClicked: deleteEvent();
                 }
             }
         }
