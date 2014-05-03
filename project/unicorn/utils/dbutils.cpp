@@ -88,3 +88,8 @@ QString DbUtils::dealAdress(int id_deal) const {
     return q.value("flatAdress").toString();
 }
 
+bool DbUtils::execQuery(const QString & query) {
+    QSqlQuery q;
+    q.exec(query);
+    return !q.lastError().isValid();
+}

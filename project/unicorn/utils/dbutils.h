@@ -35,6 +35,9 @@ public:
     Q_INVOKABLE
     static QString dateFormat();
 
+    Q_INVOKABLE
+    bool execQuery(const QString & query);
+
 };
 
 #endif
