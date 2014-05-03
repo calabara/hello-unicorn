@@ -3,6 +3,8 @@
 #include <QtSql/QtSql>
 #include <QtSql/QSqlQuery>
 
+#include "models/roleobject.h"
+
 QString DbUtils::dateFormat() {
     return "dd.MM.yyyy hh:mm";
 }
@@ -91,5 +93,39 @@ QString DbUtils::dealAdress(int id_deal) const {
 bool DbUtils::execQuery(const QString & query) {
     QSqlQuery q;
     q.exec(query);
+    qDebug() << query;
     return !q.lastError().isValid();
+}
+
+QList<QObject*> DbUtils::getRoles() {
+    QList<QObject*> list;
+    QSqlQuery q("select * from role");
+    q.exec();
+    while (q.next()) {
+        auto role = new RoleObject();
+        role->setTitle(q.value("title").toString());
+        role->setId_role(q.value("id").toInt());
+        list << role;
+    }
+
+    return list;
+}
+
+QList<QObject*> DbUtils::getAllContactsAsList() {
+    QList<QObject*> list;
+    QSqlQuery q("select * from contact order by surname");
+    q.exec();
+
+    while (q.next()) {
+        auto contact = new ContactObject();
+        contact->setId_contact(q.value("id").toInt());
+        contact->setSurname(q.value("surname").toString());
+        contact->setName(q.value("name").toString());
+        contact->setPhone_number(q.value("phone_number").toString());
+        contact->setAdditional_info(q.value("additional_info").toString());
+        contact->setType_id(q.value("type_id").toInt());
+        list << contact;
+    }
+
+    return list;
 }

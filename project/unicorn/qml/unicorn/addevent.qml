@@ -139,7 +139,7 @@ Rectangle {
                 id: eventTypeMenu
             }
 
-             Button {
+            Button {
                 id: selectEventTypeButton
                 anchors.horizontalCenter: parent.horizontalCenter
                 Layout.fillWidth: true
@@ -175,7 +175,6 @@ Rectangle {
                 id: placeText
                 anchors.horizontalCenter: parent.horizontalCenter
                 Layout.fillWidth: true
-
             }
 
             Button {

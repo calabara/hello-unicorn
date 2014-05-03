@@ -38,6 +38,11 @@ public:
     Q_INVOKABLE
     bool execQuery(const QString & query);
 
+    Q_INVOKABLE
+    QList<QObject*> getRoles();
+
+    Q_INVOKABLE
+    QList<QObject*> getAllContactsAsList();
 };
 
 #endif

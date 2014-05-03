@@ -19,7 +19,8 @@ Rectangle {
 
         AddButton {
             onClick: {
-                contentView.show('AddActor');
+                var id_deal_or_event = contentView.getViewParam("ListActors");
+                contentView.show('AddActor', id_deal_or_event);
             }
         }
     }
