@@ -45,7 +45,6 @@ Rectangle {
             }
             contact.type_id = type_id;
             setContact();
-            console.log(id_c);
         }
     }
 

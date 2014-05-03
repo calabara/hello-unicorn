@@ -1,7 +1,10 @@
 #ifndef DBUTILS_H
 #define DBUTILS_H
 #include <QtCore/QObject>
+#include <QtCore/QList>
+
 #include "models/contactobject.h"
+#include "models/dealobject.h"
 #include "models/eventobject.h"
 
 class DbUtils : public QObject {
@@ -31,6 +34,7 @@ public:
 
     Q_INVOKABLE
     static QString dateFormat();
+
 };
 
 #endif

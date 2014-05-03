@@ -17,6 +17,12 @@ Item {
         dateD.maximum = daysInMonth;
     }
 
+    function setDate(targetDate) {
+        day = targetDate.getDate();
+        month = targetDate.getMonth();
+        year = targetDate.getFullYear();
+    }
+
     Component.onCompleted: {
         var date = new Date();
 

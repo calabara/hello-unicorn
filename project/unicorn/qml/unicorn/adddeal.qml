@@ -20,7 +20,7 @@ Rectangle {
 
         SaveButton {
             onClick: {
-                console.log('AAAAAA');
+                saveDeal();
             }
         }
     }

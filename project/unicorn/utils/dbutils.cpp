@@ -76,7 +76,6 @@ QString DbUtils::eventTypeAsString(int id_type) const {
 QString DbUtils::dealAdress(int id_deal) const {
     QSqlQuery q;
     q.prepare("select * from deal where id = ?");
-    qDebug() << "deal " << id_deal;
     q.addBindValue(id_deal);
     q.exec();
     q.next();
@@ -88,3 +87,4 @@ QString DbUtils::dealAdress(int id_deal) const {
 
     return q.value("flatAdress").toString();
 }
+

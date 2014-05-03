@@ -1,6 +1,10 @@
 #include "orgcontroller.h"
 
 #include "utils/dbutils.h"
+#include "models/eventtypeobject.h"
+
+#include <QtCore/QList>
+#include <QtCore/QVariant>
 
 OrgController::OrgController(QQmlContext * context) :
     mContext(context){
@@ -24,9 +28,17 @@ OrgController::OrgController(QQmlContext * context) :
     eventsModel = new OrgSqlModel();
     mContext->setContextProperty("eventsModel", eventsModel);
     
-    // oneDealModel = new OrgSqlModel();
-    //
-    // mContext->setContextProperty("oneDeal", oneDealModel);
+    QSqlQuery q;
+    QList<QObject*> list;
+    // auto list = new QList<QObject*>();
+    q.exec("select * from event_type");
+    while (q.next()) {
+        auto etype = new EventTypeObject();
+        etype->setTitle(q.value("title").toString());
+        etype->setIdType(q.value("id").toInt());
+        list << etype;
+    }
+    mContext->setContextProperty("eventTypes", QVariant::fromValue(list));
 }
 
 OrgController::~OrgController() {
@@ -37,7 +49,6 @@ OrgController::~OrgController() {
     delete dealMembersModel;
     delete contactModel;
     delete curDeal;
-    delete eventsModel;
 }
 
 bool OrgController::getAllDeals() {
@@ -161,3 +172,25 @@ bool OrgController::getEvents(int id_deal) {
     return !eventsModel->lastError().isValid();
 }
 
+void OrgController::getAllActiveDealsAsList() {
+    QList<QObject*> list;
+    QSqlQuery q;
+    q.exec("select * from deal where state_key = 1");
+
+    while(q.next()) {
+        auto deal = new DealObject();
+        deal->setFlatAdress(q.value("flatAdress").toString());
+        deal->setMax_price(q.value("max_price").toInt());
+        deal->setMin_price(q.value("min_price").toInt());
+        QDateTime date = QDateTime::fromString(q.value("dateTrade").toString(), DbUtils::dateFormat());
+        deal->setDateTrade(date);
+
+        deal->setPrice(q.value("price").toInt());
+        deal->setId_deal(q.value("id").toInt());
+        deal->setState_key(q.value("state_key").toInt());
+
+        list.append(deal);
+    }
+
+    mContext->setContextProperty("activeDeals", QVariant::fromValue(list));
+}

@@ -8,6 +8,11 @@ Item {
     width: timeLayout.width
     height: timeLayout.height
 
+    function setTime(targetDate) {
+        hour = targetDate.getHours();
+        minute = targetDate.getMinutes();
+    }
+
     RowLayout{
         id: timeLayout
         spacing: 3

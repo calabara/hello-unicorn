@@ -12,10 +12,9 @@ Rectangle {
 
         AddButton {
             onClick: {
-                contentView.show('addevent');
+                contentView.show('addevent', -1);
             }
         }
-
     }
 
     function loadModel() {

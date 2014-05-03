@@ -58,7 +58,6 @@ Rectangle {
                     anchors.horizontalCenter: parent.horizontalCenter
                     Layout.fillWidth: true
                     width: parent.width
-
                 }
 
                 Button {

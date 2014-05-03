@@ -20,7 +20,8 @@ Rectangle {
 
         EditButton{
             onClick: {
-                contentView.show('editevent', currentEvent.idEvent);
+                console.log(currentEvent.idEvent);
+                contentView.show('addevent', currentEvent.idEvent);
             }
         }
     }

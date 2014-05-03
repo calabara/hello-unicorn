@@ -36,13 +36,25 @@ bool EventObject::save() {
         return false;
     }
 
+    if (idEvent() == -1) {
+        q.exec("SELECT last_insert_rowid()");
+        q.next();
+        setIdEvent(q.value(0).toInt());
+    }
+
     return true;
 }
 
 void EventObject::empty() {
     setTitle("");
     setType_id(1);
-    setDateEvent(QDateTime());
+
+    QDateTime date = QDateTime::currentDateTime();
+    QString dateStr = date.toString(DbUtils::dateFormat());
+    setDateEvent(QDateTime::fromString(dateStr, DbUtils::dateFormat()));
+
+    setDateEvent(QDateTime::currentDateTime());
+
     setIdEvent(-1);
     setPlace("");
     setDeal_id(1);

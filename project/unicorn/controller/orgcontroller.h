@@ -29,6 +29,9 @@ public:
     Q_INVOKABLE
     void getDeal(int id_deal);
 
+    Q_INVOKABLE
+    void getAllActiveDealsAsList();
+
     // contacts
     Q_INVOKABLE
     bool getAllContacts(int id_type);

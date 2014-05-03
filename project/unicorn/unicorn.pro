@@ -17,7 +17,8 @@ SOURCES += main.cpp \
     models/dealobject.cpp \ 
     utils/dbutils.cpp \
     models/contactobject.cpp \
-    models/eventobject.cpp
+    models/eventobject.cpp \ 
+    models/eventtypeobject.cpp
 
 # Installation path
 # target.path =
@@ -41,4 +42,5 @@ HEADERS += \
     models/dealobject.h \
     utils/dbutils.h \
     models/contactobject.h \
-    models/eventobject.h
+    models/eventobject.h \
+    models/eventtypeobject.h

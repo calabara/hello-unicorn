@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import QtQuick.Controls 1.0
 import QtQuick.Layouts 1.0
+import event 1.0
 import "."
 
 Rectangle {
@@ -10,7 +11,6 @@ Rectangle {
 
     // wtf ??
     function changeButtonTitle(parentButton){
-        console.log('haha');
         parentButton.text = this.text;
     }
 
@@ -30,12 +30,90 @@ Rectangle {
         }
     }
 
-    function save() {
-        console.log("save event");
+    Event {
+        id: currentEvent
+        place: placeText.text
+        title: eventTitle.text
     }
 
-    // type of event for save from menu
-    property int idType: -1
+    function save() {
+        // TODO: validate
+        currentEvent.save();
+        contentView.show("viewevent", currentEvent.idEvent);
+    }
+
+    function loadEvent() {
+        if (visible){
+            var id_evt= contentView.getViewParam("addevent");
+            console.log(id_evt);
+            if (id_evt != -1) {
+                DbUtils.readEvent(id_evt, currentEvent);
+            } else {
+                currentEvent.empty();
+            }
+
+            dateInput.setDate(currentEvent.dateEvent);
+            timeInput.setTime(currentEvent.dateEvent);
+            setEvent();
+        }
+    }
+
+    Component.onCompleted: {
+        loadEvent();
+
+        OrgController.getAllActiveDealsAsList();
+        console.log(activeDeals.keys);
+        for (var key in activeDeals) {
+            console.log(key);
+            var item = dealMenu.addItem(activeDeals[key].flatAdress);
+            (function(localKey){
+                item.triggered.connect(function() {
+                    currentEvent.deal_id = activeDeals[localKey].id_deal;
+                });
+            })(key);
+        }
+
+        for (var key in eventTypes) {
+            var item = eventTypeMenu.addItem(eventTypes[key].title);
+            // thanks pragmadash :)
+            (function(localKey){
+                item.triggered.connect(function() {
+                    idType = eventTypes[localKey].idType;
+                });
+            })(key);
+        }
+
+    }
+
+    onVisibleChanged: {
+        loadEvent();
+    }
+
+    function setEvent() {
+        eventTitle.text = currentEvent.title;
+        placeText.text = currentEvent.place;
+    }
+
+    // type of event for savingfrom menu
+    property alias idType: currentEvent.type_id
+
+    function getTitleEvent() {
+        for (var key in eventTypes) {
+            if (eventTypes[key].idType == idType) {
+                return eventTypes[key].title;
+            }
+        }
+        return "";
+    }
+
+    function getFlatAdress() {
+        for (var key in activeDeals) {
+            if (activeDeals[key].id_deal == currentEvent.deal_id) {
+                return activeDeals[key].flatAdress;
+            }
+        }
+        return "Адрес";
+    }
 
     PageContent{
         ColumnLayout{
@@ -51,51 +129,36 @@ Rectangle {
                 placeholderText: "Название"
             }
 
-            ListModel{
-                id: typeModel
-                ListElement { text: "встреча"; }
-            }
-
             Menu {
                 id: eventTypeMenu
-                /* Repater { */
-                /*     model: modelTypes */
-                /* } */
-                MenuItem {
-                    text: "встреча"
-                    onTriggered:  changeButtonTitle(selectEventTypeButton);
-                }
-
-                MenuItem {
-
-                    text: "просмотр недвижимости"
-                    onTriggered:  changeButtonTitle(selectEventTypeButton);
-                }
-
-                MenuItem {
-
-                    text: "переговоры"
-                    onTriggered:  changeButtonTitle(selectEventTypeButton);
-                }
-
-                MenuItem {
-                    text: "неформальная обстановка"
-                    onTriggered:  changeButtonTitle(selectEventTypeButton);
-                }
             }
 
              Button {
                 id: selectEventTypeButton
                 anchors.horizontalCenter: parent.horizontalCenter
                 Layout.fillWidth: true
-
-                onClicked: {
+                text: getTitleEvent();
+                onClicked:{
                     eventTypeMenu.popup();
                 }
             }
 
+            Menu {
+                id: dealMenu
+            }
+
+            Button {
+                id: selectDealMenu
+                anchors.horizontalCenter: parent.horizontalCenter
+                Layout.fillWidth: true
+                text: getFlatAdress();
+                onClicked: {
+                    dealMenu.popup();
+                }
+            }
+
             TimePicker{
-                id: time
+                id: timeInput
             }
 
             DatePicker{
@@ -103,20 +166,10 @@ Rectangle {
             }
 
             TextArea{
+                id: placeText
                 anchors.horizontalCenter: parent.horizontalCenter
                 Layout.fillWidth: true
 
-                text: "Место"
-            }
-
-            Button {
-                anchors.horizontalCenter: parent.horizontalCenter
-                Layout.fillWidth: true
-
-                text: "Участники"
-                onClicked: {
-                    // TODO: list actors rewrite
-                }
             }
 
             Button {
