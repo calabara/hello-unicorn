@@ -18,7 +18,8 @@ SOURCES += main.cpp \
     utils/dbutils.cpp \
     models/contactobject.cpp \
     models/eventobject.cpp \ 
-    models/eventtypeobject.cpp
+    models/eventtypeobject.cpp \
+    models/roleobject.cpp
 
 # Installation path
 # target.path =
@@ -43,4 +44,5 @@ HEADERS += \
     utils/dbutils.h \
     models/contactobject.h \
     models/eventobject.h \
-    models/eventtypeobject.h
+    models/eventtypeobject.h \
+    models/roleobject.h
