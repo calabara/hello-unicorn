@@ -16,6 +16,8 @@ Rectangle {
         contentView.show("TodoList");
     }
 
+    property bool isDealActors: true
+
     function show(view, param) {        
         if (typeof param === 'undefined') {
             param = -1;
@@ -26,7 +28,6 @@ Rectangle {
     }
 
     function setViewParam(paramId, value) {
-
         var p = {};
 
         for (var prop in contentView.params) {
@@ -47,7 +48,7 @@ Rectangle {
         var page = stack.pop();
 
         if (page !== undefined) {
-            contentView.show(page);
+            currentPage = page;
         }
 
         stack.push(page);
