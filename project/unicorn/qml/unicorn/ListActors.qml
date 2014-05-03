@@ -16,35 +16,32 @@ Rectangle {
 
         BackButton {
         }
+
         AddButton {
             onClick: {
                 contentView.show('AddActor');
             }
         }
-
     }
 
-    function compareDate(date) {
-        // TODO: implements this. color selection logic
-        return true;
+    function loadActors() {
+        if (visible) {
+            if (contentView.isDealActors) {
+                var id_deal = contentView.getViewParam("ListActors");
+                OrgController.getDealActors(id_deal);
+            } else {
+                var id_event = contentView.getViewParam("ListActors");
+                OrgController.getEventActors(id_event);
+            }
+        }
     }
 
-    ListModel {
-        id: contactsModel
-        ListElement {
-            name: "Иванов И.И."
-            role: "Покупатель"
-        }
+    onVisibleChanged: {
+        loadActors();
+    }
 
-        ListElement {
-            name: "Басков И.И."
-            role: "Продователь"
-        }
-
-        ListElement {
-            name: "Басков И.И."
-            role: "Свидетель"
-        }
+    Component.onCompleted: {
+        loadActors();
     }
 
     PageContent {
@@ -53,7 +50,7 @@ Rectangle {
         // TODO: line up normal colors
         ListView {
             id: viewcontacts
-            model: contactsModel
+            model: actorsModel
             anchors.fill: parent
             spacing: 4
 
@@ -67,17 +64,16 @@ Rectangle {
                     width: 1
                 }
 
-
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
-                         contentView.currentPage = "viewcontact";
+                        contentView.show("viewcontact", id_contact);
                     }
                 }
 
                 Text {
                     id: nameText
-                    text: name
+                    text: name + " " + surname
 
                     anchors {
                         left: parent.left
@@ -96,7 +92,6 @@ Rectangle {
                     anchors.leftMargin: nameText.anchors.leftMargin
                     anchors.left: nameText.left
                 }
-
             }
         }
     }

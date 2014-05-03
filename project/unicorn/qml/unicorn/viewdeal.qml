@@ -98,7 +98,9 @@ Rectangle {
                     Layout.fillWidth: true
                     text: "Участники"
                     onClicked: {
-                        contentView.show("ListActors");
+                        var id_deal = contentView.getViewParam("id_deal");
+                        contentView.isDealActors = true;
+                        contentView.show("ListActors", id_deal);
                     }
                 }
 

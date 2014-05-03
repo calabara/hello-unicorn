@@ -53,6 +53,7 @@ Rectangle {
             case 4: return "#e9fa71";
             case 5: return "#04819e";
         }
+        return "white";
     }
 
     function deleteEvent() {
@@ -120,7 +121,8 @@ Rectangle {
 
                     text: "Участники"
                     onClicked: {
-                        contentView.show("ListActors");
+                        contentView.isDealActors = false;
+                        contentView.show("ListActors", currentEvent.idEvent);
                     }
                 }
 

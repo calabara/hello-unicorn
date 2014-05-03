@@ -39,6 +39,9 @@ OrgController::OrgController(QQmlContext * context) :
         list << etype;
     }
     mContext->setContextProperty("eventTypes", QVariant::fromValue(list));
+
+    actorsModel = new OrgSqlModel();
+    mContext->setContextProperty("actorsModel", actorsModel);
 }
 
 OrgController::~OrgController() {
@@ -49,6 +52,7 @@ OrgController::~OrgController() {
     delete dealMembersModel;
     delete contactModel;
     delete curDeal;
+    delete actorsModel;
 }
 
 bool OrgController::getAllDeals() {
@@ -193,4 +197,21 @@ void OrgController::getAllActiveDealsAsList() {
     }
 
     mContext->setContextProperty("activeDeals", QVariant::fromValue(list));
+}
+
+bool OrgController::getDealActors(int id_deal) {
+    QString query = "select ec.id, r.title as role, c.name, c.surname \
+                     from deal_contact_mult ec, contact c, role r \
+                     where ec.id_deal = %1 and ec.id_contact = c.id and r.id = ec.id_role";
+    actorsModel->setQuery(query.arg(id_deal));
+    return !actorsModel->lastError().isValid();
+}
+
+bool OrgController::getEventActors(int id_event) {
+    QString query = "select ec.id, r.title as role, c.name, c.surname \
+                     from event_contact_mult ec, contact c, role r \
+                     where ec.id_event = %1 and ec.id_contact = c.id and r.id = ec.id_role";
+    qDebug() << query.arg(id_event);
+    actorsModel->setQuery(query.arg(id_event));
+    return !actorsModel->lastError().isValid();
 }

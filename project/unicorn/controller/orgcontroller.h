@@ -42,6 +42,12 @@ public:
     Q_INVOKABLE
     bool getEvents(int id_deal);
 
+    // actors
+    Q_INVOKABLE
+    bool getDealActors(int id_deal);
+    Q_INVOKABLE
+    bool getEventActors(int id_event);
+
 private:
     QQmlContext * mContext;
 
@@ -50,5 +56,6 @@ private:
     OrgSqlModel * rolesModel = nullptr;
     OrgSqlModel * contactModel = nullptr;
     OrgSqlModel * eventsModel = nullptr;
+    OrgSqlModel * actorsModel = nullptr;
     DealObject * curDeal = nullptr;
 };
