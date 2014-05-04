@@ -13,5 +13,6 @@
         <file>icons/glyphicons_446_floppy_save.png</file>
         <file>icons/back.png</file>
         <file>icons/triangle.png</file>
+        <file>data_base/db.sql</file>
     </qresource>
 </RCC>

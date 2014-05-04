@@ -2,6 +2,7 @@
 #define DBASE_CONNECTOR_H
 
 #include <QtSql/QtSql>
+#include <QtCore/QString>
 
 class DBaseConnector {
 public:
@@ -13,18 +14,24 @@ public:
 
 private:
     static DBaseConnector *inst;
+    const QString fileDB = "data_base.db";
+    const QString dirDB = ".unicorn";
 
     Status status;
 
     QSqlDatabase mDb;
 
+    bool createDataBase();
+    bool openDataBase();
+
+    QString pathDir();
+    QString pathFile();
 private:
     DBaseConnector(){
         status = StatusUninitialized;
     }
 
 public:
-
     static DBaseConnector* Instance();
     static void DestroyInstance();
 
@@ -43,7 +50,6 @@ public:
     QSqlDatabase & db() {
         return mDb;
     }
-
 };
 
 #endif
