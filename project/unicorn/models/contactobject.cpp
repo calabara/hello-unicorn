@@ -2,6 +2,7 @@
 
 #include <QtSql/QSqlQuery>
 #include <QtSql/QSqlError>
+#include <QtSql/QSqlResult>
 #include <QtCore/QVariant>
 #include <QtCore/QDebug>
 
@@ -46,4 +47,41 @@ void ContactObject::empty() {
     this->setPhone_number("");
     this->setType_id(1);
     this->setId_contact(-1);
+}
+
+bool ContactObject::isBeCanDelete() {
+    QSqlQuery q;
+    q.prepare("select * from event_contact_mult where id_contact = ?");
+    q.addBindValue(id_contact());
+    q.exec();
+
+    int rowCount = 0;
+    while (q.next()) {
+        rowCount += 1;
+    }
+
+    if (rowCount > 0) {
+        return false;
+    }
+
+    q.prepare("select * from deal_contact_mult where id_contact = ?");
+    q.addBindValue(id_contact());
+    q.exec();
+    rowCount = 0;
+    while (q.next()) {
+        rowCount += 1;
+    }
+
+    if (rowCount > 0) {
+        return false;
+    }
+
+    return true;
+}
+
+bool ContactObject::deleteContact() {
+    QSqlQuery q;
+    q.prepare("delete from contact where id = ?");
+    q.addBindValue(id_contact());
+    return q.exec();
 }

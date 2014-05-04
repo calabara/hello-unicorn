@@ -34,6 +34,7 @@ Rectangle {
             var id_con = contentView.getViewParam("viewcontact");
             DbUtils.readContact(id_con, contact);
             console.log(id_con);
+            deleteBtn.visible = contact.isBeCanDelete();
         }
     }
 
@@ -93,6 +94,14 @@ Rectangle {
                     }
                 }
 
+                Button {
+                    id: deleteBtn
+                    text: " Удалить "
+                    onClicked: {
+                        contact.deleteContact();
+                        contentView.goBack();
+                    }
+                }
             }
         }
     }

@@ -126,14 +126,8 @@ Rectangle {
 
                 Text {
                     id: summTradeText
-                    //text: if (status == "Успешно" || status == "В процессе") {
-                    //         summ;
-                    //      } else {
-                    //          "    -     ";
-                    //      }
                     text: price != -1 ? price : ""
 
-//                    visible: status == "Успешно" || status == "В процессе"
                     anchors {
                         right: parent.right
                         rightMargin: 8

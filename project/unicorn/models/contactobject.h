@@ -7,8 +7,7 @@ class ContactObject : public QObject
 {
     Q_OBJECT
 
-    QString m_name;
-    QString m_surname;
+    QString m_name; QString m_surname;
     QString m_phone_number;
     int m_type_id;
     QString m_additional_info;
@@ -120,6 +119,10 @@ public slots:
 
     /// Empty all field in this object
     void empty();
+
+    bool isBeCanDelete();
+
+    bool deleteContact();
 };
 
 #endif // CONTACTOBJECT_H
