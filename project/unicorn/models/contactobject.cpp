@@ -67,6 +67,7 @@ bool ContactObject::isBeCanDelete() {
     q.prepare("select * from deal_contact_mult where id_contact = ?");
     q.addBindValue(id_contact());
     q.exec();
+
     rowCount = 0;
     while (q.next()) {
         rowCount += 1;
@@ -85,3 +86,4 @@ bool ContactObject::deleteContact() {
     q.addBindValue(id_contact());
     return q.exec();
 }
+

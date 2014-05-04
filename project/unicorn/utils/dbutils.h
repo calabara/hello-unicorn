@@ -43,6 +43,12 @@ public:
 
     Q_INVOKABLE
     QList<QObject*> getAllContactsAsList();
+
+    Q_INVOKABLE
+    bool deleteActorFromDeal(int id_deal, int id_contact);
+
+    Q_INVOKABLE
+    bool deleteActorFromEvent(int id_event, int id_contact);
 };
 
 #endif

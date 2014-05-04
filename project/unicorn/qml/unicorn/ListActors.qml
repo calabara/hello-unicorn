@@ -45,6 +45,17 @@ Rectangle {
         loadActors();
     }
 
+    function deleteActor(id_contact) {
+        if (contentView.isDealActors) {
+            var id_deal = contentView.getViewParam("ListActors");
+            DbUtils.deleteActorFromDeal(id_deal, id_contact);
+        } else {
+            var id_event = contentView.getViewParam("ListActors");
+            DbUtils.deleteActorFromEvent(id_event, id_contact);
+        }
+        loadActors();
+    }
+
     PageContent {
         id: pageContent
 
@@ -92,6 +103,17 @@ Rectangle {
                     anchors.top: nameText.bottom
                     anchors.leftMargin: nameText.anchors.leftMargin
                     anchors.left: nameText.left
+                }
+
+                Button {
+                    id: deleteBtn
+                    text: "Убрать"
+                    anchors.right: parent.right
+                    anchors.margins: 5
+                    anchors.verticalCenter: parent.verticalCenter
+                    onClicked:{
+                        deleteActor(id_contact);
+                    }
                 }
             }
         }

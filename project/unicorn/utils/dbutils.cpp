@@ -129,3 +129,20 @@ QList<QObject*> DbUtils::getAllContactsAsList() {
 
     return list;
 }
+
+bool DbUtils::deleteActorFromEvent(int id_event, int id_contact) {
+    QSqlQuery q;
+    q.exec("delete from event_contact_mult where id_event = ? and id_contact = ?");
+    q.addBindValue(id_event);
+    q.addBindValue(id_contact);
+    return q.exec();
+}
+
+bool DbUtils::deleteActorFromDeal(int id_deal, int id_contact) {
+    QSqlQuery q;
+    q.exec("delete from deal_contact_mult where id_deal = ? and id_contact = ?");
+    q.addBindValue(id_deal);
+    q.addBindValue(id_contact);
+    return q.exec();
+}
+

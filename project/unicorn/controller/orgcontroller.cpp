@@ -200,7 +200,7 @@ void OrgController::getAllActiveDealsAsList() {
 }
 
 bool OrgController::getDealActors(int id_deal) {
-    QString query = "select ec.id, r.title as role, c.name, c.surname \
+    QString query = "select ec.id, r.title as role, c.name, c.surname, c.id as id_contact \
                      from deal_contact_mult ec, contact c, role r \
                      where ec.id_deal = %1 and ec.id_contact = c.id and r.id = ec.id_role";
     actorsModel->setQuery(query.arg(id_deal));
@@ -208,7 +208,7 @@ bool OrgController::getDealActors(int id_deal) {
 }
 
 bool OrgController::getEventActors(int id_event) {
-    QString query = "select ec.id, r.title as role, c.name, c.surname \
+    QString query = "select ec.id, r.title as role, c.name, c.surname, c.id as id_contact \
                      from event_contact_mult ec, contact c, role r \
                      where ec.id_event = %1 and ec.id_contact = c.id and r.id = ec.id_role";
     qDebug() << query.arg(id_event);
