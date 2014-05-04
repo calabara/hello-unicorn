@@ -87,8 +87,8 @@ Rectangle {
         // TODO: line up normal colors
 
         ColumnLayout {
-            width: parent.width
-            anchors.margins: 22
+            width: parent.width / 1.5
+            anchors.centerIn: parent
             spacing: 50
 
             Menu {
@@ -125,7 +125,4 @@ Rectangle {
         }
 
     }
-
-
-    // TODO: impelements this
 }

@@ -20,7 +20,7 @@ Rectangle {
         EditButton{
             onClick: {
                 var id_deal = contentView.getViewParam("id_deal");
-                contentView.show('editcontact', id_deal);
+                contentView.show('editdeal', id_deal);
             }
         }
     }
@@ -73,7 +73,9 @@ Rectangle {
                     width: parent.width
                     font.bold: true
 
-                    text: curDeal.dateTrade.toString();
+                    text: Qt.formatDateTime(curDeal.dateTrade, 
+                                "dd.mm.yyyy hh:mm")
+
                 }
 
 

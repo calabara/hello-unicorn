@@ -45,6 +45,9 @@ public:
     QList<QObject*> getAllContactsAsList();
 
     Q_INVOKABLE
+    QList<QObject*> getAllStatesDealAsList();
+
+    Q_INVOKABLE
     bool deleteActorFromDeal(int id_deal, int id_contact);
 
     Q_INVOKABLE

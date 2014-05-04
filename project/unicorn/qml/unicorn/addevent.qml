@@ -71,21 +71,21 @@ Rectangle {
         for (var key in activeDeals) {
             console.log(key);
             var item = dealMenu.addItem(activeDeals[key].flatAdress);
-            (function(localKey){
-                item.triggered.connect(function() {
+            (function(localKey){
+                item.triggered.connect(function() {
                     currentEvent.deal_id = activeDeals[localKey].id_deal;
-                });
-            })(key);
+                });
+            })(key);
         }
 
         for (var key in eventTypes) {
             var item = eventTypeMenu.addItem(eventTypes[key].title);
             // thanks pragmadash :)
-            (function(localKey){
-                item.triggered.connect(function() {
+            (function(localKey){
+                item.triggered.connect(function() {
                     idType = eventTypes[localKey].idType;
-                });
-            })(key);
+                });
+            })(key);
         }
 
     }
@@ -183,7 +183,6 @@ Rectangle {
                 text: "Сохранить"
                 onClicked: save();
             }
-
         }
     }
 }

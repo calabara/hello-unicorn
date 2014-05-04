@@ -11,7 +11,7 @@
 
 void DealObject::save() const {
     const QString queryStr = "update deal set flatAdress = ?, min_price = ?, \
-        max_price = ?, dateTrade = ?, price = ? where id_deal = ? ";
+        max_price = ?, dateTrade = ?, price = ?, state_key = ? where id = ? ";
 
     QString date = dateTrade().toString(DbUtils::dateFormat());
     QSqlQuery q;
@@ -21,6 +21,8 @@ void DealObject::save() const {
     q.addBindValue(max_price());
     q.addBindValue(date);
     q.addBindValue(price());
+    q.addBindValue(state_key());
+    q.addBindValue(id_deal());
 
     q.exec();
 

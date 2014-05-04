@@ -11,16 +11,48 @@ Rectangle {
     MyToolBar {
         id: toolbar
         title: "Редактировать "
+        isMenuButtonVisible: false
         BackButton {
             id: back
         }
 
         SaveButton {
             onClick: {
-                console.log('AAAAAA');
+                saveDeal();
             }
         }
     }
+
+    function saveDeal() {
+        curDeal.price = (dealMoney.text*1 != 0) ? dealMoney.text*1 : -1;
+        curDeal.max_price = dealmaxMoney.text * 1;
+        curDeal.flatAdress = dealTitle.text;
+        curDeal.state_key = states[curIndexState].idState;
+
+        curDeal.save();
+        contentView.goBack();
+    }
+
+    Component.onCompleted: {
+        states = DbUtils.getAllStatesDealAsList();
+        for (var key in states) {
+            console.log(key);
+            var item = stateMenu.addItem(states[key].title);
+            if (curDeal.state_key == states[key].idState){
+                curIndexState = key;
+            }
+            (function(localKey){
+                item.triggered.connect(function() {
+                    curIndexState = localKey;
+                    stateBtn.text = states[curIndexState].title;
+                });
+            })(key);
+        }
+        stateBtn.text = states[curIndexState].title;
+    }
+
+    property variant states: null
+    property int curIndexState: 0
 
     PageContent{
         ColumnLayout{
@@ -29,68 +61,69 @@ Rectangle {
             anchors.fill: parent
 
             TextField {
-
                 id: dealTitle
+                text: curDeal.flatAdress
                 anchors.horizontalCenter: parent.horizontalCenter
                 Layout.fillWidth: true
 
-                placeholderText: "Название"
+                placeholderText: "Адрес"
             }
 
             TextField {
                 id: dealmaxMoney
+                text: curDeal.max_price
                 anchors.horizontalCenter: parent.horizontalCenter
                 Layout.fillWidth: true
                 width: parent.width
 
-                placeholderText: "Максимальная сумма"
+                placeholderText: "Желаемая сумма"
             }
-            TextField {
 
+            TextField {
                 id: dealMoney
+                text: curDeal.price != -1 ? curDeal.price : ""
                 anchors.horizontalCenter: parent.horizontalCenter
                 Layout.fillWidth: true
                 width: parent.width
-
                 placeholderText: "Договорились на сумме"
             }
 
-            TextField {
-                id: dealminMoney
-                anchors.horizontalCenter: parent.horizontalCenter
-                Layout.fillWidth: true
-                width: parent.width
+            // TextField {
+            //     id: dealminMoney
+            //     anchors.horizontalCenter: parent.horizontalCenter
+            //     Layout.fillWidth: true
+            //     width: parent.width
+            //
+            //     placeholderText: "Минимальная сумма"
+            // }
 
-                placeholderText: "Минимальная сумма"
-            }
+            // ComboBox{
+            //     id: dealState
+            //     anchors.horizontalCenter: parent.horizontalCenter
+            //     Layout.fillWidth: true
+            //     width: parent.width
+            // }
 
-            ComboBox{
-                id: dealState
-                anchors.horizontalCenter: parent.horizontalCenter
-                Layout.fillWidth: true
-                width: parent.width
-
+            Menu {
+                id: stateMenu
             }
 
             Button {
-                anchors.horizontalCenter: parent.horizontalCenter
+                id: stateBtn
                 Layout.fillWidth: true
-
-                text: "Участники"
-
+                onClicked: {
+                    stateMenu.popup();
+                }
             }
-            Button {
-                anchors.horizontalCenter: parent.horizontalCenter
-                Layout.fillWidth: true
 
-                text: "События"
-            }
             Button {
                 anchors.horizontalCenter: parent.horizontalCenter
                 Layout.fillWidth: true
 
                 text: "Сохранить"
-
+                onClicked: {
+                    saveDeal();
+                }
             }
         }
     }

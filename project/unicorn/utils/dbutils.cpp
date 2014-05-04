@@ -4,6 +4,7 @@
 #include <QtSql/QSqlQuery>
 
 #include "models/roleobject.h"
+#include "models/dealstateobject.h"
 
 QString DbUtils::dateFormat() {
     return "dd.MM.yyyy hh:mm";
@@ -126,7 +127,6 @@ QList<QObject*> DbUtils::getAllContactsAsList() {
         contact->setType_id(q.value("type_id").toInt());
         list << contact;
     }
-
     return list;
 }
 
@@ -146,3 +146,17 @@ bool DbUtils::deleteActorFromDeal(int id_deal, int id_contact) {
     return q.exec();
 }
 
+QList<QObject*> DbUtils::getAllStatesDealAsList() {
+    QList<QObject*> list;
+    QSqlQuery q("select * from deal_state");
+    q.exec();
+
+    while (q.next()) {
+        auto state = new DealStateObject();
+        state->setTitle(q.value("title").toString());
+        state->setIdState(q.value("id").toInt());
+        list << state;
+    }
+
+    return list;
+}

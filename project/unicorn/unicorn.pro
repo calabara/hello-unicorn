@@ -19,7 +19,8 @@ SOURCES += main.cpp \
     models/contactobject.cpp \
     models/eventobject.cpp \ 
     models/eventtypeobject.cpp \
-    models/roleobject.cpp
+    models/roleobject.cpp \
+    models/dealstateobject.cpp
 
 # Installation path
 # target.path =
@@ -45,4 +46,5 @@ HEADERS += \
     models/contactobject.h \
     models/eventobject.h \
     models/eventtypeobject.h \
-    models/roleobject.h
+    models/roleobject.h \
+    models/dealstateobject.h

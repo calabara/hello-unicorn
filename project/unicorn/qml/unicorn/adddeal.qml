@@ -62,7 +62,6 @@ Rectangle {
             anchors.fill: parent
 
             TextField {
-                // TODO: wtf??!
                 id: dealAdress
                 anchors.horizontalCenter: parent.horizontalCenter
                 Layout.fillWidth: true
