@@ -65,7 +65,7 @@ Rectangle {
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
-                        contentView.currentPage = filename;
+                        contentView.show(filename);
                         onMenu();
                     }
                 }
