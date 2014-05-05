@@ -42,6 +42,7 @@ Rectangle {
             timeInput.hour,
             timeInput.minute
         );
+
         currentEvent.save();
 
         contentView.goBack();
@@ -50,11 +51,14 @@ Rectangle {
     function loadEvent() {
         if (visible){
             var id_evt= contentView.getViewParam("addevent");
-            console.log(id_evt);
             if (id_evt != -1) {
                 DbUtils.readEvent(id_evt, currentEvent);
             } else {
                 currentEvent.empty();
+                var id_deal = contentView.getViewParam("TodoList");
+                if (id_deal != -1) {
+                    currentEvent.deal_id = id_deal;
+                }
             }
 
             dateInput.setDate(currentEvent.dateEvent);

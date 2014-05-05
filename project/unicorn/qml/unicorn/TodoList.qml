@@ -23,6 +23,7 @@ Rectangle {
     function loadModel() {
         if (visible) {
             var id_deal = contentView.getViewParam("TodoList");
+            console.log("load events deal - " + id_deal);
             if (id_deal == -1) {
                 toolbar.isMenuButtonVisible = true;
                 backbutton.visible = false;

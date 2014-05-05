@@ -167,7 +167,7 @@ bool OrgController::getEvents(int id_deal) {
     const QString patternQuery = "select e.id, e.title as eventTitle, e.date, e.place, e.deal_id, e.type_id, et.title etitle\
     from event e, event_type et where %1 e.type_id = et.id";
     if (id_deal != -1) {
-        QString query = patternQuery.arg(QString("e.id = %1 and").arg(id_deal));
+        QString query = patternQuery.arg(QString("e.deal_id= %1 and").arg(id_deal));
         eventsModel->setQuery(query);
     } else {
         QString query = patternQuery.arg("");
