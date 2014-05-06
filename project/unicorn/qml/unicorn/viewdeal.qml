@@ -40,9 +40,11 @@ Rectangle {
         loadDeal();
     }
 
+    property variant stateColor: ["lightgrey", "#e9fa71","#ff2a52","lightgreen"];
+
     PageContent{
         Substrate {
-            // TODO: set color from state
+            color: stateColor[curDeal.state_key - 1]
             ColumnLayout {
                 spacing: 4
                 anchors.margins: 40
