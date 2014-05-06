@@ -21,17 +21,7 @@ Rectangle {
 
     }
 
-    // return color
-    function getColor(status) {
-        if (status == "Успешно")
-            return "lightgreen";
-        if (status == "В процессе")
-            return "#a9787f";
-        if (status == "Отложена")
-            return "lightblue";
-        if (status == "Неудача")
-            return "white";
-    }
+    property variant stateColor: ["lightgrey", "#e9fa71","#ff2a52","lightgreen"];
 
     function loadModel() {
         // if we show this view reload model from Database
@@ -63,6 +53,8 @@ Rectangle {
                 height: nameAchorText.height + adressText.height +
                         dateTradeText.height + summTradeText.height + typeText.height
                 radius: 2
+
+                color: stateColor[state_key - 1]
 
                 border {
                     color: "black"
