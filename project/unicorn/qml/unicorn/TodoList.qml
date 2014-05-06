@@ -43,15 +43,7 @@ Rectangle {
         loadModel();
     }
 
-    function getColor(id_type) {
-        switch (id_type) {
-            case 1: return "#bf3030";
-            case 2: return "#87f03c";
-            case 3: return "#7c71d8";
-            case 4: return "#e9fa71";
-            case 5: return "#04819e";
-        }
-    }
+    property variant eventColor: ["#bf3030", "#87f03c","#7c71d8","#e9fa71","#04819e"]
 
     PageContent {
         id: pageContent
@@ -68,7 +60,7 @@ Rectangle {
                 height: titleText.height + dateText.height +
                         placeText.height +  20
                 radius: 2
-                color: getColor(type_id);
+                color: eventColor[type_id - 1]
 
                 border {
                     color: "black"
