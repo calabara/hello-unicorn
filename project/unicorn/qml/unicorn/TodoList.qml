@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import QtQuick.Controls 1.1
 
 // Список дел
 Rectangle {
@@ -7,10 +8,50 @@ Rectangle {
 
     MyToolBar {
         id: toolbar
-        title: "Органайзер"
+        title: ""
 
         BackButton {
             id: backbutton
+        }
+
+        Button {
+            id: rangeEventsBtn
+            anchors.centerIn: parent
+            text: "Все"
+            onClicked: {
+                menuRange.popup();
+            }
+        }
+
+        Menu {
+            id: menuRange
+            MenuItem {
+                text: "Все"
+                onTriggered: {
+                    rangeEventsBtn.text = text;
+                }
+            }
+
+            MenuItem {
+                text: "За неделю"
+                onTriggered: {
+                    rangeEventsBtn.text = text;
+                }
+            }
+
+            MenuItem {
+                text: "За месяц"
+                onTriggered: {
+                    rangeEventsBtn.text = text;
+                }
+            }
+
+            MenuItem {
+                text: "За год"
+                onTriggered: {
+                    rangeEventsBtn.text = text;
+                }
+            }
         }
 
         AddButton {
@@ -18,6 +59,31 @@ Rectangle {
                 contentView.show('addevent', -1);
             }
         }
+    }
+
+    function applyFilter(targetDate) {
+        // magic. I dont know javascript, and network not avalible
+        var now = new Date();
+        var target = new Date();
+        target.setDate(targetDate.substring(0,3));
+        target.setMonth(targetDate.substring(4,5) - 2);
+        target.setYear(targetDate.substring(6,10)*1);
+        var rr = Math.abs(now - target) / 60 / 60/ 1000 / 24;
+
+        if (rangeEventsBtn.text == "За месяц") {
+            return target.getFullYear() == now.getFullYear() && 
+                    target.getMonth() == now.getMonth();
+        }
+
+        if (rangeEventsBtn.text == "За год") {
+            return target.getFullYear() == now.getFullYear();
+        }
+
+        if (rangeEventsBtn.text == "За неделю") {
+            return rr < 7;
+        }
+
+        return true;
     }
 
     function loadModel() {
@@ -57,10 +123,11 @@ Rectangle {
 
             delegate: Rectangle {
                 width: viewtrades.width
-                height: titleText.height + dateText.height +
-                        placeText.height +  20
+                height: applyFilter(date) ? titleText.height + dateText.height +
+                        placeText.height +  20 : 0;
                 radius: 2
                 color: eventColor[type_id - 1]
+                visible: applyFilter(date);
 
                 border {
                     color: "black"
