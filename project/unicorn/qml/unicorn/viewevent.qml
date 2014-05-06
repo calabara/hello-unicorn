@@ -45,16 +45,7 @@ Rectangle {
         loadEvent();
     }
 
-    function getColor(id_type) {
-        switch (currentEvent.type_id) {
-            case 1: return "#bf3030";
-            case 2: return "#87f03c";
-            case 3: return "#7c71d8";
-            case 4: return "#e9fa71";
-            case 5: return "#04819e";
-        }
-        return "white";
-    }
+    property variant eventColor: ["#bf3030", "#87f03c","#7c71d8","#e9fa71","#04819e"]
 
     function deleteEvent() {
         if (currentEvent.idEvent != -1) {
@@ -66,7 +57,7 @@ Rectangle {
 
     PageContent{
         Substrate {
-            color: getColor();
+            color: eventColor[currentEvent.type_id - 1] || "white"
             ColumnLayout{
                 spacing: 2
                 anchors.margins: 40
