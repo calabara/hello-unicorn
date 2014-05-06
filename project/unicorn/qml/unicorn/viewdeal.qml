@@ -79,7 +79,7 @@ Rectangle {
                     renderType: Text.NativeRendering
 
                     text: Qt.formatDateTime(curDeal.dateTrade, 
-                                "dd.mm.yyyy hh:mm")
+                                "dd.MM.yyyy hh:mm")
 
                 }
 
