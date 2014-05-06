@@ -64,17 +64,18 @@ bool OrgController::getAllDeals() {
     return true;
 }
 
-bool OrgController::addDeal(int min_price, int price, int max_price, int state_key, QString flatAdress, QDate dateTrade) const {
+bool OrgController::addDeal(int min_price, int price, int max_price, int state_key, QString flatAdress, QDateTime dateTrade) const {
     static const QString qstr = "INSERT INTO deal (min_price,price,max_price,state_key,flatAdress,dateTrade) VALUES (?,?,?,?,?,?)";
     QSqlQuery q;
 
+    QString date = dateTrade.toString(DbUtils::dateFormat());
     q.prepare(qstr);
     q.addBindValue(min_price);
     q.addBindValue(price);
     q.addBindValue(max_price);
     q.addBindValue(state_key);
     q.addBindValue(flatAdress);
-    q.addBindValue(dateTrade);
+    q.addBindValue(date);
 
     bool success = q.exec();
     if (!success) {

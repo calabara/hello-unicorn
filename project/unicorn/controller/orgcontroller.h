@@ -19,7 +19,7 @@ public:
     Q_INVOKABLE
     bool getAllDeals();
     Q_INVOKABLE
-    bool addDeal(int min_price, int price, int max_price, int state_key, QString flatAdress, QDate dateTrade) const;
+    bool addDeal(int min_price, int price, int max_price, int state_key, QString flatAdress, QDateTime dateTrade) const;
     Q_INVOKABLE
     bool getAllMembers(int id_deal);
     Q_INVOKABLE

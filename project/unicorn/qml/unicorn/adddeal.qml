@@ -29,6 +29,7 @@ Rectangle {
             field.hit = true;
             return false;
         }
+        field.hit = false;
         return true;
     }
 
