@@ -11,13 +11,22 @@ Rectangle {
 
     MyToolBar {
         id: toolbar
-        title: "Клиенты"
+        title: ""
+
+        TextField {
+            id: searchInput
+            anchors.centerIn: parent
+            placeholderText: "Поиск"
+            onEditingFinished: {
+            }
+        }
 
         AddButton {
             onClick: {
                 contentView.show('addcontact', -1);
             }
         }
+
     }
 
     function loadModel() {
@@ -27,13 +36,18 @@ Rectangle {
         }
     }
 
+    function compareName(name, substring) {
+        // return name.toLower().contains(substring.toLower());
+        var nameRegexp = new RegExp(".*" + substring + ".*");
+        return nameRegexp.test(name);
+    }
+
     Component.onCompleted: loadModel();
     onVisibleChanged: loadModel();
 
     PageContent {
         id: pageContent
 
-        // TODO: line up normal colors
         ListView {
             id: viewcontacts
             model: contactModel
@@ -42,8 +56,10 @@ Rectangle {
 
             delegate: Rectangle {
                 width: viewcontacts.width
-                height: nameText.height + phoneText.height + 30;
+                height: compareName(name + " " + surname,searchInput.text) ? 
+                        nameText.height + phoneText.height + 30 : 0;
                 radius: 2
+                visible: compareName(name + " " + surname,searchInput.text);
 
                 border {
                     color: "black"
@@ -59,6 +75,7 @@ Rectangle {
                         contentView.show("viewcontact", id);
                     }
                 }
+
                 Text {
                     id: nameText
                     text: name + " " + surname

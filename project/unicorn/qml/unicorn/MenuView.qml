@@ -46,7 +46,6 @@ Rectangle {
                     anchors.fill: parent
                     anchors.rightMargin: 4
                     color: "gray"
-                    // opacity: 0.5
                     opacity: getOpacity(title);
                     radius: 2
                     border.width: 1

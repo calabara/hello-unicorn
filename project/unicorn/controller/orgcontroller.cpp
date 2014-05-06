@@ -176,7 +176,7 @@ bool OrgController::getEvents(int id_deal) {
     const QString patternQuery = "select e.id, e.title as eventTitle, e.date, e.place, e.deal_id, e.type_id, et.title etitle\
     from event e, event_type et where %1 e.type_id = et.id and \
     (substr(e.date, 7, 4) || '-' || substr(e.date, 4, 2) || '-' || substr(e.date, 1, 2)) >= date('now') \
-    order by strftime('%s', (substr(e.date, 7, 4) || '-' || substr(e.date, 4, 2) || '-' || substr(e.date, 1, 2))) ASC";
+    order by strftime('%s', (substr(e.date, 7, 4) || '-' || substr(e.date, 4, 2) || '-' || substr(e.date, 1, 2))) DESC";
     if (id_deal != -1) {
         QString query = patternQuery.arg(QString("e.deal_id= %1 and").arg(id_deal));
         eventsModel->setQuery(query);
