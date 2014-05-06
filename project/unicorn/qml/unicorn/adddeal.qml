@@ -68,17 +68,6 @@ Rectangle {
                 Layout.fillWidth: true
                 property bool hit: false
 
-                style: TextFieldStyle {
-                    textColor: "black"
-                    background: Rectangle {
-                        radius: 2
-                        implicitWidth: 100
-                        implicitHeight: 24
-                        border.color: "red"
-                        border.width: dealAdress.hit ? 3 : 0
-                   }
-                }
-
                 placeholderText: "Адрес"
             }
 
@@ -86,19 +75,7 @@ Rectangle {
                 id: dealmaxMoney
                 anchors.horizontalCenter: parent.horizontalCenter
                 Layout.fillWidth: true
-                width: parent.width
                 property bool hit: false
-
-                style: TextFieldStyle {
-                    textColor: "black"
-                    background: Rectangle {
-                        radius: 2
-                        implicitWidth: 100
-                        implicitHeight: 24
-                        border.color: "red"
-                        border.width: dealmaxMoney.hit ? 3 : 0
-                   }
-                }
 
                 placeholderText: "Желаемая сумма"
             }
@@ -107,19 +84,7 @@ Rectangle {
                 id: dealminMoney
                 anchors.horizontalCenter: parent.horizontalCenter
                 Layout.fillWidth: true
-                width: parent.width
                 property bool hit: false
-
-                style: TextFieldStyle {
-                    textColor: "black"
-                    background: Rectangle {
-                        radius: 2
-                        implicitWidth: 100
-                        implicitHeight: 24
-                        border.color: "red"
-                        border.width: dealminMoney.hit ? 2 : 0
-                   }
-                }
 
                 placeholderText: "Минимальная сумма"
             }

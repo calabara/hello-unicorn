@@ -122,13 +122,13 @@ Rectangle {
                     anchors.right: parent.right
                     anchors.bottomMargin: 20
                     anchors.rightMargin: 70
-                    text: max_price
+                    text: max_price + " p."
                     renderType: Text.NativeRendering
                 }
 
                 Text {
                     id: summTradeText
-                    text: price != -1 ? price : ""
+                    text: price != -1 ? price + " p." : ""
 
                     anchors {
                         right: parent.right
@@ -140,14 +140,6 @@ Rectangle {
                         bold: true
                         pixelSize: nameAchorText.font.pixelSize * 1.5
                     }
-
-                    // Text {
-                    //     anchors.horizontalCenter: parent.horizontalCenter
-                    //     anchors.top: parent.bottom
-                    //     anchors.topMargin: 2
-                    //     visible: false
-                    //     text: min_price
-                    // }
 
                     renderType: Text.NativeRendering
                 }

@@ -67,7 +67,7 @@ Rectangle {
                     font.bold: true
                     renderType: Text.NativeRendering
 
-                    text: (curDeal.price != -1) ? curDeal.price : ""
+                    text: (curDeal.price != -1) ? curDeal.price + " p." : ""
                 }
 
                 Text {
@@ -88,7 +88,7 @@ Rectangle {
                     anchors.horizontalCenter: parent.horizontalCenter
                     Layout.fillWidth: true
                     width: parent.width
-                    text: "Желаемая сумма: " + curDeal.max_price
+                    text: "Желаемая сумма: " + curDeal.max_price + " p."
                     renderType: Text.NativeRendering
                 }
 
