@@ -27,7 +27,7 @@ Rectangle {
         // if we show this view reload model from Database
         if (visible) {
             var isActual = contentView.getViewParam("listdeal") == 1 ? true : false;
-            console.log("actual: " + isActual);
+
             var success = isActual ? OrgController.getActualDeals() : OrgController.getAllDeals();
             if (!success) {
                 // TODO: show error to user
@@ -66,8 +66,7 @@ Rectangle {
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
-                        contentView.setViewParam("id_deal", id);
-                        contentView.currentPage = "viewdeal";
+                        contentView.show("viewdeal", id);
                     }
                 }
 
