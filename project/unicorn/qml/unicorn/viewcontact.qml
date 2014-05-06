@@ -87,10 +87,12 @@ Rectangle {
                     height: 200
                     border.width: 1
                     border.color: "black"
+
                     Text {
                         anchors.margins: 10
                         anchors.fill: parent
                         text: contact.additional_info
+                        wrapMode: Text.WordWrap
                     }
                 }
 
