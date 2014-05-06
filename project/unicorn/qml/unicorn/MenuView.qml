@@ -10,22 +10,23 @@ Rectangle {
     opacity: root.menuShow ? 1 : 0
     enabled: root.menuShow
 
-    // function getOpacity(curTitle) {
-        
-    //     if (getCurrentTitle() == curTitle)
-    //         return 1.0;
-    //     return 0.5;
-    // }
+    function getOpacity(curTitle) {
+        if (getCurrentTitle() == curTitle)
+            return 1.0;
+        return 0.5;
+    }
 
-    // function getCurrentTitle() {
-    //     var curPage = contentView.currentPageId;
-    //     for (var i = 0; pageList.count ; ++i) {
-    //         var page = pageList.get(i).pageId;
-    //         if (page == curPage) {
-    //             return pageList.get(i).title;
-    //         }
-    //     }
-    // }
+    function getCurrentTitle() {
+        var curPage = currentPageId;
+        for (var i = 0; pageList.count ; ++i) {
+            var page = pageList.get(i).pageId;
+            if (page == curPage) {
+                return pageList.get(i).title;
+            }
+        }
+    }
+
+    property string currentPageId: "TodoList"
 
     Behavior on opacity { NumberAnimation { duration: 300 } }
     
@@ -45,8 +46,8 @@ Rectangle {
                     anchors.fill: parent
                     anchors.rightMargin: 4
                     color: "gray"
-                    opacity: 0.5
-
+                    // opacity: 0.5
+                    opacity: getOpacity(title);
                     radius: 2
                     border.width: 1
                     border.color: "black"
@@ -69,6 +70,7 @@ Rectangle {
                         var pageParam = param || -1;
                         
                         contentView.show(filename, pageParam);
+                        currentPageId = pageId;
                         onMenu();
                     }
                 }
