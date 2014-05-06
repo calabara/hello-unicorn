@@ -78,9 +78,12 @@ Rectangle {
             
             function pushPageStack () {
                 if(visible) {
+                    if (contentView.currentPage == 'null') {
+                        return;
+                    }
 
                     var stack = contentView.pageStack;
-
+                    
                     stack.push(contentView.currentPage);
                     contentView.pageStack = stack;
 

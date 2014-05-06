@@ -19,7 +19,7 @@ Rectangle {
 
         EditButton{
             onClick: {
-                var id_deal = contentView.getViewParam("id_deal");
+                var id_deal = contentView.getViewParam("viewdeal");
                 contentView.show('editdeal', id_deal);
             }
         }
@@ -27,7 +27,7 @@ Rectangle {
 
     function loadDeal() {
         if (visible) {
-            var id_deal = contentView.getViewParam("id_deal");
+            var id_deal = contentView.getViewParam("viewdeal");
             OrgController.getDeal(id_deal);
         }
     }
@@ -106,7 +106,7 @@ Rectangle {
                     Layout.fillWidth: true
                     text: "Участники"
                     onClicked: {
-                        var id_deal = contentView.getViewParam("id_deal");
+                        var id_deal = contentView.getViewParam("viewdeal");
                         contentView.isDealActors = true;
                         contentView.show("ListActors", id_deal);
                     }
@@ -117,7 +117,7 @@ Rectangle {
                     Layout.fillWidth: true
                     text: "События"
                     onClicked: {
-                        var id_deal = contentView.getViewParam("id_deal");
+                        var id_deal = contentView.getViewParam("viewdeal");
                         contentView.show("TodoList", id_deal);
                     }
                 }
