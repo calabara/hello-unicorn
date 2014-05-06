@@ -26,7 +26,9 @@ Rectangle {
     function loadModel() {
         // if we show this view reload model from Database
         if (visible) {
-            var success = OrgController.getAllDeals();
+            var isActual = contentView.getViewParam("listdeal") == 1 ? true : false;
+            console.log("actual: " + isActual);
+            var success = isActual ? OrgController.getActualDeals() : OrgController.getAllDeals();
             if (!success) {
                 // TODO: show error to user
                 console.log("error load model");

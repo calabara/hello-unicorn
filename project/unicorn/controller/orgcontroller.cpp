@@ -55,6 +55,14 @@ OrgController::~OrgController() {
     delete actorsModel;
 }
 
+bool OrgController::getActualDeals() {
+    // TODO: status Title
+    dealModel->setQuery("select * from deal where state_key=1");
+    if (dealModel->lastError().isValid()) {
+        return false;
+    }
+    return true;
+}
 bool OrgController::getAllDeals() {
     // TODO: status Title
     dealModel->setQuery("select * from deal");

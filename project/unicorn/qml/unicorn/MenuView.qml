@@ -10,21 +10,22 @@ Rectangle {
     opacity: root.menuShow ? 1 : 0
     enabled: root.menuShow
 
-    function getOpacity(curTitle) {
-        if (getCurrentTitle() == curTitle)
-            return 1.0;
-        return 0.5;
-    }
+    // function getOpacity(curTitle) {
+        
+    //     if (getCurrentTitle() == curTitle)
+    //         return 1.0;
+    //     return 0.5;
+    // }
 
-    function getCurrentTitle() {
-        var curPage = contentView.currentPage;
-        for (var i = 0; pageList.count ; ++i) {
-            var page = pageList.get(i).filename;
-            if (page == curPage) {
-                return pageList.get(i).title;
-            }
-        }
-    }
+    // function getCurrentTitle() {
+    //     var curPage = contentView.currentPageId;
+    //     for (var i = 0; pageList.count ; ++i) {
+    //         var page = pageList.get(i).pageId;
+    //         if (page == curPage) {
+    //             return pageList.get(i).title;
+    //         }
+    //     }
+    // }
 
     Behavior on opacity { NumberAnimation { duration: 300 } }
     
@@ -44,7 +45,7 @@ Rectangle {
                     anchors.fill: parent
                     anchors.rightMargin: 4
                     color: "gray"
-                    opacity: getOpacity(textTitle.text);
+                    opacity: 0.5
 
                     radius: 2
                     border.width: 1
@@ -65,7 +66,9 @@ Rectangle {
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
-                        contentView.show(filename);
+                        var pageParam = param || -1;
+                        
+                        contentView.show(filename, pageParam);
                         onMenu();
                     }
                 }

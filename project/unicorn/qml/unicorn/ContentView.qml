@@ -24,6 +24,8 @@ Rectangle {
             console.log(param);
         }
         contentView.setViewParam(view, param);
+        
+        contentView.currentPage = 'null';
         contentView.currentPage = view;
     }
 
