@@ -86,7 +86,6 @@ Rectangle {
                 anchors.horizontalCenter: parent.horizontalCenter
                 Layout.fillWidth: true
                 width: parent.width
-                validator: IntValidator {bottom: 10; top: 9000000;}
                 property bool hit: false
 
                 style: TextFieldStyle {
@@ -108,7 +107,6 @@ Rectangle {
                 anchors.horizontalCenter: parent.horizontalCenter
                 Layout.fillWidth: true
                 width: parent.width
-                validator: IntValidator {bottom: 10; top: 9000000;}
                 property bool hit: false
 
                 style: TextFieldStyle {
