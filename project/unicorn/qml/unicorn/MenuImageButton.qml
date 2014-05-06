@@ -14,9 +14,9 @@ Item {
     property string iconSource: ""
 
     Image {
-
         source: iconSource
-
+        height: parent.height
+        width: parent.width
         MouseArea {
             anchors.fill: parent
             onClicked: click()
