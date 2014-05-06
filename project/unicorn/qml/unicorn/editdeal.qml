@@ -35,6 +35,7 @@ Rectangle {
     }
 
     Component.onCompleted: {
+        loadDeal();
         states = DbUtils.getAllStatesDealAsList();
         for (var key in states) {
             console.log(key);
@@ -52,6 +53,19 @@ Rectangle {
         stateBtn.text = states[curIndexState].title;
     }
 
+    onVisibleChanged: {
+        loadDeal();
+    }
+
+    function loadDeal() {
+        if (visible) {
+            OrgController.getDeal(curDeal.id_deal);
+            dealTitle.text = curDeal.flatAdress;
+            dealMoney.text = curDeal.price != -1 ? curDeal.price : "";
+            dealmaxMoney.text = curDeal.max_price;
+        }
+    }
+    
     property variant states: null
     property int curIndexState: 0
 
@@ -88,22 +102,6 @@ Rectangle {
 
                 placeholderText: "Желаемая сумма"
             }
-
-            // TextField {
-            //     id: dealminMoney
-            //     anchors.horizontalCenter: parent.horizontalCenter
-            //     Layout.fillWidth: true
-            //     width: parent.width
-            //
-            //     placeholderText: "Минимальная сумма"
-            // }
-
-            // ComboBox{
-            //     id: dealState
-            //     anchors.horizontalCenter: parent.horizontalCenter
-            //     Layout.fillWidth: true
-            //     width: parent.width
-            // }
 
             Menu {
                 id: stateMenu
