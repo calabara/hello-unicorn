@@ -24,7 +24,8 @@ Rectangle {
     }
 
     function saveDeal() {
-        curDeal.price = (dealMoney.text*1 != 0) ? dealMoney.text*1 : -1;
+        curDeal.price = (dealMoney.text !== "") ? dealMoney.text*1 : -1;
+        console.log("price = " + dealMoney.text);
         curDeal.max_price = dealmaxMoney.text * 1;
         curDeal.flatAdress = dealTitle.text;
         curDeal.state_key = states[curIndexState].idState;
@@ -70,6 +71,15 @@ Rectangle {
             }
 
             TextField {
+                id: dealMoney
+                text: curDeal.price != -1 ? curDeal.price : ""
+                anchors.horizontalCenter: parent.horizontalCenter
+                Layout.fillWidth: true
+                width: parent.width
+                placeholderText: "Договорились на сумме"
+            }
+
+            TextField {
                 id: dealmaxMoney
                 text: curDeal.max_price
                 anchors.horizontalCenter: parent.horizontalCenter
@@ -77,15 +87,6 @@ Rectangle {
                 width: parent.width
 
                 placeholderText: "Желаемая сумма"
-            }
-
-            TextField {
-                id: dealMoney
-                text: curDeal.price != -1 ? curDeal.price : ""
-                anchors.horizontalCenter: parent.horizontalCenter
-                Layout.fillWidth: true
-                width: parent.width
-                placeholderText: "Договорились на сумме"
             }
 
             // TextField {

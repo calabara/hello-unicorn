@@ -56,6 +56,7 @@ Rectangle {
                     Layout.fillWidth: true
 
                     text: curDeal.flatAdress
+                    renderType: Text.NativeRendering
                 }
 
                 Text {
@@ -64,6 +65,7 @@ Rectangle {
                     Layout.fillWidth: true
                     width: parent.width
                     font.bold: true
+                    renderType: Text.NativeRendering
 
                     text: (curDeal.price != -1) ? curDeal.price : ""
                 }
@@ -74,12 +76,12 @@ Rectangle {
                     Layout.fillWidth: true
                     width: parent.width
                     font.bold: true
+                    renderType: Text.NativeRendering
 
                     text: Qt.formatDateTime(curDeal.dateTrade, 
                                 "dd.mm.yyyy hh:mm")
 
                 }
-
 
                 Text {
                     id: dealMaxMoney
@@ -87,6 +89,7 @@ Rectangle {
                     Layout.fillWidth: true
                     width: parent.width
                     text: "Желаемая сумма: " + curDeal.max_price
+                    renderType: Text.NativeRendering
                 }
 
                 Text {
@@ -95,6 +98,7 @@ Rectangle {
                     Layout.fillWidth: true
                     width: parent.width
                     text: DbUtils.statusAsString(curDeal.state_key);
+                    renderType: Text.NativeRendering
                 }
 
                 Button {

@@ -21,7 +21,7 @@ class DealObject : public QObject {
 public:
     Q_PROPERTY(QString flatAdress READ flatAdress WRITE setFlatAdress NOTIFY flatAdressChanged)
     Q_PROPERTY(int min_price READ min_price WRITE setMin_price NOTIFY min_priceChanged)
-    Q_PROPERTY(int max_price READ min_price WRITE setMax_price NOTIFY min_priceChanged)
+    Q_PROPERTY(int max_price READ max_price WRITE setMax_price NOTIFY max_priceChanged)
     Q_PROPERTY(int price READ price WRITE setPrice NOTIFY priceChanged)
     Q_PROPERTY(QDateTime dateTrade READ dateTrade WRITE setDateTrade NOTIFY dateTradeChanged)
     Q_PROPERTY(int id_deal READ id_deal WRITE setId_deal NOTIFY id_dealChanged)
@@ -78,7 +78,7 @@ public slots:
     {
         if (m_max_price != arg) {
             m_max_price = arg;
-            emit min_priceChanged(arg);
+            emit max_priceChanged(arg);
         }
     }
 
@@ -122,6 +122,7 @@ public slots:
 signals:
     void flatAdressChanged(QString arg);
     void min_priceChanged(int arg);
+    void max_priceChanged(int arg);
     void dateTradeChanged(QDateTime arg);
     void id_dealChanged(int arg);
     void priceChanged(int arg);
