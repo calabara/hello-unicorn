@@ -32,9 +32,9 @@ CREATE TABLE "deal_contact_mult" (
 );
 INSERT INTO "deal_contact_mult" VALUES(1,1,1,1);
 CREATE TABLE [deal] ([id] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, [min_price] INTEGER NOT NULL, [price] INTEGER NOT NULL, [max_price] INTEGER NOT NULL, [state_key] INTEGER NOT NULL, [flatAdress] VARCHAR (200), [dateTrade] DATETIME);
-INSERT INTO "deal" VALUES(1,100,-1,200,1,'"Комсомольский"','28.04.2013 01:30');
-INSERT INTO "deal" VALUES(2,100,123,500,1,'Адрес2','04.04.2013 13:10');
-INSERT INTO "deal" VALUES(3,1,2,3,1,'Хороший','23.03.2001 09:09');
+INSERT INTO "deal" VALUES(1,100,-1,200,1,'"Комсомольский"','28.04.2014 01:30');
+INSERT INTO "deal" VALUES(2,100,123,500,1,'Адрес2','04.04.2014 13:10');
+INSERT INTO "deal" VALUES(3,1,2,3,1,'Хороший','23.03.2014 09:09');
 CREATE TABLE [contact_type] ([id] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, [title] TEXT NOT NULL);
 INSERT INTO "contact_type" VALUES(1,'Важный');
 INSERT INTO "contact_type" VALUES(2,'Неважный');
