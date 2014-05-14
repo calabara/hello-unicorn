@@ -5,7 +5,7 @@ import QtQuick.Controls 1.1
 Rectangle {
     anchors.fill: parent
     color: "gray"
-
+    property string sortColumn: "id";
     MyToolBar {
         id: toolbar
         title: ""
@@ -54,6 +54,45 @@ Rectangle {
             }
         }
 
+        Button {
+            id: sortEventsBtn
+            anchors.top: rangeEventsBtn.top
+            anchors.left: rangeEventsBtn.right
+            anchors.leftMargin: 10
+            text: "по дате добавления"
+            onClicked: {
+                menuSort.popup();
+            }
+        }
+
+        Menu {
+            id: menuSort
+            MenuItem {
+                text: "по дате добавления"
+                onTriggered: {
+                    sortColumn = "id";
+                    sortEventsBtn.text = text;
+                }
+            }
+
+            MenuItem {
+                text: "по типу"
+                onTriggered: {
+                    sortColumn = "type_id";
+                    sortEventsBtn.text = text;
+                }
+            }
+
+            MenuItem {
+                text: "по алфавиту"
+                onTriggered: {
+                    sortColumn = "title";
+                    sortEventsBtn.text = text;
+                }
+            }
+
+        }
+
         AddButton {
             onClick: {
                 contentView.show('addevent', -1);
@@ -86,7 +125,7 @@ Rectangle {
         return true;
     }
 
-    function loadModel() {
+    function loadModel(sortColumn) {
         if (visible) {
             var id_deal = contentView.getViewParam("TodoList");
             console.log("load events deal - " + id_deal);
@@ -97,18 +136,18 @@ Rectangle {
                 toolbar.isMenuButtonVisible = false;
                 backbutton.visible = true;
             }
-            // date, title, type_id
-            OrgController.getEvents(id_deal, "type_id");
+            // date, title, type_id, id
+            OrgController.getEvents(id_deal, sortColumn);
         }
     }
 
-    onVisibleChanged: {
-        loadModel();
+    function load() {
+        loadModel(sortColumn);
     }
 
-    Component.onCompleted: {
-        loadModel();
-    }
+    onVisibleChanged: load()
+    Component.onCompleted: load()
+    onSortColumnChanged: load()
 
     property variant eventColor: ["#bf3030", "#87f03c","#7c71d8","#e9fa71","#04819e"]
 
