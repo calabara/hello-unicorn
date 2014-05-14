@@ -15,7 +15,6 @@
 *.pro.user
 *.pro.user.*
 *.user*
-*.xml
 *.java
 *.apk
 moc_*.cpp
@@ -25,9 +24,9 @@ Makefile*
 *-build-*
 
 #android build
-*android*
-*Android*
 *Desktop*
+*build*
+*Debug*
 # QtCreator
 
 *.autosave
