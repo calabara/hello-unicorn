@@ -67,8 +67,6 @@ Rectangle {
         } else if (rangeEventsBtn.text == "За месяц") {
             startDate.setTime(startDate.getTime() - 15* 86400000);
             endDate.setTime(endDate.getTime() + 15* 86400000);
-            /* startDate.setDate(startDate().getDate()-4); */
-            /* endDate.setDate(endDate().getDate()+4); */
         }
 
         var price = 0;
@@ -88,12 +86,16 @@ Rectangle {
                 if (deal.state_key == 4) {
                     console.log("t");
                     tCountLocal += 1;
+                    if (deal.price != -1) {
+                        price += deal.price;
+                    }
                 }
             }
         }
         
         tCount.text = tCountLocal + "";
         fCount.text = fCountLocal + "";
+        mCount.text = price + "";
     }
 
     function isDateInRange(targetDate, startDate, endDate) {
