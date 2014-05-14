@@ -86,7 +86,7 @@ Rectangle {
                     Layout.fillWidth: true
                     renderType: Text.NativeRendering
                     text: Qt.formatDateTime(currentEvent.dateEvent, 
-                                "dd.mm.yyyy hh:mm")
+                                "dd.MM.yyyy hh:mm")
                 }
 
                 Text {

@@ -48,33 +48,38 @@ Rectangle {
             for (var key in roles) {
                 console.log(key);
                 var item = roleMenu.addItem(roles[key].title);
-                (function(localKey){
-                    item.triggered.connect(function() {
+                (function(localKey){
+                    item.triggered.connect(function() {
                         id_role = roles[localKey].id_role;
                         chooseRole.text = roles[localKey].title;
-                    });
-                })(key);
+                    });
+                })(key);
             }
             chooseRole.text = roles[0].title;
 
             var contacts = DbUtils.getAllContactsAsList();
+            contactMenu.clear();
             for (var key in contacts) {
                 console.log(key);
                 var item = contactMenu.addItem(contacts[key].name + " " 
                                                 + contacts[key].surname);
-                (function(localKey){
-                    item.triggered.connect(function() {
+                (function(localKey){
+                    item.triggered.connect(function() {
                         id_contact= contacts[localKey].id_contact;
                         chooseContact.text = contacts[localKey].name + " " 
                                                 + contacts[localKey].surname;
-                    });
-                })(key);
+                    });
+                })(key);
             }
             chooseContact.text = contacts[key].name + " " + contacts[key].surname;
         }
     }
 
     Component.onCompleted: {
+        loadData();
+    }
+
+    onVisibleChanged: {
         loadData();
     }
 

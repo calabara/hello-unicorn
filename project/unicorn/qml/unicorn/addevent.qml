@@ -37,8 +37,8 @@ Rectangle {
         // build dateTime
         currentEvent.dateEvent = new Date(
             dateInput.year,
-            dateInput.month,
-            dateInput.day,
+            dateInput.month - 1,
+            dateInput.day - 1,
             timeInput.hour,
             timeInput.minute
         );

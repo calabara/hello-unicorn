@@ -18,22 +18,21 @@ Item {
     }
 
     function setDate(targetDate) {
-        day = targetDate.getDate();
-        month = targetDate.getMonth();
+        day = targetDate.getDate() + 1;
+        month = targetDate.getMonth() + 1;
+        console.log("M " + month);
         year = targetDate.getFullYear();
     }
 
     Component.onCompleted: {
         var date = new Date();
-
-        day = date.getDay();
+        day = date.getDay() + 1;
         month = date.getMonth() + 1;
         year = date.getFullYear();
     }
 
     RowLayout{
         id: dateLayout
-
 
         SpinBox{
             id: dateD

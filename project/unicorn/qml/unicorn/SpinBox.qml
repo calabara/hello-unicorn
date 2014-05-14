@@ -43,6 +43,7 @@ Item {
             font.pointSize: 30
             color: "black"
             text:{
+                console.log("value = " + value);
                 if ( value < 10 ) {
                     "0" + value;
                   } else {
