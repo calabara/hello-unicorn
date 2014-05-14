@@ -12,12 +12,18 @@ Rectangle {
         id: toolbar
         title: ""
 
-        RowLayout {
+        isMenuButtonVisible: !backbutton.visible
+
+        BackButton {
+            id: backbutton
+        }
+
+        ColumnLayout {
 
             anchors.centerIn: parent
             Button {
                 id: rangeEventsBtn
-
+                anchors.horizontalCenter: parent.horizontalCenter
                 text: "С начала времен"
                 onClicked: {
                     menuRange.popup();
@@ -26,7 +32,7 @@ Rectangle {
 
             Button {
                 id: sortEventsBtn
-
+                anchors.horizontalCenter: parent.horizontalCenter
                 text: "по дате добавления"
                 onClicked: {
                     menuSort.popup();
@@ -222,7 +228,7 @@ Rectangle {
                     text: date
 
                     anchors {
-                        top: parent.top
+                        bottom: parent.bottom
                         /* bottomMargin: 7 */
                         right: parent.right
                         /* leftMargin: 6 */

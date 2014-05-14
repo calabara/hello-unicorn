@@ -6,7 +6,7 @@ import "."
 ToolBar {
     anchors.top: parent.top
     width: parent.width
-    height: parent.height / 10
+    height: parent.height / 8
 
     property bool isMenuButtonVisible: true
 
