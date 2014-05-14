@@ -95,7 +95,7 @@ Rectangle {
         
         tCount.text = tCountLocal + "";
         fCount.text = fCountLocal + "";
-        mCount.text = price + "";
+        mCount.text = price + " p.";
     }
 
     function isDateInRange(targetDate, startDate, endDate) {
