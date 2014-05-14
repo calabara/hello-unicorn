@@ -52,6 +52,12 @@ Rectangle {
                     rangeEventsBtn.text = text;
                 }
             }
+            MenuItem {
+                text: "Ближайшие"
+                onTriggered: {
+                    rangeEventsBtn.text = text;
+                }
+            }
         }
 
         Button {
@@ -120,6 +126,9 @@ Rectangle {
 
         if (rangeEventsBtn.text == "За неделю") {
             return rr < 7;
+        }
+        if (rangeEventsBtn.text == "Ближайшие") {
+            return rr < 2;
         }
 
         return true;
