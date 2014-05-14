@@ -1,5 +1,7 @@
 import QtQuick 2.0
 import QtQuick.Controls 1.1
+import QtQuick.Layouts 1.0
+import "."
 
 // Список дел
 Rectangle {
@@ -10,16 +12,25 @@ Rectangle {
         id: toolbar
         title: ""
 
-        BackButton {
-            id: backbutton
-        }
+        RowLayout {
 
-        Button {
-            id: rangeEventsBtn
             anchors.centerIn: parent
-            text: "С начала времен"
-            onClicked: {
-                menuRange.popup();
+            Button {
+                id: rangeEventsBtn
+
+                text: "С начала времен"
+                onClicked: {
+                    menuRange.popup();
+                }
+            }
+
+            Button {
+                id: sortEventsBtn
+
+                text: "по дате добавления"
+                onClicked: {
+                    menuSort.popup();
+                }
             }
         }
 
@@ -60,16 +71,6 @@ Rectangle {
             }
         }
 
-        Button {
-            id: sortEventsBtn
-            anchors.top: rangeEventsBtn.top
-            anchors.left: rangeEventsBtn.right
-            anchors.leftMargin: 10
-            text: "по дате добавления"
-            onClicked: {
-                menuSort.popup();
-            }
-        }
 
         Menu {
             id: menuSort
@@ -100,6 +101,7 @@ Rectangle {
         }
 
         AddButton {
+            id: addbutton
             onClick: {
                 contentView.show('addevent', -1);
             }
