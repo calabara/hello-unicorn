@@ -17,7 +17,7 @@ Rectangle {
         Button {
             id: rangeEventsBtn
             anchors.centerIn: parent
-            text: "Все"
+            text: "С начала времен"
             onClicked: {
                 menuRange.popup();
             }
@@ -26,7 +26,7 @@ Rectangle {
         Menu {
             id: menuRange
             MenuItem {
-                text: "Все"
+                text: "С начала времен"
                 onTriggered: {
                     rangeEventsBtn.text = text;
                 }
@@ -40,14 +40,14 @@ Rectangle {
             }
 
             MenuItem {
-                text: "За месяц"
+                text: "В этом месяце"
                 onTriggered: {
                     rangeEventsBtn.text = text;
                 }
             }
 
             MenuItem {
-                text: "За год"
+                text: "В этом году"
                 onTriggered: {
                     rangeEventsBtn.text = text;
                 }
