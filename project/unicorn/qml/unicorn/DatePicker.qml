@@ -26,8 +26,16 @@ Item {
 
     Component.onCompleted: {
         var date = new Date();
-        day = date.getDay() + 1;
+        day = date.getDate();
         month = date.getMonth() + 1;
+        year = date.getFullYear();
+    }
+
+    onVisibleChanged:{
+        var date = new Date();
+        day = date.getDate();
+        month = date.getMonth() + 1;
+        console.log("month" + month);
         year = date.getFullYear();
     }
 

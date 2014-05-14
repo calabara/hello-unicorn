@@ -119,16 +119,18 @@ Rectangle {
         var now = new Date();
         var target = new Date();
         target.setDate(targetDate.substring(0,3));
-        target.setMonth(targetDate.substring(4,5) - 2);
+        target.setMonth(targetDate.substring(4,5) - 1);
         target.setYear(targetDate.substring(6,10)*1);
         var rr = Math.abs(now - target) / 60 / 60/ 1000 / 24;
 
-        if (rangeEventsBtn.text == "За месяц") {
+        console.log(rr);
+
+        if (rangeEventsBtn.text == "В этом месяце") {
             return target.getFullYear() == now.getFullYear() && 
                     target.getMonth() == now.getMonth();
         }
 
-        if (rangeEventsBtn.text == "За год") {
+        if (rangeEventsBtn.text == "В этом году") {
             return target.getFullYear() == now.getFullYear();
         }
 
