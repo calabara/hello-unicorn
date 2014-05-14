@@ -97,7 +97,8 @@ Rectangle {
                 toolbar.isMenuButtonVisible = false;
                 backbutton.visible = true;
             }
-            OrgController.getEvents(id_deal);
+            // date, title, type_id
+            OrgController.getEvents(id_deal, "type_id");
         }
     }
 

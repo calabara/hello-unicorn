@@ -42,7 +42,7 @@ public:
     Q_INVOKABLE
     bool getAllEvents();
     Q_INVOKABLE
-    bool getEvents(int id_deal);
+    bool getEvents(int id_deal, QString order);
 
     // actors
     Q_INVOKABLE
