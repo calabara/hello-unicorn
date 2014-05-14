@@ -35,7 +35,8 @@ RESOURCES += \
     resources.qrc
 
 
-OTHER_FILES +=
+OTHER_FILES += \
+    android/AndroidManifest.xml
 
 HEADERS += \
     utils/dbase_connector.h \
@@ -48,3 +49,5 @@ HEADERS += \
     models/eventtypeobject.h \
     models/roleobject.h \
     models/dealstateobject.h
+
+ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android

@@ -160,3 +160,25 @@ QList<QObject*> DbUtils::getAllStatesDealAsList() {
 
     return list;
 }
+
+QList<QObject*> DbUtils::getAllDealsAsList() {
+    QList<QObject*> list;
+    QSqlQuery q("select * from deal");
+    q.exec();
+
+    while (q.next()) {
+        auto curDeal = new DealObject();
+        curDeal->setFlatAdress(q.value("flatAdress").toString());
+        curDeal->setMax_price(q.value("max_price").toInt());
+        curDeal->setMin_price(q.value("min_price").toInt());
+        QDateTime date = QDateTime::fromString(q.value("dateTrade").toString(), DbUtils::dateFormat());
+        curDeal->setDateTrade(date);
+
+        curDeal->setPrice(q.value("price").toInt());
+        curDeal->setId_deal(q.value("id").toInt());
+        curDeal->setState_key(q.value("state_key").toInt());
+        list << curDeal;
+    }
+
+    return list;
+}

@@ -17,6 +17,7 @@ ListModel  {
     ListElement { pageId: "addcontact"; filename: "addcontact"; title: "Добавить контакт"; inMenu: false; }
     ListElement { pageId: "editcontact"; filename: "editcontact"; title: "Редактировать контакт"; inMenu: false; }
     ListElement { pageId: "addevent"; filename: "addevent"; title: "Добавить событие"; inMenu: false; }
+    ListElement { pageId: "Statistics"; filename: "Statistics"; title: "Стастистика"; inMenu: true; }
 
     ListElement { pageId: "ListActors"; filename: "ListActors"; title: "Участники"; inMenu: false; }
     ListElement { pageId: "AddActor"; filename: "AddActor"; title: "Выбор участника"; inMenu: false; }
@@ -26,3 +27,4 @@ ListModel  {
     ListElement { pageId: "viewdeal"; filename: "viewdeal"; title: "Добавить событие"; inMenu: false; }
     ListElement { pageId: "null"; filename: "null"; title: "null"; inMenu: false; }
 }
+
