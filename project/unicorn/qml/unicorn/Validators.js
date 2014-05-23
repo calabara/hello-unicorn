@@ -4,7 +4,7 @@ var wrongFields = "";
 
 var _validators = {
 
-    title: /.{3,100}/,
+    title: /.{4,100}/,
     name: /^[А-Яа-я]{4,30}$/,
     money: /^[1-9]{1}\d{0,9}$|^0$/
 
