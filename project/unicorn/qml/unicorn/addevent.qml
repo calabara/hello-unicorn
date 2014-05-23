@@ -3,6 +3,7 @@ import QtQuick.Controls 1.0
 import QtQuick.Layouts 1.0
 import event 1.0
 import "."
+import "Validators.js" as Validators
 
 Rectangle {
     anchors.fill: parent
@@ -42,6 +43,18 @@ Rectangle {
             timeInput.hour,
             timeInput.minute
         );
+
+        var placeField = { text: placeText.text, errorText: "место", type: 'title'} ,
+            titleField = { text: eventTitle.text, errorText: "название", type: 'title'};
+
+            
+        var isValid = Validators.validate([titleField, placeField]);
+        if (!isValid) {
+
+            errorMessageDialog.text = Validators.wrongFields;
+            errorMessageDialog.visible = true;
+            return;
+        }
 
         currentEvent.save();
 
