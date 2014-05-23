@@ -3,6 +3,7 @@ import QtQuick.Controls 1.0
 import QtQuick.Layouts 1.0
 import contact 1.0
 import "."
+import "Validators.js" as Validators
 
 Rectangle {
     anchors.fill: parent
@@ -21,46 +22,30 @@ Rectangle {
 
         SaveButton {
             onClick: {
-                if (validate()) {
-                    contact.save();
-                    contentView.goBack();
-                }
+                saveContact();
             }
         }
     }
 
-    function validateName(name) {
-        var r = /.+/;
-        return r.test(name);
-    }
+    function saveContact() {
 
-    function validateMoney(name) {
-        var r = /^[1-9]+\d+$/;
-        return r.test(name);
-    }
+        var nameField = { text: contactName.text, errorText: "имя", type: 'name'},
+            surnameField = { text: contactSurname.text, errorText: "фамилия", type: 'name'},
+            infoField = { text: otherInfo.text, errorText: "информация", type: 'title'},
+            phoneField = { text: contactPhone.text, errorText: "телефон", type: 'money'};
+            
+        var isValid = Validators.validate([nameField,surnameField,infoField, phoneField]);
+        if (!isValid) {
 
-    property string wrongFields : "";
-
-    function validate() {
-        var isValidated = true, errorText = "";
-
-        if (!validateName(dealAdress.text)) {
-            errorText += "- адрес \n";
-            isValidated = false;
+            errorMessageDialog.text = Validators.wrongFields;
+            errorMessageDialog.visible = true;
+            return;
         }
 
-        if (!validateMoney(dealmaxMoney.text)) {
-            errorText += "- максимальная сумма \n";
-            isValidated = false;
-        }
-        if (!validateMoney(dealminMoney.text)) {
-            errorText += "- минимальная сумма \n";
-            isValidated = false;
-        }
-        
-        wrongFields = "Неверно заполнены поля: \n" + errorText;
+        contact.save();
+        contentView.goBack();
 
-        return isValidated;
+
     }
 
     function loadContact() {
@@ -132,7 +117,7 @@ Rectangle {
                 // validator: RegExpValidator { regExp:[0-9]+ ; }
                 text: ""
 
-                placeholderText: "+7993944959"
+                placeholderText: "7993944959"
             }
 
             TextArea {
@@ -148,10 +133,7 @@ Rectangle {
                 Layout.fillWidth: true
                 text: "Сохранить"
                 onClicked: {
-                    if (validate()) {
-                        contact.save();
-                        contentView.goBack();
-                    }
+                    saveContact();
                 }
             }
 
