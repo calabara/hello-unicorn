@@ -32,8 +32,9 @@ Rectangle {
         var addressField = { text: dealAdress.text, errorText: "адрес", type: 'name'},
             minMoneyField = { text: dealminMoney.text, errorText: "минимальная цена", type: 'money'},
             maxMoneyField = { text: dealmaxMoney.text, errorText: "минимальная цена", type: 'money'};
-
-        if (!Validators.validate([addressField,minMoneyField,maxMoneyField])) {
+            
+        var isValid = Validators.validate([addressField,minMoneyField,maxMoneyField]);
+        if (!isValid) {
 
             errorMessageDialog.text = Validators.wrongFields;
             errorMessageDialog.visible = true;
