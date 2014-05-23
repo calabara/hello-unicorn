@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import QtQuick.Dialogs 1.1
 import QtQuick.Controls 1.0
 import QtQuick.Layouts 1.0
 
@@ -13,6 +14,17 @@ Rectangle {
     function onMenu() {
         gameTranslate.x = root.menuShow ? 0 : root.width * 0.8
         root.menuShow = !root.menuShow;
+    }
+
+    MessageDialog {
+        id: errorMessageDialog
+        title: "Ошибка"
+        text: "Неверно заполнены поля: \n"
+
+        onAccepted: {
+
+        }
+
     }
 
     PageList {

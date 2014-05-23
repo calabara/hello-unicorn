@@ -2,12 +2,15 @@ import QtQuick 2.0
 import QtQuick.Controls 1.0
 import QtQuick.Layouts 1.0
 import QtQuick.Controls.Styles 1.0
+import QtQuick.Dialogs 1.1
 import "."
+import "Validators.js" as Validators
 
 Rectangle {
     anchors.fill: parent
     anchors.topMargin: 0
     color: "gray"
+
 
     MyToolBar {
         id: toolbar
@@ -24,24 +27,19 @@ Rectangle {
         }
     }
 
-    function validateField(field) {
-        if (field.text == "") {
-            field.hit = true;
-            return false;
-        }
-        field.hit = false;
-        return true;
-    }
-
-    function validate() {
-        return validateField(dealAdress) &&
-                validateField(dealmaxMoney) &&
-                validateField(dealminMoney);
-    }
-
     function saveDeal() {
-        if (!validate())
+
+        var addressField = { text: dealAdress.text, errorText: "адрес", type: 'name'},
+            minMoneyField = { text: dealminMoney.text, errorText: "минимальная цена", type: 'money'},
+            maxMoneyField = { text: dealmaxMoney.text, errorText: "минимальная цена", type: 'money'};
+
+        if (!Validators.validate([addressField,minMoneyField,maxMoneyField])) {
+
+            errorMessageDialog.text = Validators.wrongFields;
+            errorMessageDialog.visible = true;
             return;
+        }
+
 
         var success = OrgController.addDeal(dealminMoney.text *1, 1, dealmaxMoney.text * 1, 1,
                 dealAdress.text, new Date());
@@ -69,6 +67,7 @@ Rectangle {
                 property bool hit: false
 
                 placeholderText: "Адрес"
+                
             }
 
             TextField {

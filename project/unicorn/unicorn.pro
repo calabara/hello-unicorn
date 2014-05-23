@@ -36,7 +36,8 @@ RESOURCES += \
 
 
 OTHER_FILES += \
-    android/AndroidManifest.xml
+    android/AndroidManifest.xml \
+    Validators.js
 
 HEADERS += \
     utils/dbase_connector.h \

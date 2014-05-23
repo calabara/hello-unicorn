@@ -29,9 +29,38 @@ Rectangle {
         }
     }
 
+    function validateName(name) {
+        var r = /.+/;
+        return r.test(name);
+    }
+
+    function validateMoney(name) {
+        var r = /^[1-9]+\d+$/;
+        return r.test(name);
+    }
+
+    property string wrongFields : "";
+
     function validate() {
-        // TODO: validate input
-        return true;
+        var isValidated = true, errorText = "";
+
+        if (!validateName(dealAdress.text)) {
+            errorText += "- адрес \n";
+            isValidated = false;
+        }
+
+        if (!validateMoney(dealmaxMoney.text)) {
+            errorText += "- максимальная сумма \n";
+            isValidated = false;
+        }
+        if (!validateMoney(dealminMoney.text)) {
+            errorText += "- минимальная сумма \n";
+            isValidated = false;
+        }
+        
+        wrongFields = "Неверно заполнены поля: \n" + errorText;
+
+        return isValidated;
     }
 
     function loadContact() {
