@@ -29,7 +29,7 @@ Rectangle {
 
     function saveDeal() {
 
-        var addressField = { text: dealAdress.text, errorText: "адрес", type: 'name'},
+        var addressField = { text: dealAdress.text, errorText: "адрес", type: 'title'},
             minMoneyField = { text: dealminMoney.text, errorText: "минимальная цена", type: 'money'},
             maxMoneyField = { text: dealmaxMoney.text, errorText: "максимальная цена", type: 'money'};
             
