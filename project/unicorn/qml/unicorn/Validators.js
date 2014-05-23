@@ -2,26 +2,26 @@
 
 var wrongFields = "";
 
-var validators = {
+var _validators = {
 
-    name: function validateName(name) {
-        var r = /.+/;
-        return r.test(name);
-    },
-
-    money: function validateMoney(name) {
-        var r = /(^[1-9]{1}\d{0,9}$)|^0$/;
-        return r.test(name);
-    }
+    name: /.+/,
+    money: /^[1-9]{1}\d{0,9}$|^0$/
 
 };
+
+function _isValid(text, type) {
+    return _validators[type].test(text);
+}
+
 function validate(fields) {
     // { text, errorText, type}
 
     var isValidated = true, errorText = "";
 
     fields.forEach(function (field){
-        if (!validators[field.type](field.text)) {
+
+        if (!_isValid(field.text, field.type)) {
+
             errorText += field.errorText + "\n";
             isValidated = false;
         }
