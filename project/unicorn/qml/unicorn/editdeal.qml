@@ -2,6 +2,7 @@ import QtQuick 2.0
 import QtQuick.Controls 1.0
 import QtQuick.Layouts 1.0
 import "."
+import "Validators.js" as Validators
 
 Rectangle {
     anchors.fill: parent
@@ -24,9 +25,22 @@ Rectangle {
     }
 
     function saveDeal() {
+
         curDeal.price = (dealMoney.text !== "") ? dealMoney.text*1 : -1;
         console.log("price = " + dealMoney.text);
         curDeal.max_price = dealmaxMoney.text * 1;
+
+        var moneyField = { text: dealMoney.text, errorText: "договорились на сумме", type: 'money'},
+            maxMoneyField = { text: dealmaxMoney.text, errorText: "минимальная цена", type: 'money'};
+            
+        var isValid = Validators.validate([moneyField,maxMoneyField]);
+        if (!isValid) {
+
+            errorMessageDialog.text = Validators.wrongFields;
+            errorMessageDialog.visible = true;
+            return;
+        }
+
         curDeal.flatAdress = dealTitle.text;
         curDeal.state_key = states[curIndexState].idState;
 
